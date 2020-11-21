@@ -1,0 +1,272 @@
+﻿* {
+  margin: 0;
+  padding: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+html, body {
+  height: 100%;
+}
+h1 {
+  font-size: 3em;
+}
+h2 {
+  text-align: right;
+  font-size: 1em;
+}
+h3 {
+  margin-bottom: 20px;
+}
+a {
+  color: green;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+section {
+  height: 100%;
+  display:block;
+}
+section .left {
+  width: 50%;
+  float:left;
+  height: 100%;
+}
+section .right{
+  width: 50%;
+  float:right;
+  height: 100%;
+}
+section #avatar {
+  background: url('../img/main.jpg') no-repeat left;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 100%;
+}
+section #aboutImage {
+  background: url('../img/lensball.jpg') no-repeat right;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 100%;
+}
+section #customersImage {
+  background: url('../img/work.jpg') no-repeat left;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 100%;
+}
+section#customers ul {
+  margin-top: 50px;
+}
+section#customers ul li {
+  font-size: 2em;
+  line-height: 2;
+}
+section#footer {
+  text-align: center;
+  margin-top: 50px;
+  height: 50px;
+}
+section#about .right{
+  font-size: 1.2em;
+}
+ul {
+  list-style: none;
+}
+ul.actions {
+  font-size: 30px;
+  margin-top: 20px;
+  text-align: right;
+}
+ul.actions li {
+  display: inline-block;
+  padding: 5px;
+}
+.phone {
+  text-align: right;
+  margin-top: 10px;
+}
+.text {
+  padding: 50px;
+}
+.text-left {
+  text-align: left;
+}
+.text-right {
+  text-align: right;
+}
+.container {
+  max-width: 1920px;
+  margin: 0 auto;
+}
+.font-weight-900 {
+  font-weight: 900;
+}
+.uppercase {
+  text-transform: uppercase;
+}
+.font-weight-700 {
+  font-weight:  700;
+}
+.black{
+  color: #000;
+}
+.clearfix {
+  clear: both;
+}
+.col-6 {
+  width: 50%;
+  float: left;
+  margin-bottom: 50px;
+}
+.badges{
+  font-size: 2em;
+  position: absolute;
+  bottom: 0;
+  right: 50px;
+  text-align: right;
+}
+.relative {
+  position: relative;
+}
+.btn {
+  display: block;
+  width: 80%;
+  margin: 0 auto;
+  background: green;
+  text-align: center;
+  color: #fff;
+  padding: 3%;
+  border-radius: 6px;
+}
+/*
+  ##Device = Tablets, Ipads (portrait)
+  ##Screen = B/w 768px to 1024px
+*/
+@media (min-width: 1900px) {
+  h1 {
+    font-size: 4em;
+  }
+  h2 {
+    text-align: right;
+    font-size: 2em;
+  }
+  .phone {
+    font-size: 2em;
+  }
+  section#about .text {
+    font-size: 1.3em;
+  }
+  section#footer {
+    font-size: 1.3em;
+  }
+}
+@media (min-width: 1025px) and (max-width: 1200px) {
+  section#about .right{
+    font-size: 1em;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1025px) {
+  section#about .right{
+    font-size: 0.9em;
+  }
+  section#customers ul li {
+    font-size: 1.5em;
+    line-height: 2;
+  }
+}
+
+/*
+  ##Device = Tablets, Ipads (portrait)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1025px) and (orientation: portrait) {
+  section .left {
+    width: 100%;
+    height: 100%;
+  }
+  section .right{
+    width: 100%;
+    height: 100%;
+  }
+  section#about .left {
+    display: none;
+  }
+  section#about .right{
+    font-size: 1.3em;
+  }
+  section#footer {
+    font-size: 1.5em;
+  }
+}
+
+/*
+  ##Device = Low Resolution Tablets, Mobiles (Landscape)
+  ##Screen = B/w 481px to 767px
+*/
+
+@media (min-width: 481px) and (max-width: 767px) {
+
+}
+
+/*
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+
+@media (min-width: 320px) and (max-width: 480px) {
+  section .left {
+    width: 100%;
+    height: 100%;
+  }
+  section .right{
+    width: 100%;
+    height: 100%;
+  }
+  .badges{
+    font-size: 1.5em;
+  }
+  section#about .left {
+    display: none;
+  }
+  section#about .right{
+    font-size: 0.9em;
+  }
+  section#customers ul li {
+    font-size: 1.2em;
+  }
+  section#customers .right {
+    display:none;
+  }
+  h1 {
+    font-size: 2.2em;
+  }
+  h2 {
+    font-size: 0.8em;
+  }
+}
+
+@media (max-width: 320px) {
+  #customers,
+  #footer {
+    display: none;
+  }
+}
+
+@media print {
+  * {
+    font-family: "Courier New", Courier, monospace;
+  }
+  body {
+    margin: 5px;
+    padding: 5px;
+  }
+}

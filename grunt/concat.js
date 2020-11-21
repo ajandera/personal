@@ -3,10 +3,10 @@ module.exports = {
         files: {
             'assets/css/style.css': [
                 'node_modules/font-awesome/css/font-awesome.css',
-                'css/style.css',
+                'src/css/style.css',
             ],
             'assets/js/app.src.js': [
-                'js/app.js'
+                'src/js/app.js'
             ]
         }
     }

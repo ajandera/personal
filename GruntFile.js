@@ -5,6 +5,7 @@ module.exports = function(grunt) {
 
     var gruntConfig = require('./grunt');
     gruntConfig.package = require('./package.json');
+    grunt.loadNpmTasks('grunt-contrib-watch');
 
     gtx.config(gruntConfig);
 
@@ -13,7 +14,8 @@ module.exports = function(grunt) {
         'copy:assets',
         'concat:assets',
         'cssmin:assets',
-        'uglify:assets'
+        'uglify:assets',
+        'string-replace:assets'
     ]);
 
     gtx.finalise();

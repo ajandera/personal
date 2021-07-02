@@ -1,4 +1,54 @@
-﻿* {
+<template>
+  <section id="blog" class="container">
+      <div class="col-4">
+        <router-link to="/blog">Back</router-link>
+        <hr>
+        <img v-bind:src="post.src" class="img-fluid" />
+      </div>
+      <div class="col-8">
+        <h3>{{ post.title }}</h3>
+        <div v-html="post.body"></div>
+      </div>
+    <div class="clearfix"></div>
+  </section>
+</template>
+
+<script>
+
+import axios from "axios";
+
+export default {
+  name: 'Detail',
+  data() {
+    return {
+      post: {}
+    }
+  },
+  components: {},
+  mounted() {
+    this.getPost();
+  },
+  methods: {
+    getPost() {
+      axios.get(this.$hostname + "post/"+ this.$route.params.id)
+          .then(response => {
+            if (response.data.success === true) {
+              this.post = response.data.post;
+            } else {
+              console.log(response.data.error);
+            }
+          });
+    },
+    goToDetail(id) {
+
+    }
+  }
+}
+</script>
+
+<style>
+@import "https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css";
+* {
   margin: 0;
   padding: 0;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -6,6 +56,12 @@
 html, body {
   height: 100%;
 }
+body > div {
+  height: 100%;
+}
+</style>
+
+<style lang="css" scoped>
 h1 {
   font-size: 3em;
 }
@@ -38,27 +94,30 @@ section .right{
   height: 100%;
 }
 section #avatar {
-  background: url('../img/main.jpg') no-repeat left;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  background-repeat: no-repeat;
+  background-position: left;
   height: 100%;
 }
 section #aboutImage {
-  background: url('../img/lensball.jpg') no-repeat right;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  background-repeat: no-repeat;
+  background-position: right;
   height: 100%;
 }
 section #customersImage {
-  background: url('../img/work.jpg') no-repeat left;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  background-repeat: no-repeat;
+  background-position: left;
   height: 100%;
 }
 section#customers ul {
@@ -135,15 +194,33 @@ ul.actions li {
 .relative {
   position: relative;
 }
-.btn {
-  display: block;
-  width: 80%;
-  margin: 0 auto;
-  background: green;
-  text-align: center;
-  color: #fff;
-  padding: 3%;
-  border-radius: 6px;
+.reference {
+  width: 45%;
+  float: left;
+  height: 100px;
+  padding: 20px;
+  display: inline-flex;
+}
+.reference img {
+  max-width: 100%;
+  vertical-align: middle;
+  height: 50px;
+}
+#blog {
+  padding: 5%;
+}
+.blogItem {
+  width: 50%;
+  float:left;
+}
+.blogItem img {
+  max-width: 100%;
+}
+.modal-dialog{
+  max-width: 1000px;
+}
+.modal-content {
+  border: none;
 }
 /*
   ##Device = Tablets, Ipads (portrait)
@@ -270,3 +347,4 @@ ul.actions li {
     padding: 5px;
   }
 }
+</style>

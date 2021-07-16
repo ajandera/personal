@@ -2,9 +2,9 @@ version: '3'
 services:
     php:
         container_name: ajandera_server
-        build: ./arualcms/docker
+        build: ./api/docker
         volumes:
-            - ./arualcms:/var/www/html:delegated
+            - ./api:/var/www/html:delegated
         ports:
             - 8000:80
         environment:

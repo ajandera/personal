@@ -12,6 +12,16 @@
     <a href="#" class="icon" v-bind:class="{ open: menu }" v-on:click="hamburger()">
       <font-awesome-icon :icon="['fas', 'bars']" />
     </a>
+    <div class="languageWrapper" v-bind:class="{ open: menu }">
+      <a href="#"
+         class="icon-lang"
+         v-on:click="setLanguage(lang)"
+         v-for="(lang, index) in languages"
+         v-bind:class="{'language': lang !== language, 'language active': lang === language}"
+         v-bind:key="index">
+        {{ lang }}
+      </a>
+    </div>
   </div>
 </template>
 
@@ -21,7 +31,9 @@ export default {
   name: 'App',
   data() {
     return {
-      menu: false
+      menu: false,
+      language: window.localStorage.getItem("language"),
+      languages: window.localStorage.getItem("languages").split(',')
     }
   },
   components: {},
@@ -29,6 +41,10 @@ export default {
   methods: {
     hamburger() {
       this.menu = !this.menu;
+    },
+    setLanguage(lang) {
+      this.language = lang;
+      window.localStorage.setItem('language', this.language);
     }
   }
 }
@@ -70,9 +86,29 @@ export default {
   text-decoration: none;
   font-size: 17px;
 }
+.languageWrapper {
+  top: 20px;
+  position: fixed;
+  left: 80px;
+  z-index: 999;
+}
+.icon-lang {
+  background: black;
+  display: block;
+  cursor: pointer;
+  z-index: 999;
+  color: white;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  float: left;
+}
 
 .icon.open {
   left: 200px;
+}
+.languageWrapper.open {
+  left: 280px;
 }
 
 /* Add a grey background color on mouse-over */

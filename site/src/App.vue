@@ -11,6 +11,7 @@
 
 import Footer from "@/components/Footer";
 import Nav from "@/components/Nav";
+import axios from "axios";
 
 export default {
   name: 'App',
@@ -24,10 +25,22 @@ export default {
     Nav
   },
   mounted() {
+    this.getDefaultLanguage();
     this.$router.push('home');
   },
   methods: {
-
+    getDefaultLanguage() {
+      axios.get(this.$hostname + "languages")
+          .then(response => {
+            if (response.data.success === true) {
+              window.localStorage.setItem('languages', response.data.languages.map(item => item = item.key));
+              window.localStorage.setItem('language', response.data.languages.find(item => item.default === 1).key);
+            } else {
+              this.message = response.data.error;
+              this.messageClass = 'danger';
+            }
+          });
+    }
   },
 }
 </script>

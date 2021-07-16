@@ -66,7 +66,7 @@
       <div class="right">
         <div class="text">
           <h1 class="text-left">About me</h1><br>
-          <div v-html="about"></div>
+          <div v-html="about[language]"></div>
           <div class="clearfix"></div>
         </div>
         <div class="clearfix"></div>
@@ -92,6 +92,22 @@
       <div class="clearfix"></div>
     </section>
     <!-- Customer Section End -->
+    <!-- Feed Section Starts -->
+    <section id="feed" class="container">
+      <div class="left">
+        <div class="text">
+          <h1 class="text-right">Feed imports</h1>
+          <ul class="text-right" itemprop="worksFor">
+            TO DO
+          </ul>
+        </div>
+      </div>
+      <div class="right">
+
+      </div>
+      <div class="clearfix"></div>
+    </section>
+    <!-- Feed Section End -->
   </div>
 </template>
 
@@ -106,7 +122,9 @@ export default {
       images: null,
       about: "",
       references: [],
-      shopy: {src: ""}
+      shopy: {src: ""},
+      language: window.localStorage.getItem("language"),
+      languages: window.localStorage.getItem("languages").split(',')
     }
   },
   components: {},

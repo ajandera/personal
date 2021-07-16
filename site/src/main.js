@@ -18,7 +18,7 @@ Vue.use(VueCookie)
 Vue.use(VueSession)
 Vue.config.productionTip = true
 Vue.component('font-awesome-icon', FontAwesomeIcon)
-Vue.prototype.$hostname = 'http://localhost:8000/api/'
+Vue.prototype.$hostname = 'http://localhost:8000/'
 
 const routes = [
   { path: '/', component: App},

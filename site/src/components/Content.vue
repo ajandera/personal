@@ -97,9 +97,7 @@
       <div class="left">
         <div class="text">
           <h2 class="text-right">{{ $t('content.automation')}}</h2>
-          <ul class="text-right" itemprop="worksFor">
-            <div v-html="automation[language]"></div>
-          </ul>
+          <div v-html="automation[language]"></div>
         </div>
       </div>
       <div class="right">
@@ -413,6 +411,9 @@ ul.actions li {
 }
 .shopyImg img{
   width: 50%;
+}
+.ql-align-center {
+  text-align: center;
 }
 /*
   ##Device = Tablets, Ipads (portrait)

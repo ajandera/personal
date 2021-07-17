@@ -1,0 +1,36 @@
+{
+    "menu": {
+        "home": "Home",
+        "blog": "Blog"
+    },
+    "content": {
+        "moto": "Never give up! Great things take time.",
+        "experience": "Years Experience",
+        "projects": "Done Projects",
+        "customers": "Happy customers",
+        "rows": "Row of codes",
+        "about": "About me",
+        "references": "References",
+        "automation": "Automation and deep learning",
+        "form": {
+            "labels": {
+                "company": "Company name",
+                "email": "Email",
+                "address": "Address",
+                "number": "Company number",
+                "vat": "Vat id",
+                "person": "Contact person"
+            },
+            "btn": {
+                "submit": "Order Feed services"
+            }
+        }
+    },
+    "footer": {
+        "copyright": "All rights reserved",
+        "company": "shopyCRM s.r.o",
+        "address": "Komárovce 46, 044 55 Slovakia",
+        "number": "ID: 51 094 452",
+        "vat": "VAT ID: SK2120594971"
+    }
+}

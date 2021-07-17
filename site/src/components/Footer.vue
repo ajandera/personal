@@ -1,8 +1,8 @@
 <template>
     <!-- Footer Section Start -->
     <section id="footer" class="container-fluid">
-      <p>{{ year }} &copy; Aleš Jandera. All rights reserved.</p>
-      <p>shopyCRM s.r.o, <span itemprop="workLocation">Komárovce 46, 044 55 Slovakia</span>, ID: 51 094 452, <span itemprop="vatId">VAT ID: SK2120594971</span></p>
+      <p>{{ year }} &copy; Aleš Jandera. {{ $t('footer.copyright')}}.</p>
+      <p>{{ $t('footer.company')}}, <span itemprop="workLocation">{{ $t('footer.address')}}</span>, {{ $t('footer.number')}}, <span itemprop="vatId">{{ $t('footer.vat')}}</span></p>
       <div class="clearfix"></div>
     </section>
     <!-- Footer Section End -->
@@ -10,19 +10,15 @@
 
 <script>
 
-import axios from "axios";
-
 export default {
   name: 'Footer',
   data() {
     return {
-      year: new Date().getFullYear()
+      year: new Date().getFullYear(),
     }
   },
   components: {},
-  mounted() {
-
-  },
+  mounted() {},
   methods: {
 
   }
@@ -41,7 +37,7 @@ section#footer {
 }
 @media (min-width: 1900px) {
   section#footer {
-    font-size: 1.3em;
+    font-size: 1.1em;
   }
 }
 
@@ -52,7 +48,7 @@ section#footer {
 
 @media (min-width: 768px) and (max-width: 1025px) and (orientation: portrait) {
   section#footer {
-    font-size: 1.5em;
+    font-size: 1em;
   }
 }
 

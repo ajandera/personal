@@ -10,15 +10,17 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import Blog from "@/components/Blog";
 import Detail from "@/components/Detail";
 import Content from "@/components/Content";
+import i18n from "./i18n";
 
 library.add(fas)
 library.add(fab)
 Vue.use(VueRouter)
 Vue.use(VueCookie)
 Vue.use(VueSession)
+Vue.use(i18n)
 Vue.config.productionTip = true
 Vue.component('font-awesome-icon', FontAwesomeIcon)
-Vue.prototype.$hostname = 'http://localhost:8000/'
+Vue.prototype.$hostname = 'http://localhost:8000/api/'
 
 const routes = [
   { path: '/', component: App},
@@ -33,5 +35,6 @@ const router = new VueRouter({
 
 new Vue({
   router,
+  i18n,
   render: h => h(App),
 }).$mount('#app')

@@ -2,5 +2,5 @@ package-lock.json
 site/node_modules
 .idea
 arualcms/
-api/
+arualcms/api/
 site/dist

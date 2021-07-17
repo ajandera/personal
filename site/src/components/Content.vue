@@ -5,7 +5,7 @@
       <div class="left relative">
         <div class="text">
           <h1 title="ajandera.com" class="text-right"><span itemprop="givenName">Aleš</span> <span itemprop="familyName">Jandera</span></h1>
-          <h2>Never give up! Great things take time.</h2>
+          <h2>{{ $t('content.moto')}}</h2>
           <p class="phone font-weight-900"><font-awesome-icon :icon="['fas', 'mobile-alt']" /> +421 904 750 220</p>
           <ul class="actions">
             <li>
@@ -25,28 +25,28 @@
                 <font-awesome-icon :icon="['fas', 'briefcase']" />
                 <span class="font-weight-900">10+</span>
               </h3>
-              <h6 class="uppercase font-weight-700">Years Experience</h6>
+              <h6 class="uppercase font-weight-700">{{ $t('content.experience')}}</h6>
             </div>
             <div class="col-6">
               <h3>
                 <font-awesome-icon :icon="['fas', 'handshake']" />
                 <span class="font-weight-900">100+</span>
               </h3>
-              <h6 class="uppercase font-weight-700">Done Projects</h6>
+              <h6 class="uppercase font-weight-700">{{ $t('content.projects')}}</h6>
             </div>
             <div class="col-6">
               <h3>
                 <font-awesome-icon :icon="['fas', 'heart']" />
                 <span class="font-weight-900">25+</span>
               </h3>
-              <h6 class="uppercase font-weight-700">Happy customers</h6>
+              <h6 class="uppercase font-weight-700">{{ $t('content.customers')}}</h6>
             </div>
             <div class="col-6">
               <h3>
                 <font-awesome-icon :icon="['fas', 'chart-line']" />
                 <span class="font-weight-900">1Mil+</span>
               </h3>
-              <h6 class="uppercase font-weight-700">Row of codes</h6>
+              <h6 class="uppercase font-weight-700">{{ $t('content.rows')}}</h6>
             </div>
           </div>
           <div class="clearfix"></div>
@@ -65,7 +65,7 @@
       </div>
       <div class="right">
         <div class="text">
-          <h1 class="text-left">About me</h1><br>
+          <h2 class="text-left">{{ $t('content.about')}}</h2><br>
           <div v-html="about[language]"></div>
           <div class="clearfix"></div>
         </div>
@@ -78,7 +78,7 @@
     <section id="customers" class="container">
       <div class="left">
         <div class="text">
-          <h1 class="text-right">References</h1>
+          <h2 class="text-right">{{ $t('content.references')}}</h2>
           <ul class="text-right" itemprop="worksFor">
             <div class="reference" v-for="ref in references" v-bind:key="ref.name">
               <img v-bind:src="ref.src" />
@@ -92,18 +92,69 @@
       <div class="clearfix"></div>
     </section>
     <!-- Customer Section End -->
-    <!-- Feed Section Starts -->
-    <section id="feed" class="container">
+    <!-- Automation Section Starts -->
+    <section id="automation" class="container">
       <div class="left">
         <div class="text">
-          <h1 class="text-right">Feed imports</h1>
+          <h2 class="text-right">{{ $t('content.automation')}}</h2>
           <ul class="text-right" itemprop="worksFor">
-            TO DO
+            <div v-html="automation[language]"></div>
           </ul>
         </div>
       </div>
       <div class="right">
-
+        <div class="text">
+          <div class="container">
+            <form>
+            <div class="row">
+              <div class="col-12">
+                <label for="name">{{ $t('content.form.labels.company')}}</label>
+                <input type="text" v-model="form.name" class="form-control" id="name">
+              </div>
+            </div>
+            <div class="row mt-4">
+              <div class="col-12">
+                <label for="email">{{ $t('content.form.labels.email')}}</label>
+                <input type="email" v-model="form.email" class="form-control" id="email">
+              </div>
+            </div>
+            <div class="row mt-4">
+              <div class="col-12">
+                <label for="address">{{ $t('content.form.labels.address')}}</label>
+                <textarea v-model="form.address" class="form-control" id="address"></textarea>
+              </div>
+            </div>
+            <div class="row mt-4">
+              <div class="col-12">
+                <label for="number">{{ $t('content.form.labels.number')}}</label>
+                <input type="text" v-model="form.number" class="form-control" id="number">
+              </div>
+            </div>
+            <div class="row mt-4">
+              <div class="col-12">
+                <label for="vat">{{ $t('content.form.labels.vat')}}</label>
+                <input type="text" v-model="form.vat" class="form-control" id="vat">
+              </div>
+            </div>
+              <div class="row mt-4">
+                <div class="col-12">
+                  <label for="person">{{ $t('content.form.labels.person')}}</label>
+                  <input type="text" v-model="form.person" class="form-control" id="person">
+                </div>
+              </div>
+            <div class="row mt-4">
+              <div class="col-12">
+                <div class="btn btn-lg btn-success" v-on:click="order">{{ $t('content.form.btn.submit')}}</div>
+              </div>
+            </div>
+            <div class="row mt-4" v-if="message !== null">
+              <div class="col-12">
+                <div class="alert  alert-success">{{ message }}</div>
+              </div>
+            </div>
+          </form>
+          </div>
+        </div>
       </div>
       <div class="clearfix"></div>
     </section>
@@ -121,8 +172,18 @@ export default {
     return {
       images: null,
       about: "",
+      automation: "",
       references: [],
+      message: null,
       shopy: {src: ""},
+      form: {
+        name: "",
+        email: "",
+        address: "",
+        number: "",
+        vat: "",
+        person: ""
+      },
       language: window.localStorage.getItem("language"),
       languages: window.localStorage.getItem("languages").split(',')
     }
@@ -131,6 +192,9 @@ export default {
   mounted() {
     this.files();
     this.texts();
+    window.addEventListener('language-localstorage-changed', (event) => {
+      this.language = event.detail.storage;
+    });
   },
   methods: {
     files() {
@@ -156,10 +220,30 @@ export default {
           .then(response => {
             if (response.data.success === true) {
               this.about = response.data.texts.filter(x => x.key === "about")[0].value;
+              this.automation = response.data.texts.filter(x => x.key === "automation")[0].value;
             } else {
               console.log(response.data.error);
             }
           });
+    },
+    order() {
+      axios.post(this.$hostname + "mail",
+          {
+            email: "ales.jandera@gmail.com",
+            subject: "Nová objednávka ajandera.com",
+            body: this.form.toString()
+          }
+      ).then(response => {
+        this.form = {
+          name: "",
+          email: "",
+          address: "",
+          number: "",
+          vat: "",
+          person: ""
+        };
+        this.message = response.data.message;
+      });
     }
   }
 }
@@ -186,7 +270,7 @@ h1 {
 }
 h2 {
   text-align: right;
-  font-size: 1em;
+  font-size: 2.5em;
 }
 h3 {
   margin-bottom: 20px;

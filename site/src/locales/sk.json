@@ -1,0 +1,36 @@
+{
+  "menu": {
+    "home": "Domov",
+    "blog": "Blog"
+  },
+  "content": {
+    "moto": "Never give up! Great things take time.",
+    "experience": "Rokov zkúseností",
+    "projects": "Dokončených projektov",
+    "customers": "Spokojných zákazníkov",
+    "rows": "Riadkov kódu",
+    "about": "O me",
+    "references": "Odporučanie",
+    "automation": "Automatizácia a strojové učenie",
+    "form": {
+      "labels": {
+        "company": "Spoločnosť",
+        "email": "Email",
+        "address": "Adresa",
+        "number": "IČO/IČ",
+        "vat": "DIČ",
+        "person": "Kontaktná osoba"
+      },
+      "btn": {
+        "submit": "Objednať služby"
+      }
+    }
+  },
+  "footer": {
+    "copyright": "Všetka práva vyhradená",
+    "company": "shopyCRM s.r.o",
+    "address": "Komárovce 46, 044 55 Komárovce",
+    "number": "IČ: 51 094 452",
+    "vat": "IČ DPH: SK2120594971"
+  }
+}

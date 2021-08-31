@@ -31,6 +31,9 @@ section#footer {
   background: black;
   color: #fff;
   padding: 20px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
 }
 .clearfix {
   clear: both;

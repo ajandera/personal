@@ -67,7 +67,7 @@ export default {
   background-color: #333;
   position: fixed;
   top: 0;
-  left: 0;
+  right: 0;
   width: 200px;
   z-index: 999;
   height: 100%;
@@ -87,7 +87,7 @@ export default {
   background: black;
   display: block;
   position: fixed;
-  left: 20px;
+  right: 30px;
   top: 20px;
   cursor: pointer;
   z-index: 999;
@@ -99,7 +99,7 @@ export default {
 .languageWrapper {
   top: 20px;
   position: fixed;
-  left: 80px;
+  right: 80px;
   z-index: 999;
 }
 .icon-lang {
@@ -115,10 +115,10 @@ export default {
 }
 
 .icon.open {
-  left: 200px;
+  right: 200px;
 }
 .languageWrapper.open {
-  left: 280px;
+  right: 250px;
 }
 
 /* Add a grey background color on mouse-over */

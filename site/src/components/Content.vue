@@ -98,7 +98,9 @@
         <div class="text">
           <h2 class="text-right">{{ $t('content.automation')}}</h2>
           <div v-html="automation[language]"></div>
+          <div class="clearfix"></div>
         </div>
+        <Footer />
       </div>
       <div class="right">
         <div class="text">
@@ -154,7 +156,6 @@
           </div>
         </div>
       </div>
-      <div class="clearfix"></div>
     </section>
     <!-- Feed Section End -->
   </div>
@@ -163,6 +164,7 @@
 <script>
 
 import axios from "axios";
+import Footer from "@/components/Footer";
 
 export default {
   name: 'Content',
@@ -186,7 +188,9 @@ export default {
       languages: window.localStorage.getItem("languages").split(',')
     }
   },
-  components: {},
+  components: {
+    Footer
+  },
   mounted() {
     this.files();
     this.texts();
@@ -268,7 +272,7 @@ h1 {
 }
 h2 {
   text-align: right;
-  font-size: 2.5em;
+  font-size: 2em;
 }
 h3 {
   margin-bottom: 20px;
@@ -442,7 +446,6 @@ ul.actions li {
     font-size: 1em;
   }
 }
-
 @media (min-width: 768px) and (max-width: 1025px) {
   section#about .right{
     font-size: 0.9em;

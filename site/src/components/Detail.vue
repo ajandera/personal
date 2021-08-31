@@ -1,67 +1,62 @@
 <template>
   <section id="blog" class="container">
-      <div class="col-4">
+      <div class="col-12">
         <router-link to="/blog">Back</router-link>
         <hr>
-        <img v-bind:src="post.src" class="img-fluid" />
+        <img v-bind:src="post.src" class="image" />
+        <h3>{{ post.title[language] }}</h3>
+        <div v-html="post.body[language]"></div>
       </div>
-      <div class="col-8">
-        <h3>{{ post.title }}</h3>
-        <div v-html="post.body"></div>
-      </div>
-    <div class="clearfix"></div>
+    <Footer />
   </section>
 </template>
 
 <script>
 
 import axios from "axios";
+import Footer from "@/components/Footer";
 
 export default {
   name: 'Detail',
   data() {
     return {
-      post: {}
+      post: {},
+      language: window.localStorage.getItem("language"),
+      languages: window.localStorage.getItem("languages").split(',')
     }
   },
-  components: {},
+  components: {
+    Footer
+  },
   mounted() {
     this.getPost();
+    window.addEventListener('language-localstorage-changed', (event) => {
+      this.language = event.detail.storage;
+    });
   },
   methods: {
     getPost() {
       axios.get(this.$hostname + "post/"+ this.$route.params.id)
           .then(response => {
             if (response.data.success === true) {
-              this.post = response.data.post;
+              this.post = response.data.post[0];
             } else {
               console.log(response.data.error);
             }
           });
-    },
-    goToDetail(id) {
-
     }
   }
 }
 </script>
 
-<style>
-@import "https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css";
-* {
-  margin: 0;
-  padding: 0;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-html, body {
-  height: 100%;
-}
-body > div {
-  height: 100%;
-}
-</style>
-
 <style lang="css" scoped>
+.image {
+  width: 30%;
+  height: auto;
+  float: left;
+  margin-right: 30px;
+  margin-bottom: 30px;
+}
 h1 {
   font-size: 3em;
 }
@@ -83,43 +78,6 @@ section {
   height: 100%;
   display:block;
 }
-section .left {
-  width: 50%;
-  float:left;
-  height: 100%;
-}
-section .right{
-  width: 50%;
-  float:right;
-  height: 100%;
-}
-section #avatar {
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: left;
-  height: 100%;
-}
-section #aboutImage {
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: right;
-  height: 100%;
-}
-section #customersImage {
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: left;
-  height: 100%;
-}
 section#customers ul {
   margin-top: 50px;
 }
@@ -127,79 +85,16 @@ section#customers ul li {
   font-size: 2em;
   line-height: 2;
 }
-section#footer {
-  text-align: center;
-  margin-top: 50px;
-  height: 50px;
-}
-section#about .right{
-  font-size: 1.2em;
-}
 ul {
   list-style: none;
-}
-ul.actions {
-  font-size: 30px;
-  margin-top: 20px;
-  text-align: right;
 }
 ul.actions li {
   display: inline-block;
   padding: 5px;
 }
-.phone {
-  text-align: right;
-  margin-top: 10px;
-}
-.text {
-  padding: 50px;
-}
-.text-left {
-  text-align: left;
-}
-.text-right {
-  text-align: right;
-}
 .container {
   max-width: 1920px;
   margin: 0 auto;
-}
-.font-weight-900 {
-  font-weight: 900;
-}
-.uppercase {
-  text-transform: uppercase;
-}
-.font-weight-700 {
-  font-weight:  700;
-}
-.black{
-  color: #000;
-}
-.clearfix {
-  clear: both;
-}
-.col-6 {
-  width: 50%;
-  float: left;
-  margin-bottom: 50px;
-}
-.badges{
-  font-size: 2em;
-  position: absolute;
-  bottom: 0;
-  right: 50px;
-  text-align: right;
-}
-.relative {
-  position: relative;
-}
-.reference {
-  width: 45%;
-  float: left;
-  height: 100px;
-  padding: 20px;
-  display: inline-flex;
 }
 .reference img {
   max-width: 100%;
@@ -209,18 +104,8 @@ ul.actions li {
 #blog {
   padding: 5%;
 }
-.blogItem {
-  width: 50%;
-  float:left;
-}
 .blogItem img {
   max-width: 100%;
-}
-.modal-dialog{
-  max-width: 1000px;
-}
-.modal-content {
-  border: none;
 }
 /*
   ##Device = Tablets, Ipads (portrait)
@@ -234,26 +119,9 @@ ul.actions li {
     text-align: right;
     font-size: 2em;
   }
-  .phone {
-    font-size: 2em;
-  }
-  section#about .text {
-    font-size: 1.3em;
-  }
-  section#footer {
-    font-size: 1.3em;
-  }
-}
-@media (min-width: 1025px) and (max-width: 1200px) {
-  section#about .right{
-    font-size: 1em;
-  }
 }
 
 @media (min-width: 768px) and (max-width: 1025px) {
-  section#about .right{
-    font-size: 0.9em;
-  }
   section#customers ul li {
     font-size: 1.5em;
     line-height: 2;
@@ -266,23 +134,7 @@ ul.actions li {
 */
 
 @media (min-width: 768px) and (max-width: 1025px) and (orientation: portrait) {
-  section .left {
-    width: 100%;
-    height: 100%;
-  }
-  section .right{
-    width: 100%;
-    height: 100%;
-  }
-  section#about .left {
-    display: none;
-  }
-  section#about .right{
-    font-size: 1.3em;
-  }
-  section#footer {
-    font-size: 1.5em;
-  }
+
 }
 
 /*
@@ -300,41 +152,14 @@ ul.actions li {
 */
 
 @media (min-width: 320px) and (max-width: 480px) {
-  section .left {
-    width: 100%;
-    height: 100%;
-  }
-  section .right{
-    width: 100%;
-    height: 100%;
-  }
-  .badges{
-    font-size: 1.5em;
-  }
-  section#about .left {
-    display: none;
-  }
-  section#about .right{
-    font-size: 0.9em;
-  }
   section#customers ul li {
     font-size: 1.2em;
-  }
-  section#customers .right {
-    display:none;
   }
   h1 {
     font-size: 2.2em;
   }
   h2 {
     font-size: 0.8em;
-  }
-}
-
-@media (max-width: 320px) {
-  #customers,
-  #footer {
-    display: none;
   }
 }
 

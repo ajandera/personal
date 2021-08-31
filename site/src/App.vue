@@ -3,13 +3,11 @@
     <Nav />
     <router-view></router-view>
     <div class="clearfix"></div>
-    <Footer />
   </div>
 </template>
 
 <script>
 
-import Footer from "@/components/Footer";
 import Nav from "@/components/Nav";
 import axios from "axios";
 
@@ -21,7 +19,6 @@ export default {
     }
   },
   components: {
-    Footer,
     Nav
   },
   mounted() {

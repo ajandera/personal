@@ -1,33 +1,40 @@
 <template>
   <section id="blog" class="container">
-    <div v-for="post in posts" v-bind:key="post.id" class="row mt-4 item" v-on:click="goToDetail(post.id)">
+    <div v-for="post in posts" v-bind:key="post.id" class="row mt-4 item" v-on:click="goToDetail(post._id.$oid)">
       <div class="col-4">
         <img v-bind:src="post.src" class="img-fluid" />
       </div>
       <div class="col-8">
-        <h3>{{ post.title }}</h3>
-        <p>{{ post.excerpt }}</p>
+        <h3>{{ post.title[language] }}</h3>
+        <p>{{ post.excerpt[language] }}</p>
       </div>
-      <div class="clearfix"></div>
     </div>
-    <div class="clearfix"></div>
+    <Footer />
   </section>
 </template>
 
 <script>
 
 import axios from "axios";
+import Footer from "@/components/Footer";
 
 export default {
   name: 'Blog',
   data() {
     return {
-      posts: []
+      posts: [],
+      language: window.localStorage.getItem("language"),
+      languages: window.localStorage.getItem("languages").split(',')
     }
   },
-  components: {},
+  components: {
+    Footer
+  },
   mounted() {
     this.getPosts();
+    window.addEventListener('language-localstorage-changed', (event) => {
+      this.language = event.detail.storage;
+    });
   },
   methods: {
     getPosts() {

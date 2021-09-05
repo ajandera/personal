@@ -1,7 +1,7 @@
 <template>
   <div style="height: 100%">
     <!-- Home Section Starts -->
-    <section id="home" class="container" itemscope itemtype="http://schema.org/Person">
+    <section id="home" class="container-fluid p-0" itemscope itemtype="http://schema.org/Person">
       <div class="left relative">
         <div class="text">
           <h1 title="ajandera.com" class="text-right"><span itemprop="givenName">Aleš</span> <span itemprop="familyName">Jandera</span></h1>
@@ -59,7 +59,7 @@
     </section>
     <!-- Home Section Ends -->
     <!-- About Section Starts -->
-    <section id="about" class="container">
+    <section id="about" class="container-fluid p-0">
       <div class="left">
         <div id="aboutImage"></div>
       </div>
@@ -75,32 +75,25 @@
     </section>
     <!-- About Section Ends -->
     <!-- Customers Section Starts -->
-    <section id="customers" class="container">
-      <div class="left">
-        <div class="text">
-          <h2 class="text-right">{{ $t('content.references')}}</h2>
-          <ul class="text-right" itemprop="worksFor">
-            <div class="reference" v-for="ref in references" v-bind:key="ref.name">
-              <img v-bind:src="ref.src" />
-            </div>
-          </ul>
-        </div>
-      </div>
-      <div class="right">
-        <div id="customersImage"></div>
-      </div>
+    <section id="customers" class="container-fluid p-0">
+      <hr>
+      <carousel :autoplay="true" :loop="true" :speed="3" :autoplayHoverPause="true" :perPage="4">
+        <slide v-for="ref in references" v-bind:key="ref.name" class="reference">
+          <img v-bind:src="ref.src" />
+        </slide>
+      </carousel>
       <div class="clearfix"></div>
+      <hr>
     </section>
     <!-- Customer Section End -->
     <!-- Automation Section Starts -->
-    <section id="automation" class="container">
+    <section id="automation" class="container-fluid p-0">
       <div class="left">
         <div class="text">
           <h2 class="text-right">{{ $t('content.automation')}}</h2>
           <div v-html="automation[language]"></div>
           <div class="clearfix"></div>
         </div>
-        <Footer />
       </div>
       <div class="right">
         <div class="text">
@@ -156,6 +149,8 @@
           </div>
         </div>
       </div>
+      <div class="clearfix"></div>
+      <Footer />
     </section>
     <!-- Feed Section End -->
   </div>
@@ -185,7 +180,7 @@ export default {
         person: ""
       },
       language: window.localStorage.getItem("language"),
-      languages: window.localStorage.getItem("languages").split(',')
+      languages: window.localStorage.getItem("languages") !== null ? window.localStorage.getItem("languages").split(',') : ""
     }
   },
   components: {
@@ -206,11 +201,9 @@ export default {
               this.images = response.data.files;
               const main = this.images.filter(x => x.name === 'main.jpg')[0];
               const about = this.images.filter(x => x.name === 'lensball.jpg')[0];
-              const work = this.images.filter(x => x.name === 'work.jpg')[0];
               this.shopy = this.images.filter(x => x.name === 'shopycrm-logo.png')[0];
               document.getElementById('avatar').style.backgroundImage = "url(" + main.src + ")";
               document.getElementById('aboutImage').style.backgroundImage = "url(" + about.src + ")";
-              document.getElementById('customersImage').style.backgroundImage = "url(" + work.src + ")";
               this.references = this.images.filter(x => x.gallery === 'reference');
             } else {
               console.log(response.data.error);
@@ -316,21 +309,9 @@ section #aboutImage {
   background-position: right;
   height: 100%;
 }
-section #customersImage {
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: left;
-  height: 100%;
-}
-section#customers ul {
-  margin-top: 50px;
-}
-section#customers ul li {
-  font-size: 2em;
-  line-height: 2;
+section#customers {
+  height: auto;
+  margin-top: 30px;
 }
 section#about .right{
   font-size: 1.2em;
@@ -437,9 +418,6 @@ ul.actions li {
   section#about .text {
     font-size: 1em;
   }
-  section#footer {
-    font-size: 1.3em;
-  }
 }
 @media (min-width: 1025px) and (max-width: 1200px) {
   section#about .right{
@@ -475,9 +453,6 @@ ul.actions li {
   }
   section#about .right{
     font-size: 1.3em;
-  }
-  section#footer {
-    font-size: 1.5em;
   }
 }
 
@@ -536,10 +511,7 @@ ul.actions li {
 }
 
 @media (max-width: 320px) {
-  #customers,
-  #footer {
-    display: none;
-  }
+
 }
 
 @media print {

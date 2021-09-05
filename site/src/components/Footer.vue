@@ -1,8 +1,11 @@
 <template>
     <!-- Footer Section Start -->
     <section id="footer" class="container-fluid">
-      <p>{{ year }} &copy; Aleš Jandera. {{ $t('footer.copyright')}}.</p>
-      <p>{{ $t('footer.company')}}, <span itemprop="workLocation">{{ $t('footer.address')}}</span>, {{ $t('footer.number')}}, <span itemprop="vatId">{{ $t('footer.vat')}}</span></p>
+      <div class="row">
+        <div class="col-12 text-right">
+          <p>{{ year }} &copy; Aleš Jandera. {{ $t('footer.copyright')}}.</p>
+        </div>
+      </div>
       <div class="clearfix"></div>
     </section>
     <!-- Footer Section End -->
@@ -27,11 +30,11 @@ export default {
 
 <style lang="css" scoped>
 section#footer {
-  height: 100px;
+  height: 30px;
   background: black;
   color: #fff;
-  padding: 20px;
-  position: absolute;
+  padding: 5px;
+  position: fixed;
   left: 0;
   bottom: 0;
 }
@@ -52,12 +55,6 @@ section#footer {
 @media (min-width: 768px) and (max-width: 1025px) and (orientation: portrait) {
   section#footer {
     font-size: 1em;
-  }
-}
-
-@media (max-width: 320px) {
-  #footer {
-    display: none;
   }
 }
 </style>

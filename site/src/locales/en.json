@@ -10,7 +10,6 @@
         "customers": "Happy customers",
         "rows": "Row of codes",
         "about": "About me",
-        "references": "References",
         "automation": "Automation and deep learning",
         "form": {
             "labels": {
@@ -27,10 +26,6 @@
         }
     },
     "footer": {
-        "copyright": "All rights reserved",
-        "company": "shopyCRM s.r.o",
-        "address": "Komárovce 46, 044 55 Slovakia",
-        "number": "ID: 51 094 452",
-        "vat": "VAT ID: SK2120594971"
+        "copyright": "All rights reserved"
     }
 }

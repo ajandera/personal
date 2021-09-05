@@ -10,7 +10,6 @@
     "customers": "Spokojených zákazníků",
     "rows": "Řádků kódu",
     "about": "O mě",
-    "references": "Doporučení",
     "automation": "Automatizace a strojové učení",
     "form": {
       "labels": {
@@ -27,10 +26,6 @@
     }
   },
   "footer": {
-    "copyright": "Všechna práva vyhrazená",
-    "company": "shopyCRM s.r.o",
-    "address": "Komárovce 46, 044 55 Slovensko",
-    "number": "IČ: 51 094 452",
-    "vat": "DIČ: SK2120594971"
+    "copyright": "Všechna práva vyhrazená"
   }
 }

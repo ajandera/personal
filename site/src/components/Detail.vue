@@ -22,7 +22,7 @@ export default {
     return {
       post: {},
       language: window.localStorage.getItem("language"),
-      languages: window.localStorage.getItem("languages").split(',')
+      languages: window.localStorage.getItem("languages") !== null ? window.localStorage.getItem("languages").split(',') : ""
     }
   },
   components: {

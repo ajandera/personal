@@ -1,45 +1,45 @@
 <template>
-  <section id="blog" class="container">
+  <div style="height: 100%;padding: 10%">
+    <div class="row">
       <div class="col-12">
-        <router-link to="/blog">Back</router-link>
-        <hr>
-        <img v-bind:src="post.src" class="image" />
-        <h3>{{ post.title[language] }}</h3>
-        <div v-html="post.body[language]"></div>
+        <h2>{{ $t('menu.customers')}}</h2>
       </div>
-    <Footer />
-  </section>
+    </div>
+    <div class="col-6 reference" v-for="ref in references" v-bind:key="ref.name">
+        <img v-bind:src="ref.src" />
+    </div>
+    <div class="clearfix"></div>
+  </div>
 </template>
 
 <script>
 
 import axios from "axios";
-import Footer from "@/components/Footer";
 
 export default {
-  name: 'Detail',
+  name: 'Customers',
   data() {
     return {
-      post: {},
+      references: [],
+      message: null,
       language: window.localStorage.getItem("language"),
       languages: window.localStorage.getItem("languages") !== null ? window.localStorage.getItem("languages").split(',') : ""
     }
   },
-  components: {
-    Footer
-  },
+  components: {},
   mounted() {
-    this.getPost();
+    this.files();
     window.addEventListener('language-localstorage-changed', (event) => {
       this.language = event.detail.storage;
     });
   },
   methods: {
-    getPost() {
-      axios.get(this.$hostname + "post/"+ this.$route.params.id)
+    files() {
+      axios.get(this.$hostname + "files")
           .then(response => {
             if (response.data.success === true) {
-              this.post = response.data.post[0];
+              this.images = response.data.files;
+              this.references = this.images.filter(x => x.gallery === 'reference');
             } else {
               console.log(response.data.error);
             }
@@ -50,19 +50,12 @@ export default {
 </script>
 
 <style lang="css" scoped>
-.image {
-  width: 30%;
-  height: auto;
-  float: left;
-  margin-right: 30px;
-  margin-bottom: 30px;
-}
 h1 {
   font-size: 3em;
 }
 h2 {
   text-align: right;
-  font-size: 1em;
+  font-size: 2em;
 }
 h3 {
   margin-bottom: 20px;
@@ -78,31 +71,20 @@ section {
   height: 100%;
   display:block;
 }
-section#customers ul {
-  margin-top: 50px;
+.clearfix {
+  clear: both;
 }
-section#customers ul li {
-  font-size: 2em;
-  line-height: 2;
-}
-ul {
-  list-style: none;
-}
-ul.actions li {
-  display: inline-block;
-  padding: 5px;
-}
-.container {
-  max-width: 1920px;
-  margin: 0 auto;
+.reference {
+  width: 45%;
+  float: left;
+  height: 100px;
+  padding: 20px;
+  display: inline-flex;
 }
 .reference img {
   max-width: 100%;
   vertical-align: middle;
   height: 50px;
-}
-#blog {
-  padding: 5%;
 }
 .blogItem img {
   max-width: 100%;
@@ -120,7 +102,6 @@ ul.actions li {
     font-size: 2em;
   }
 }
-
 @media (min-width: 768px) and (max-width: 1025px) {
   section#customers ul li {
     font-size: 1.5em;
@@ -134,7 +115,20 @@ ul.actions li {
 */
 
 @media (min-width: 768px) and (max-width: 1025px) and (orientation: portrait) {
-
+  section .left {
+    width: 100%;
+    height: 100%;
+  }
+  section .right{
+    width: 100%;
+    height: 100%;
+  }
+  section#about .left {
+    display: none;
+  }
+  section#about .right{
+    font-size: 1.3em;
+  }
 }
 
 /*
@@ -161,6 +155,13 @@ ul.actions li {
   h2 {
     font-size: 0.8em;
   }
+  .reference {
+    width: 100%;
+  }
+}
+
+@media (max-width: 320px) {
+
 }
 
 @media print {

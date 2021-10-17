@@ -4,8 +4,25 @@
     <div class="topnav" v-if="menu === true">
       <!-- Navigation links (hidden by default) -->
       <div id="myLinks">
-        <router-link to="/home">{{ $t('menu.home')}}</router-link>
-        <router-link to="/blog">{{ $t('menu.blog')}}</router-link>
+        <router-link to="/">{{ $t('menu.home')}}</router-link>
+        <router-link to="/posts">{{ $t('menu.blog')}}</router-link>
+        <router-link to="/customers">{{ $t('menu.customers')}}</router-link>
+        <router-link to="/contact">{{ $t('menu.contact')}}</router-link>
+        <hr>
+        <ul class="social">
+          <li>
+            <a href="mailto:jandera@shopycrm.com" title="Email" class="black" itemprop="email">
+              <font-awesome-icon :icon="['fas', 'envelope-open']" /></a>
+          </li>
+          <li>
+            <a href="http://github.com/ajandera" target="_blank" title="Github" class="black" itemprop="contactPoint">
+              <font-awesome-icon :icon="['fab', 'github']" /></a>
+          </li>
+          <li>
+            <a href="http://instagram.com/ajandera" target="_blank" title="Instagram" class="black" itemprop="contactPoint">
+              <font-awesome-icon :icon="['fab', 'instagram']" /></a>
+          </li>
+        </ul>
       </div>
       <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links -->
     </div>
@@ -55,6 +72,11 @@ export default {
           storage: this.language
         }
       }));
+    }
+  },
+  watch: {
+    $route(to, from) {
+      this.menu = false;
     }
   }
 }
@@ -131,5 +153,11 @@ export default {
 .active {
   background-color: #4CAF50;
   color: white;
+}
+.social {
+  list-style: none;
+}
+.social li {
+  display: inline-block;
 }
 </style>

@@ -1,31 +1,32 @@
 {
     "menu": {
         "home": "Home",
-        "blog": "Blog"
+        "blog": "Blog",
+        "customers": "Customers",
+        "contact": "Contact"
     },
     "content": {
         "moto": "Never give up! Great things take time.",
-        "experience": "Years Experience",
-        "projects": "Done Projects",
-        "customers": "Happy customers",
-        "rows": "Row of codes",
         "about": "About me",
-        "automation": "Automation and deep learning",
         "form": {
             "labels": {
-                "company": "Company name",
+                "name": "Name",
                 "email": "Email",
-                "address": "Address",
-                "number": "Company number",
-                "vat": "Vat id",
-                "person": "Contact person"
+                "phone": "Phone",
+                "message": "Message"
             },
             "btn": {
-                "submit": "Order Feed services"
+                "submit": "Send"
             }
         }
     },
     "footer": {
         "copyright": "All rights reserved"
+    },
+    "404": {
+        "title": "Oops!",
+        "subtitle": "404 Not Found",
+        "description": "Sorry, an error has occured, Requested page not found!",
+        "home": "Take Me Home"
     }
 }

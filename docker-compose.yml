@@ -11,18 +11,9 @@ services:
             HTTPD__DocumentRoot: '/var/www/html/'
             HTTPD__ServerAdmin: 'ales.jandera@gmail.com'
             HTTPD_a2enmod:  'rewrite status expires'
-    #vue-front:
-    #    build: ./site
-    #    ports:
-    #        - "9000:9000"
-    #    container_name: ajandera_front
-    #    volumes:
-    #        - ./site:/usr/src/app
-    #        - /usr/src/app/node_modules
     mongo:
         container_name: ajandera_mongo
         image: mongo
-        restart: always
         environment:
             MONGO_INITDB_ROOT_USERNAME: root
             MONGO_INITDB_ROOT_PASSWORD: 3FSFSDFDFrew

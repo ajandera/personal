@@ -1,31 +1,32 @@
 {
   "menu": {
     "home": "Domov",
-    "blog": "Blog"
+    "blog": "Blog",
+    "customers": "Zákazníci",
+    "contact": "Kontakt"
   },
   "content": {
     "moto": "Never give up! Great things take time.",
-    "experience": "Rokov zkúseností",
-    "projects": "Dokončených projektov",
-    "customers": "Spokojných zákazníkov",
-    "rows": "Riadkov kódu",
     "about": "O me",
-    "automation": "Automatizácia a strojové učenie",
     "form": {
       "labels": {
-        "company": "Spoločnosť",
+        "name": "Meno",
         "email": "Email",
-        "address": "Adresa",
-        "number": "IČO/IČ",
-        "vat": "DIČ",
-        "person": "Kontaktná osoba"
+        "phone": "Telefon",
+        "message": "Zpráva"
       },
       "btn": {
-        "submit": "Objednať služby"
+        "submit": "Odoslať"
       }
     }
   },
   "footer": {
     "copyright": "Všetka práva vyhradená"
+  },
+  "404": {
+    "title": "Oops!",
+    "subtitle": "Stránka nebola nájdená",
+    "description": "Hľadaná stránka nebola nájdená.",
+    "home": "Domovská stránka"
   }
 }

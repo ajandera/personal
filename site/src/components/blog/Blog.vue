@@ -16,7 +16,7 @@
 <script>
 
 import axios from "axios";
-import Footer from "@/components/Footer";
+import Footer from "@/components/partial/Footer";
 
 export default {
   name: 'Blog',

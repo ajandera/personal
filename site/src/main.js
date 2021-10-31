@@ -16,6 +16,9 @@ import NotFound from "@/components/NotFound";
 import Home from "@/components/Home";
 import Customers from "@/components/Customers";
 import Contact from "@/components/Contact";
+import ShopyCRM from "@/components/ShopyCRM";
+import ArualCMS from "@/components/ArualCMS";
+import StorePredictor from "@/components/StorePredictor";
 
 library.add(fas)
 library.add(fab)
@@ -26,15 +29,18 @@ Vue.use(i18n)
 Vue.use(VueCarousel);
 Vue.config.productionTip = true
 Vue.component('font-awesome-icon', FontAwesomeIcon)
-Vue.prototype.$hostname = 'http://localhost:8888/'
+Vue.prototype.$hostname = process.env.VUE_APP_API
 
 const routes = [
-  { path: '/', component: Home},
-  { path: '/customers', component: Customers},
-  { path: '/contact', component: Contact},
-  { path: '/posts', component: Blog},
-  { path: '/detail/:id', component: Detail},
-  {path: "**", component: NotFound}
+  { path: '/', component: Home },
+  { path: '/customers', component: Customers },
+  { path: '/contact', component: Contact },
+  { path: '/posts', component: Blog },
+  { path: '/detail/:id', component: Detail },
+  { path: '/shopycrm', component: ShopyCRM },
+  { path: '/arualcms', components: ArualCMS },
+  { path: '/storepredictor', components: StorePredictor },
+  { path: "**", component: NotFound }
 ]
 
 const router = new VueRouter({

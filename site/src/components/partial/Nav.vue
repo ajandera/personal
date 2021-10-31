@@ -5,8 +5,11 @@
       <!-- Navigation links (hidden by default) -->
       <div id="myLinks">
         <router-link to="/">{{ $t('menu.home')}}</router-link>
-        <router-link to="/posts">{{ $t('menu.blog')}}</router-link>
         <router-link to="/customers">{{ $t('menu.customers')}}</router-link>
+        <router-link to="/shopycrm">shopyCRM</router-link>
+        <router-link to="/storepredictor">storePredictor</router-link>
+        <router-link to="/arualcms">arualCMS</router-link>
+        <router-link to="/posts">{{ $t('menu.blog')}}</router-link>
         <router-link to="/contact">{{ $t('menu.contact')}}</router-link>
         <hr>
         <ul class="social">

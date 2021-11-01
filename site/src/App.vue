@@ -1,5 +1,5 @@
 <template>
-  <div style="height:100%">
+  <div style="height:100%;max-width: 99%">
     <Nav />
     <section id="home" class="container-fluid p-0 h-100" itemscope itemtype="http://schema.org/Person">
       <div class="row" style="height:100%">
@@ -21,13 +21,15 @@
       </div>
       <div class="clearfix"></div>
     </section>
+    <Footer />
   </div>
 </template>
 
 <script>
 
-import Nav from "@/components/partial/Nav";
 import axios from "axios";
+import Nav from "@/components/partial/Nav";
+import Footer from "@/components/partial/Footer";
 
 export default {
   name: 'App',
@@ -37,7 +39,8 @@ export default {
     }
   },
   components: {
-    Nav
+    Nav,
+    Footer
   },
   mounted() {
     this.files();

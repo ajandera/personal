@@ -5,7 +5,7 @@
         <h2>{{ $t('menu.customers')}}</h2>
       </div>
     </div>
-    <div class="col-6 reference" v-for="ref in references" v-bind:key="ref.name">
+    <div class="col-6 reference mt-4" v-for="ref in references" v-bind:key="ref.name">
         <img v-bind:src="ref.src" />
     </div>
     <div class="clearfix"></div>

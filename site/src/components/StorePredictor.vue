@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-12">
         <div v-html="storepredictor[language]"></div>
-        <div class="clearfix"></div>        
+        <div class="clearfix"></div>
       </div>
     </div>
   </div>

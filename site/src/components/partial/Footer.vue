@@ -2,7 +2,7 @@
     <!-- Footer Section Start -->
     <section id="footer" class="container-fluid">
       <div class="row">
-        <div class="col-12 text-right">
+        <div class="col-12">
           <p>{{ year }} &copy; Aleš Jandera. {{ $t('footer.copyright')}}.</p>
         </div>
       </div>

@@ -7,14 +7,12 @@
         <h3>{{ post.title[language] }}</h3>
         <div v-html="post.body[language]"></div>
       </div>
-    <Footer />
   </section>
 </template>
 
 <script>
 
 import axios from "axios";
-import Footer from "@/components/partial/Footer";
 
 export default {
   name: 'Detail',
@@ -25,9 +23,7 @@ export default {
       languages: window.localStorage.getItem("languages") !== null ? window.localStorage.getItem("languages").split(',') : ""
     }
   },
-  components: {
-    Footer
-  },
+  components: {},
   mounted() {
     this.getPost();
     window.addEventListener('language-localstorage-changed', (event) => {

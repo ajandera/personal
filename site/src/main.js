@@ -38,9 +38,9 @@ const routes = [
   { path: '/posts', component: Blog },
   { path: '/detail/:id', component: Detail },
   { path: '/shopycrm', component: ShopyCRM },
-  { path: '/arualcms', components: ArualCMS },
-  { path: '/storepredictor', components: StorePredictor },
-  { path: "**", component: NotFound }
+  { path: '/arualcms', component: ArualCMS },
+  { path: '/storepredictor', component: StorePredictor },
+  { path: '**', component: NotFound }
 ]
 
 const router = new VueRouter({

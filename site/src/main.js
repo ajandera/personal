@@ -13,12 +13,13 @@ import App from './App.vue'
 import Blog from "@/components/blog/Blog";
 import Detail from "@/components/blog/Detail";
 import NotFound from "@/components/NotFound";
-import Home from "@/components/Home";
+import About from "@/components/About";
 import Customers from "@/components/Customers";
 import Contact from "@/components/Contact";
 import ShopyCRM from "@/components/ShopyCRM";
 import ArualCMS from "@/components/ArualCMS";
 import StorePredictor from "@/components/StorePredictor";
+import Podcast from "@/components/Podcast";
 
 library.add(fas)
 library.add(fab)
@@ -32,10 +33,11 @@ Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.prototype.$hostname = process.env.VUE_APP_API
 
 const routes = [
-  { path: '/', component: Home },
+  { path: '/', component: Blog },
   { path: '/customers', component: Customers },
   { path: '/contact', component: Contact },
-  { path: '/posts', component: Blog },
+  { path: '/about', component: About },
+  { path: '/podcast', component: Podcast },
   { path: '/detail/:id', component: Detail },
   { path: '/shopycrm', component: ShopyCRM },
   { path: '/arualcms', component: ArualCMS },

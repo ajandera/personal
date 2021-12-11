@@ -1,21 +1,21 @@
 <template>
-  <div style="height:100%;max-width: 99%">
-    <Nav />
+  <div class="personal">
+    <Nav :languages="languages" :language="language" @set-language="setLanguage"/>
     <section id="home" class="container-fluid p-0 h-100" itemscope itemtype="http://schema.org/Person">
       <div class="row" style="height:100%">
-        <div style="height:100%" class="order-xs-12 p-0 col-sm-6 col-xs-12">
-          <div class="text">
-            <router-view></router-view>
-            <div class="clearfix"></div>
-          </div>
-        </div>
-        <div style="height:100%" class="order-xs-1 p-0 col-sm-6 col-xs-12">
+        <div style="height:100%" class="p-0 col-sm-4 col-md-4 col-lg-4 col-xl-6 col-xs-12">
           <div id="avatar">
             <div class="info">
               <h1 title="ajandera.com" class="text-right"><span itemprop="givenName">Aleš</span> <span itemprop="familyName">Jandera</span></h1>
               <h2>{{ $t('content.moto')}}</h2>
               <p class="phone font-weight-900"><font-awesome-icon :icon="['fas', 'mobile-alt']" /> +421 904 750 220</p>
             </div>
+          </div>
+        </div>
+        <div style="height:100%" class="p-0 col-sm-8 col-md-8 col-lg-8 col-xl-6 col-xs-12">
+          <div class="text">
+            <router-view :language="language"></router-view>
+            <div class="clearfix"></div>
           </div>
         </div>
       </div>
@@ -30,12 +30,15 @@
 import axios from "axios";
 import Nav from "@/components/partial/Nav";
 import Footer from "@/components/partial/Footer";
+import i18n from "@/i18n";
 
 export default {
   name: 'App',
   data() {
     return {
-      primary: 'Content'
+      primary: 'Content',
+      language: null,
+      languages: []
     }
   },
   components: {
@@ -43,7 +46,7 @@ export default {
     Footer
   },
   mounted() {
-    this.files();
+    this.getFiles();
     this.getDefaultLanguage();
   },
   methods: {
@@ -51,15 +54,15 @@ export default {
       axios.get(this.$hostname + "languages")
           .then(response => {
             if (response.data.success === true) {
-              window.localStorage.setItem('languages', response.data.languages.map(item => item = item.key));
-              window.localStorage.setItem('language', response.data.languages.find(item => item.default === 1).key);
+              this.language =response.data.languages.find(item => item.default === 1).key;
+              this.languages = response.data.languages.map(item => item = item.key);
             } else {
               this.message = response.data.error;
               this.messageClass = 'danger';
             }
           });
     },
-    files() {
+    getFiles() {
       axios.get(this.$hostname + "files")
           .then(response => {
             if (response.data.success === true) {
@@ -70,6 +73,9 @@ export default {
               console.log(response.data.error);
             }
           });
+    },
+    setLanguage(lang) {
+      i18n.locale = this.language = lang;
     }
   }
 }
@@ -87,6 +93,10 @@ html, body {
 }
 body > div {
   height: 100%;
+}
+.personal {
+  height: 100%;
+  max-width: 99%
 }
 </style>
 
@@ -123,6 +133,7 @@ a:hover {
 }
 .text {
   padding: 50px;
+  height: 100%;
 }
 .info {
   position: absolute;
@@ -203,10 +214,25 @@ a:hover {
   h2 {
     font-size: 0.8em;
   }
+  .personal {
+    max-width: 95%
+  }
+  .text {
+    height: auto;
+    padding: 5px;
+    margin-top: 40px;
+  }
 }
 
 @media (max-width: 320px) {
-
+  .personal {
+    max-width: 95%
+  }
+  .text {
+    height: auto;
+    padding: 5px;
+    margin-top: 40px;
+  }
 }
 
 @media print {

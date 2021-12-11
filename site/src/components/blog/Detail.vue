@@ -1,7 +1,7 @@
 <template>
   <section id="blog" class="container">
       <div class="col-12">
-        <router-link to="/blog">Back</router-link>
+        <router-link to="/">{{ $t('back')}}</router-link>
         <hr>
         <img v-bind:src="post.src" class="image" />
         <h3>{{ post.title[language] }}</h3>
@@ -16,19 +16,15 @@ import axios from "axios";
 
 export default {
   name: 'Detail',
+  props: ['language'],
   data() {
     return {
-      post: {},
-      language: window.localStorage.getItem("language"),
-      languages: window.localStorage.getItem("languages") !== null ? window.localStorage.getItem("languages").split(',') : ""
+      post: {}
     }
   },
   components: {},
   mounted() {
     this.getPost();
-    window.addEventListener('language-localstorage-changed', (event) => {
-      this.language = event.detail.storage;
-    });
   },
   methods: {
     getPost() {

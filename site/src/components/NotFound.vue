@@ -23,18 +23,8 @@
 
 export default {
   name: 'NotFound',
-  data() {
-    return {
-      language: window.localStorage.getItem("language"),
-      languages: window.localStorage.getItem("languages") !== null ? window.localStorage.getItem("languages").split(',') : ""
-    }
-  },
+  props: ['language'],
   components: {},
-  mounted() {
-    window.addEventListener('language-localstorage-changed', (event) => {
-      this.language = event.detail.storage;
-    });
-  },
   methods: {}
 }
 </script>

@@ -15,19 +15,15 @@ import axios from "axios";
 
 export default {
   name: 'StorePredictor',
+  props: ['language'],
   data() {
     return {
-      storepredictor: "",
-      language: window.localStorage.getItem("language"),
-      languages: window.localStorage.getItem("languages") !== null ? window.localStorage.getItem("languages").split(',') : ""
+      storepredictor: ""
     }
   },
   components: {},
   mounted() {
     this.texts();
-    window.addEventListener('language-localstorage-changed', (event) => {
-      this.language = event.detail.storage;
-    });
   },
   methods: {
     texts() {

@@ -5,11 +5,12 @@
       <!-- Navigation links (hidden by default) -->
       <div id="myLinks">
         <router-link to="/">{{ $t('menu.home')}}</router-link>
-        <router-link to="/customers">{{ $t('menu.customers')}}</router-link>
+        <router-link to="/about">{{ $t('menu.about')}}</router-link>
         <router-link to="/shopycrm">shopyCRM</router-link>
         <router-link to="/storepredictor">storePredictor</router-link>
         <router-link to="/arualcms">arualCMS</router-link>
-        <router-link to="/posts">{{ $t('menu.blog')}}</router-link>
+        <router-link to="/podcast">{{ $t('menu.podcast')}}</router-link>
+        <router-link to="/customers">{{ $t('menu.customers')}}</router-link>
         <router-link to="/contact">{{ $t('menu.contact')}}</router-link>
         <hr>
         <ul class="social">
@@ -27,7 +28,6 @@
           </li>
         </ul>
       </div>
-      <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links -->
     </div>
     <div class="icon" v-bind:class="{ open: menu }" v-on:click="hamburger()">
       <font-awesome-icon :icon="['fas', 'bars']" />
@@ -35,8 +35,8 @@
     <div class="languageWrapper" v-bind:class="{ open: menu }">
       <div href="#"
          class="icon-lang"
-         v-on:click="setLanguage(lang)"
          v-for="(lang, index) in languages"
+         @click="$emit('set-language', lang)"
          v-bind:class="{'language': lang !== language, 'language active': lang === language}"
          v-bind:key="index">
         {{ lang }}
@@ -51,11 +51,10 @@ import i18n from "@/i18n";
 
 export default {
   name: 'App',
+  props: ['languages', 'language'],
   data() {
     return {
-      menu: false,
-      language: window.localStorage.getItem("language"),
-      languages: window.localStorage.getItem("languages") !== null ? window.localStorage.getItem("languages").split(',') : ""
+      menu: false
     }
   },
   components: {},
@@ -65,16 +64,6 @@ export default {
   methods: {
     hamburger() {
       this.menu = !this.menu;
-    },
-    setLanguage(lang) {
-      this.language = lang;
-      i18n.locale = lang;
-      window.localStorage.setItem('language', this.language);
-      window.dispatchEvent(new CustomEvent('language-localstorage-changed', {
-        detail: {
-          storage: this.language
-        }
-      }));
     }
   },
   watch: {

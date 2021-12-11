@@ -1,9 +1,11 @@
 {
+    "back": "Back",
     "menu": {
         "home": "Home",
-        "blog": "Blog",
+        "about": "About me",
         "customers": "Customers",
-        "contact": "Contact"
+        "contact": "Contact",
+        "podcast": "Podcast"
     },
     "content": {
         "moto": "Never give up! Great things take time.",

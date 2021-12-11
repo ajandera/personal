@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-12">
         <div v-html="about[language]"></div>
-        <div class="clearfix"></div>        
+        <div class="clearfix"></div>
       </div>
     </div>
   </div>
@@ -15,19 +15,15 @@ import axios from "axios";
 
 export default {
   name: 'Home',
+  props: ['language', 'languages'],
   data() {
     return {
-      about: "",
-      language: window.localStorage.getItem("language"),
-      languages: window.localStorage.getItem("languages") !== null ? window.localStorage.getItem("languages").split(',') : ""
+      about: ""
     }
   },
   components: {},
   mounted() {
     this.texts();
-    window.addEventListener('language-localstorage-changed', (event) => {
-      this.language = event.detail.storage;
-    });
   },
   methods: {
     texts() {

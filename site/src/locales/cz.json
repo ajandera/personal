@@ -1,9 +1,11 @@
 {
+  "back": "Zpět",
   "menu": {
     "home": "Domů",
-    "blog": "Blog",
+    "about": "O mě",
     "customers": "Zákazníci",
-    "contact": "Kontakt"
+    "contact": "Kontakt",
+    "podcast": "Podcast"
   },
   "content": {
     "moto": "Never give up! Great things take time.",

@@ -4,3 +4,4 @@ site/node_modules
 arualcms/
 arualcms/api/
 site/dist
+site/admin

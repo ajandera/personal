@@ -24,8 +24,8 @@ cd ./arualcms-main
 docker-compose up -d
 docker exec -ti arualcms-main_php_1 composer install
 # stop arulaCMS containers
-docker stop arualcms-main_php_1
-docker stop arualcms-main_mongo_1
+docker stop arualcmsmain_php_1
+docker stop arualcmsmain_mongo_1
 # copy vendor to production
 cd ..
 cp -R ./arualcms-main/api/vendor ./arualcms/api/vendor

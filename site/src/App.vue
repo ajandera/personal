@@ -54,7 +54,7 @@ export default {
       axios.get(this.$hostname + "languages")
           .then(response => {
             if (response.data.success === true) {
-              this.language =response.data.languages.find(item => item.default === 1).key;
+              this.language =response.data.languages.find(item => item.default == 1).key;
               this.languages = response.data.languages.map(item => item = item.key);
             } else {
               this.message = response.data.error;
@@ -93,8 +93,8 @@ html, body {
 }
 body > div {
   height: 100%;
-}
-.personal {
+  }
+  .personal {
   height: 100%;
   max-width: 99%
 }

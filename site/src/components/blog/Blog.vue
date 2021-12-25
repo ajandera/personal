@@ -33,7 +33,7 @@ export default {
       axios.get(this.$hostname + "post")
           .then(response => {
             if (response.data.success === true) {
-                this.posts.push(response.data.posts[0]);
+                this.posts = response.data.posts;
             } else {
               console.log(response.data.error);
             }

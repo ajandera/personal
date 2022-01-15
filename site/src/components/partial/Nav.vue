@@ -23,7 +23,7 @@
               <font-awesome-icon :icon="['fab', 'github']" /></a>
           </li>
           <li>
-            <a href="http://instagram.com/ajandera" target="_blank" title="Instagram" class="black" itemprop="contactPoint">
+            <a href="https://instagram.com/ajandera" target="_blank" title="Instagram" class="black" itemprop="contactPoint">
               <font-awesome-icon :icon="['fab', 'instagram']" /></a>
           </li>
         </ul>

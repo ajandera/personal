@@ -3,8 +3,10 @@
       <div class="col-12">
         <router-link to="/">{{ $t('back')}}</router-link>
         <hr>
-        <img v-bind:src="post.src" class="image" />
         <h3>{{ post.title[language] }}</h3>
+        <p>{{ post.excerpt[language]</p>
+        <hr>
+        <img v-bind:src="post.src" class="image" />
         <div v-html="post.body[language]"></div>
       </div>
   </section>

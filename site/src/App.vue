@@ -1,28 +1,33 @@
 <template>
-  <div class="personal">
-    <Nav :languages="languages" :language="language" @set-language="setLanguage"/>
-    <section id="home" class="container-fluid p-0 h-100" itemscope itemtype="http://schema.org/Person">
-      <div class="row" style="height:100%">
-        <div style="height:100%" class="p-0 col-sm-4 col-md-4 col-lg-4 col-xl-6 col-xs-12">
-          <div id="avatar">
-            <div class="info">
-              <h1 title="ajandera.com" class="text-right"><span itemprop="givenName">Aleš</span> <span itemprop="familyName">Jandera</span></h1>
-              <h2>{{ $t('content.moto')}}</h2>
-              <p class="phone font-weight-900"><font-awesome-icon :icon="['fas', 'mobile-alt']" /> +421 904 750 220</p>
-            </div>
-          </div>
-        </div>
-        <div style="height:100%" class="p-0 col-sm-8 col-md-8 col-lg-8 col-xl-6 col-xs-12">
-          <div class="text">
-            <router-view :language="language"></router-view>
-            <div class="clearfix"></div>
-          </div>
+<div>
+  <section id="navigation" class="row">
+    <div class="container">
+      <div class="col-12">
+        <Nav :languages="languages" :language="language" @set-language="setLanguage" />
+      </div>
+    </div>
+  </section>
+  <section id="home" class="row p-0" itemscope itemtype="http://schema.org/Person">
+    <div class="container-fluid p-0">
+      <div class="col-12 p-0">
+        <div id="avatar">
+          <h1 title="ajandera.com"><span itemprop="givenName">Aleš</span> <span itemprop="familyName">Jandera</span></h1>
+          <h2>{{ $t('content.moto') }}</h2>
         </div>
       </div>
-      <div class="clearfix"></div>
-    </section>
-    <Footer />
-  </div>
+    </div>
+  </section>
+  <section id="content" class="row">
+    <div class="container">
+      <div class="col-12">
+          <router-view :language="language"></router-view>
+          <div class="clearfix"></div>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+  </section>
+  <Footer />
+</div>
 </template>
 
 <script>
@@ -81,32 +86,25 @@ export default {
 }
 </script>
 
-<style>
-@import "https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css";
-* {
-  margin: 0;
-  padding: 0;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-html, body {
-  height: 100%;
-}
-body > div {
-  height: 100%;
-  }
-  .personal {
-  height: 100%;
-  max-width: 99%
-}
-</style>
-
 <style lang="css" scoped>
+@import "https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css";
+@import url("https://fonts.googleapis.com/css2?family=Comforter&display=swap");
+.row {
+    margin-right: 0px;
+    margin-left: 0px;
+}
 h1 {
-  font-size: 3em;
+  font-size: 5em;
+  color: #fff;
+  font-family: 'Comforter', cursive;
+  position: absolute;
+  right: 20px;
+  bottom: 50px;
 }
 h2 {
-  text-align: right;
-  font-size: 1em;
+  position: absolute;
+  right: 20px;
+  bottom: 10px;
 }
 h3 {
   margin-bottom: 20px;
@@ -121,19 +119,8 @@ a:hover {
 .clearfix {
   clear: both;
 }
-.text-right {
-  text-align: right;
-}
 .font-weight-900 {
   font-weight: 900;
-}
-.phone {
-  text-align: right;
-  margin-top: 10px;
-}
-.text {
-  padding: 50px;
-  height: 100%;
 }
 .info {
   position: absolute;
@@ -146,8 +133,8 @@ a:hover {
   -o-background-size: cover;
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: left;
-  height: 100%;
+  background-position: top;
+  height:500px;
   position: relative;
 }
 /*
@@ -201,10 +188,6 @@ a:hover {
 */
 
 @media (min-width: 320px) and (max-width: 480px) {
-  #home {
-    display: flex;
-    flex-direction: column-reverse;
-  }
   section#customers ul li {
     font-size: 1.2em;
   }

@@ -47,14 +47,6 @@ export default {
 </script>
 
 <style lang="css" scoped>
-section {
-  height: 100%;
-  display:block;
-}
-#blog {
-  padding: 5%;
-  overflow: auto;
-}
 .item {
   cursor: pointer;
   padding: 40px 20px 20px;

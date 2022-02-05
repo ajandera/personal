@@ -1,15 +1,19 @@
 <template>
-  <section id="blog" class="container">
-      <div class="col-12">
-        <router-link to="/">{{ $t('back')}}</router-link>
-        <hr>
-        <h3>{{ post.title[language] }}</h3>
-        <p>{{ post.excerpt[language]</p>
-        <hr>
-        <img v-bind:src="post.src" class="image" />
-        <div v-html="post.body[language]"></div>
+  <div>
+    <section id="blog" class="container">
+      <div class="row item">
+        <div class="col-12">
+          <router-link to="/">{{ $t('back')}}</router-link>
+          <hr>
+          <h3>{{ post.title[language] }}</h3>
+          <p>{{ post.excerpt[language] }}</p>
+          <hr>
+          <img v-bind:src="post.src" class="image" />
+          <div v-html="post.body[language]"></div>
+        </div>
       </div>
-  </section>
+    </section>
+  </div>
 </template>
 
 <script>
@@ -70,7 +74,7 @@ a:hover {
 }
 section {
   height: 100%;
-  display:block;
+  display: block;
 }
 section#customers ul {
   margin-top: 50px;

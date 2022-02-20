@@ -2,7 +2,7 @@
   <section id="blog" class="container">
     <div v-for="post in posts" v-bind:key="post.id" class="row item" v-on:click="goToDetail(post._id.$oid)">
       <div class="col-4">
-        <img v-bind:src="post.src" class="img-fluid" />
+        <img v-bind:src="$hostname + 'storage/' + post.src" class="img-fluid" />
       </div>
       <div class="col-8">
         <h3>{{ post.title[language] }}</h3>

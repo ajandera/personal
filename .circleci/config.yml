@@ -4,8 +4,10 @@ jobs:
   deploy:
     docker:
       - image: circleci/node:10.8.0
+    dependencies: 
+      pre:
+        - sudo apt-get update; sudo apt-get install ssh-pass
     steps:
-      - run: apk add openssh sshpass --no-cache
       - checkout
       - run:
           name: Install packages

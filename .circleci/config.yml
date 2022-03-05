@@ -8,7 +8,7 @@ jobs:
       - checkout
       - run:
           name: Install packages
-          command: cd site && npm ci
+          command: cd site && npm install
       - run:
           name: Build and minify app
           command: cd site && npm run build

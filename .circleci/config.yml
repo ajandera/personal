@@ -1,7 +1,7 @@
 version: 2
 
 jobs:
-  lint-and-deploy:
+  deploy:
     docker:
       - image: circleci/node:10.15.3-stretch
     steps:
@@ -10,19 +10,13 @@ jobs:
           name: Install packages
           command: yarn install
       - run:
-          name: Run linter
-          command: npx vue-cli-service lint
-      - run:
-          name: Run tests
-          command: echo "This is just sample config, please replace this command with real tests :)"
-      - run:
           name: Build and minify app
           command: yarn build
       - run:
-          name: Deploy to AWS S3
+          name: Deploy to cloud server
           command: yarn deploy
 workflows:
   version: 2
   main:
     jobs:
-      - lint-and-deploy
+      - deploy

@@ -8,13 +8,13 @@ jobs:
       - checkout
       - run:
           name: Install packages
-          command: yarn install
+          command: npm install
       - run:
           name: Build and minify app
-          command: yarn build
+          command: npm run build
       - run:
           name: Deploy to cloud server
-          command: yarn deploy
+          command: npm run deploy
 workflows:
   version: 2
   main:

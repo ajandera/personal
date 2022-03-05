@@ -17,8 +17,9 @@ jobs:
           paths:
             - '*'
       - run:
-          name: Deploy to cloud server
-          command: cd site && npm run deploy
+         name: Deploy Over SSH
+         command: | 
+            sshpass -p '$SSH_PASS' scp -P 5051 -r ~/dist "$SSH_USER@$SSH_HOST:$SSH_DEPLOY_PATH"
 workflows:
   version: 2
   main:

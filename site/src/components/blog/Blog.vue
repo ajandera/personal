@@ -54,7 +54,7 @@ export default {
 }
 .item:hover {
   border-bottom: 1px solid black;
-  background: #e5e5e5;
+  background: #f5f5f5;
 }
 @media print {
   * {

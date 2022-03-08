@@ -105,6 +105,7 @@ h2 {
   position: absolute;
   right: 20px;
   bottom: 10px;
+  font-weight: 200;
 }
 h3 {
   margin-bottom: 20px;

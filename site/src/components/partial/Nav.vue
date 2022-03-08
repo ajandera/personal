@@ -2,10 +2,10 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
       <router-link to="/" class="navbar-brand">Aleš Jandera</router-link>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <button @click="mobile()" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <div class="navbar-collapse" id="navbarSupportedContent" v-if="mobileMenu">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
               <router-link to="/about" class="nav-link">{{ $t('menu.about')}}</router-link>
@@ -37,9 +37,15 @@
                 <a href="http://github.com/ajandera" target="_blank" title="Github" class="black nav-link" itemprop="contactPoint">
                   <font-awesome-icon :icon="['fab', 'github']" /></a>
               </li>
-              <li class="nav-item">
-                <a href="https://instagram.com/ajandera" target="_blank" title="Instagram" class="black nav-link" itemprop="contactPoint">
-                  <font-awesome-icon :icon="['fab', 'instagram']" /></a>
+              <li class="nav-item" v-for="(lang, index) in languages" v-bind:key="'l'+index">
+                <div href="#"
+                     v-if="isMobile()"
+                     class="nav-link"
+                     @click="$emit('set-language', lang)"
+                     v-bind:class="{'language': lang !== language, 'language active': lang === language}"
+                     v-bind:key="index">
+                  {{ lang }}
+                </div>
               </li>
           </ul>
           <!--<form class="d-flex">
@@ -47,7 +53,7 @@
             <button class="btn btn-outline-success" type="submit">Search</button>
           </form>-->
       </div>
-      <div class="d-flex">
+      <div v-bind:class="{'d-flex': !isMobile,  'd-none': isMobile()}">
         <ul class="navbar-nav d-flex">
             <li class="nav-item" v-for="(lang, index) in languages" v-bind:key="'l'+index">
                 <div href="#"
@@ -73,7 +79,8 @@ export default {
   props: ['languages', 'language'],
   data() {
     return {
-      menu: false
+      menu: false,
+      mobileMenu: !this.isMobile()
     }
   },
   components: {},
@@ -83,6 +90,16 @@ export default {
   methods: {
     dropdown() {
       this.menu = !this.menu;
+    },
+    mobile() {
+      this.mobileMenu = !this.mobileMenu;
+    },
+    isMobile() {
+      if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        return true
+      } else {
+        return false
+      }
     }
   },
   watch: {

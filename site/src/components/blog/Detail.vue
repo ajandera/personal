@@ -3,7 +3,7 @@
     <section id="blog" class="container">
       <div class="row item">
         <div class="col-12">
-          <router-link to="/">{{ $t('back')}}</router-link>
+          <router-link to="/"><font-awesome-icon :icon="['fas', 'arrow-left']" /> {{ $t('back')}}</router-link>
           <hr>
           <h3>{{ post.title[language] }}</h3>
           <p>{{ post.excerpt[language] }}</p>

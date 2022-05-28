@@ -25,10 +25,8 @@
 
 <script>
 
-import axios from "axios";
-
 export default {
-  name: 'Customers',
+  name: 'CustomersPage',
   props: ['language'],
   data() {
     return {
@@ -43,7 +41,7 @@ export default {
   },
   methods: {
     files() {
-      axios.get(this.$hostname + "files")
+      this.$axios.get(this.$config.$hostname + "files")
           .then(response => {
             if (response.data.success === true) {
               this.images = response.data.files;

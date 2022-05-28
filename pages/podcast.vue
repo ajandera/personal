@@ -2,7 +2,7 @@
   <div style="height: 100%;padding:10%">
     <div class="row">
       <div class="col-12">
-        <div v-html="about[language]"></div>
+        <div v-html="podcast[language]"></div>
         <div class="clearfix"></div>
       </div>
     </div>
@@ -14,11 +14,11 @@
 import axios from "axios";
 
 export default {
-  name: 'Home',
+  name: 'PodcastPage',
   props: ['language', 'languages'],
   data() {
     return {
-      about: ""
+      podcast: ""
     }
   },
   components: {},
@@ -27,14 +27,14 @@ export default {
   },
   methods: {
     texts() {
-      axios.get(this.$hostname + "text")
-          .then(response => {
-            if (response.data.success === true) {
-              this.about = response.data.texts.filter(x => x.key === "about")[0].value;
-            } else {
-              console.log(response.data.error);
-            }
-          });
+      this.$axios.get(this.$config.$hostname + "text")
+        .then(response => {
+          if (response.data.success === true) {
+            this.podcast = response.data.texts.filter(x => x.key === "podcast")[0].value;
+          } else {
+            console.log(response.data.error);
+          }
+        });
     },
   }
 }

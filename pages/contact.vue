@@ -45,10 +45,8 @@
 
 <script>
 
-import axios from "axios";
-
 export default {
-  name: 'Contact',
+  name: 'ContactPage',
   props: ['language'],
   data() {
     return {
@@ -64,7 +62,7 @@ export default {
   components: {},
   methods: {
     order() {
-      axios.post(this.$hostname + "mail",
+      this.axios.post(this.$config.$hostname + "mail",
           {
             email: "ales.jandera@gmail.com",
             subject: "[ajandera.com] Dotaz ",

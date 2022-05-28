@@ -1,44 +1,43 @@
 <template>
-<div>
-  <section id="navigation" class="row">
-    <div class="container">
-      <div class="col-12">
-        <Nav :languages="languages" :language="language" @set-language="setLanguage" />
-      </div>
-    </div>
-  </section>
-  <section id="home" class="row p-0" itemscope itemtype="http://schema.org/Person">
-    <div class="container-fluid p-0">
-      <div class="col-12 p-0">
-        <div id="avatar">
-          <h1 title="ajandera.com"><span itemprop="givenName">Aleš</span> <span itemprop="familyName">Jandera</span></h1>
-          <h2>{{ $t('content.moto') }}</h2>
+  <div>
+    <section id="navigation" class="row">
+      <div class="container">
+        <div class="col-12">
+          <Nav :languages="languages" :language="language" @set-language="setLanguage" />
         </div>
       </div>
-    </div>
-  </section>
-  <section id="content" class="row">
-    <div class="container">
-      <div class="col-12">
-          <router-view :language="language"></router-view>
-          <div class="clearfix"></div>
+    </section>
+    <section id="home" class="row p-0" itemscope itemtype="http://schema.org/Person">
+      <div class="container-fluid p-0">
+        <div class="col-12 p-0">
+          <div id="avatar">
+            <h1 title="ajandera.com"><span itemprop="givenName">Aleš</span> <span itemprop="familyName">Jandera</span></h1>
+            <h2>{{ $t('content.moto') }}</h2>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="clearfix"></div>
-  </section>
-  <Footer />
-</div>
+    </section>
+    <section id="content" class="row">
+      <div class="container">
+        <div class="col-12">
+          <NuxtChild :language="language"></NuxtChild>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+    </section>
+    <Footer />
+  </div>
 </template>
 
 <script>
 
 import axios from "axios";
-import Nav from "@/components/partial/Nav";
-import Footer from "@/components/partial/Footer";
-import i18n from "@/i18n";
+import Nav from "@/components/Nav";
+import Footer from "@/components/Footer";
 
 export default {
-  name: 'App',
+  name: 'DefaultLayout',
   data() {
     return {
       primary: 'Content',
@@ -56,31 +55,32 @@ export default {
   },
   methods: {
     getDefaultLanguage() {
-      axios.get(this.$hostname + "languages")
-          .then(response => {
-            if (response.data.success === true) {
-              this.language =response.data.languages.find(item => item.default == 1).key;
-              this.languages = response.data.languages.map(item => item = item.key);
-            } else {
-              this.message = response.data.error;
-              this.messageClass = 'danger';
-            }
-          });
+      this.$axios.get(this.$config.$hostname + "languages")
+        .then(response => {
+          if (response.data.success === true) {
+            console.log(response.data);
+            this.language = response.data.languages.find(item => item.default === true).key;
+            this.languages = response.data.languages.map(item => item = item.key);
+          } else {
+            this.message = response.data.error;
+            this.messageClass = 'danger';
+          }
+        });
     },
     getFiles() {
-      axios.get(this.$hostname + "files")
-          .then(response => {
-            if (response.data.success === true) {
-              this.images = response.data.files;
-              const main = this.images.filter(x => x.name === 'main.jpg')[0];
-              document.getElementById('avatar').style.backgroundImage = "url(" + main.src + ")";
-            } else {
-              console.log(response.data.error);
-            }
-          });
+      this.$axios.get(this.$config.$hostname + "files")
+        .then(response => {
+          if (response.data.success === true) {
+            this.images = response.data.files;
+            const main = this.images.filter(x => x.name === 'main.jpg')[0];
+            document.getElementById('avatar').style.backgroundImage = "url(" + main.src + ")";
+          } else {
+            console.log(response.data.error);
+          }
+        });
     },
     setLanguage(lang) {
-      i18n.locale = this.language = lang;
+      this.i18n.locale = this.language = lang;
     }
   }
 }
@@ -90,8 +90,8 @@ export default {
 @import "https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css";
 @import url("https://fonts.googleapis.com/css2?family=Comforter&display=swap");
 .row {
-    margin-right: 0px;
-    margin-left: 0px;
+  margin-right: 0px;
+  margin-left: 0px;
 }
 h1 {
   font-size: 5em;

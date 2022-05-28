@@ -2,7 +2,7 @@
   <section id="blog" class="container">
     <div v-for="post in posts" v-bind:key="post.id" class="row item" v-on:click="goToDetail(post._id.$oid)">
       <div class="col-4">
-        <img v-bind:src="$hostname + 'storage/' + post.src" class="img-fluid" />
+        <img v-bind:src="$config.$hostname + 'storage/' + post.src" class="img-fluid" />
       </div>
       <div class="col-8">
         <h3>{{ post.title[language] }}</h3>
@@ -14,10 +14,8 @@
 
 <script>
 
-import axios from "axios";
-
 export default {
-  name: 'Blog',
+  name: 'IndexPage',
   props: ['language'],
   data() {
     return {
@@ -30,17 +28,17 @@ export default {
   },
   methods: {
     getPosts() {
-      axios.get(this.$hostname + "post")
-          .then(response => {
-            if (response.data.success === true) {
-                this.posts = response.data.posts;
-            } else {
-              console.log(response.data.error);
-            }
-          });
+      this.$axios.get(this.$config.$hostname + "post")
+        .then(response => {
+          if (response.data.success === true) {
+            this.posts = response.data.posts;
+          } else {
+            console.log(response.data.error);
+          }
+        });
     },
     goToDetail(id) {
-      this.$router.push('detail/'+id);
+      this.$router.push('post/'+id);
     }
   }
 }

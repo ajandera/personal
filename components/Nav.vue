@@ -72,10 +72,8 @@
 
 <script>
 
-import i18n from "@/i18n";
-
 export default {
-  name: 'App',
+  name: 'Nav',
   props: ['languages', 'language'],
   data() {
     return {
@@ -84,9 +82,6 @@ export default {
     }
   },
   components: {},
-  mounted() {
-    i18n.locale = this.language;
-  },
   methods: {
     dropdown() {
       this.menu = !this.menu;

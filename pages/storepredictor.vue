@@ -10,11 +10,8 @@
 </template>
 
 <script>
-
-import axios from "axios";
-
 export default {
-  name: 'StorePredictor',
+  name: 'StorePredictorPage',
   props: ['language'],
   data() {
     return {
@@ -27,14 +24,14 @@ export default {
   },
   methods: {
     texts() {
-      axios.get(this.$hostname + "text")
-          .then(response => {
-            if (response.data.success === true) {
-              this.storepredictor = response.data.texts.filter(x => x.key === "storepredictor")[0].value;
-            } else {
-              console.log(response.data.error);
-            }
-          });
+      this.$axios.get(this.$config.$hostname + "text")
+        .then(response => {
+          if (response.data.success === true) {
+            this.storepredictor = response.data.texts.filter(x => x.key === "storepredictor")[0].value;
+          } else {
+            console.log(response.data.error);
+          }
+        });
     },
   }
 }

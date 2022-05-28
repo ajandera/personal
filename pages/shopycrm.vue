@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-12">
         <div v-html="shopycrm[language]"></div>
-        <div class="clearfix"></div>        
+        <div class="clearfix"></div>
       </div>
     </div>
   </div>
@@ -11,10 +11,8 @@
 
 <script>
 
-import axios from "axios";
-
 export default {
-  name: 'ShopyCRM',
+  name: 'ShopyCRMPage',
   props: ['language'],
   data() {
     return {
@@ -27,14 +25,14 @@ export default {
   },
   methods: {
     texts() {
-      axios.get(this.$hostname + "text")
-          .then(response => {
-            if (response.data.success === true) {
-              this.shopycrm = response.data.texts.filter(x => x.key === "shopycrm")[0].value;
-            } else {
-              console.log(response.data.error);
-            }
-          });
+      this.$axios.get(this.$config.$hostname + "text")
+        .then(response => {
+          if (response.data.success === true) {
+            this.shopycrm = response.data.texts.filter(x => x.key === "shopycrm")[0].value;
+          } else {
+            console.log(response.data.error);
+          }
+        });
     },
   }
 }

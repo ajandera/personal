@@ -8,7 +8,7 @@
           <h3>{{ post.title[language] }}</h3>
           <p>{{ post.excerpt[language] }}</p>
           <hr>
-          <img v-bind:src="$hostname + 'storage/' + post.src" class="image" />
+          <img v-bind:src="$config.$hostname + 'storage/' + post.src" class="image" />
           <div v-html="post.body[language]"></div>
         </div>
       </div>
@@ -21,7 +21,7 @@
 import axios from "axios";
 
 export default {
-  name: 'Detail',
+  name: 'DetailPage',
   props: ['language'],
   data() {
     return {
@@ -34,14 +34,14 @@ export default {
   },
   methods: {
     getPost() {
-      axios.get(this.$hostname + "post/"+ this.$route.params.id)
-          .then(response => {
-            if (response.data.success === true) {
-              this.post = response.data.post[0];
-            } else {
-              console.log(response.data.error);
-            }
-          });
+      this.$axios.get(this.$config.$hostname + "post/"+ this.$route.params.id)
+        .then(response => {
+          if (response.data.success === true) {
+            this.post = response.data.post[0];
+          } else {
+            console.log(response.data.error);
+          }
+        });
     }
   }
 }

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="app">
     <section id="navigation" class="row">
       <div class="container">
         <div class="col-12">
@@ -10,7 +10,7 @@
     <section id="home" class="row p-0" itemscope itemtype="http://schema.org/Person">
       <div class="container-fluid p-0">
         <div class="col-12 p-0">
-          <div id="avatar">
+          <div id="avatar" :style="{'background-image':'url('+ main +')'}">
             <h1 title="ajandera.com"><span itemprop="givenName">Aleš</span> <span itemprop="familyName">Jandera</span></h1>
             <h2>{{ $t('content.moto') }}</h2>
           </div>
@@ -30,59 +30,64 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 
-import axios from "axios";
-import Nav from "@/components/Nav";
-import Footer from "@/components/Footer";
+import { Component, Vue } from 'nuxt-property-decorator';
+import Message from '~/model/Message';
+import File from "~/model/File";
+import IResponseFiles from "~/model/IResponseFiles";
+import IResponseLanguages from "~/model/IResponseLanguages";
+import Nav from '~/components/Nav.vue';
+import Footer from '~/components/Footer.vue';
 
-export default {
-  name: 'DefaultLayout',
-  data() {
-    return {
-      primary: 'Content',
-      language: null,
-      languages: []
-    }
-  },
+@Component({
   components: {
     Nav,
     Footer
-  },
-  mounted() {
-    this.getFiles();
-    this.getDefaultLanguage();
-  },
-  methods: {
+  }
+})
+export default class DefaultLayout extends Vue {
+    language: string = '';
+    languages: string[] = [];
+    message: Message = {text: "", class: ""}
+    $axios: any;
+    i18n: any;
+    images: File[] = [];
+    main: string = '';
+
+    mounted() {
+      this.getFiles();
+      this.getDefaultLanguage();
+    }
+
     getDefaultLanguage() {
-      this.$axios.get(this.$config.$hostname + "languages")
-        .then(response => {
-          if (response.data.success === true) {
-            console.log(response.data);
-            this.language = response.data.languages.find(item => item.default === true).key;
-            this.languages = response.data.languages.map(item => item = item.key);
+      this.$axios.get("/languages")
+        .then((response: IResponseLanguages) => {
+          if (response.data.success) {
+            this.language = response.data.languages.filter(item => item.default)[0].key;
+            this.languages = response.data.languages.map(item => item.key);
           } else {
-            this.message = response.data.error;
-            this.messageClass = 'danger';
+            this.message.text = response.data.error;
+            this.message.class = 'danger';
           }
         });
-    },
+    }
+
     getFiles() {
-      this.$axios.get(this.$config.$hostname + "files")
-        .then(response => {
-          if (response.data.success === true) {
+      this.$axios.get("/files")
+        .then((response: IResponseFiles) => {
+          if (response.data.success) {
             this.images = response.data.files;
-            const main = this.images.filter(x => x.name === 'main.jpg')[0];
-            document.getElementById('avatar').style.backgroundImage = "url(" + main.src + ")";
+            this.main = this.images.filter(item => item.name === 'main.jpg')[0].src;
           } else {
             console.log(response.data.error);
           }
         });
-    },
-    setLanguage(lang) {
+    }
+
+    setLanguage(lang: string) {
       this.i18n.locale = this.language = lang;
     }
-  }
 }
 </script>
 

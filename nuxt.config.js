@@ -12,7 +12,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: '%s - ajandera',
+    titleTemplate: '%s | Ales Jandera',
     title: 'ajandera',
     htmlAttrs: {
       lang: 'en'
@@ -35,7 +35,8 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    '~/plugins/fontawesome.js'
+    '~/plugins/fontawesome.js',
+    '~/plugins/axios.js'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -60,7 +61,7 @@ export default {
     defaultLocale: 'en',
     vueI18n: {
       fallbackLocale: 'en',
-      messages: {en, cz, sk},
+      messages: {en, cz, sk}
     }
   },
 
@@ -87,6 +88,9 @@ export default {
   build: {},
 
   publicRuntimeConfig: {
-    $hostname: process.env.VUE_APP_API
+    hostname: process.env.VUE_APP_API || 'http://localhost:8000/',
+    axios: {
+      baseURL: process.env.VUE_APP_API || 'http://localhost:8000/'
+    }
   }
 }

@@ -32,7 +32,7 @@
             <div class="btn btn-lg btn-success" v-on:click="order">{{ $t('content.form.btn.submit')}}</div>
           </div>
         </div>
-        <div class="row mt-4" v-if="message !== null">
+        <div class="row mt-4" v-if="message !== ''">
           <div class="col-12">
             <div class="alert  alert-success">{{ message }}</div>
           </div>
@@ -43,32 +43,32 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import {Component, Prop, Vue} from 'nuxt-property-decorator';
+import IContact from '~/model/IContact';
 
-export default {
-  name: 'ContactPage',
-  props: ['language'],
-  data() {
-    return {
-      message: null,
-      form: {
-        name: "",
-        email: "",
-        message: "",
-        phone: ""
-      }
-    }
-  },
-  components: {},
-  methods: {
+@Component
+
+export default class ContactPage extends Vue {
+    @Prop() readonly language!: string;
+
+    message: string = '';
+    form: IContact =  {
+      name: "",
+      email: "",
+      message: "",
+      phone: ""
+    };
+    $axios: any;
+
     order() {
-      this.axios.post(this.$config.$hostname + "mail",
+      this.$axios.post(this.$config.$hostname + "mail",
           {
             email: "ales.jandera@gmail.com",
             subject: "[ajandera.com] Dotaz ",
             body: this.form.toString()
           }
-      ).then(response => {
+      ).then((response: any) => {
         this.form = {
           name: "",
           email: "",
@@ -78,7 +78,6 @@ export default {
         this.message = response.data.message;
       });
     }
-  }
 }
 </script>
 

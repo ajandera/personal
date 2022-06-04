@@ -2,13 +2,13 @@
   <div>
     <section id="blog" class="container">
       <div class="row item">
-        <div class="col-12">
-          <router-link to="/"><font-awesome-icon :icon="['fas', 'arrow-left']" /> {{ $t('back')}}</router-link>
+        <div class="col-12" v-if="post">
+          <NuxtLink to="/"><font-awesome-icon :icon="['fas', 'arrow-left']" /> {{ $t('back')}}</NuxtLink>
           <hr>
           <h3>{{ post.title[language] }}</h3>
           <p>{{ post.excerpt[language] }}</p>
           <hr>
-          <img v-bind:src="$config.$hostname + 'storage/' + post.src" class="image" />
+          <img v-bind:src="$config.hostname + '/storage/' + post.src" class="image" />
           <div v-html="post.body[language]"></div>
         </div>
       </div>
@@ -16,34 +16,35 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import {Component, Prop, Vue} from 'nuxt-property-decorator';
+import IResponsePosts from '~/model/IResponsePosts';
+import Post from "~/model/Post";
 
-import axios from "axios";
+@Component
 
-export default {
-  name: 'DetailPage',
-  props: ['language'],
-  data() {
-    return {
-      post: {}
-    }
-  },
-  components: {},
+export default class DetailPage extends Vue {
+  @Prop() readonly language!: string;
+
+  post!: Post;
+  $axios: any;
+
   mounted() {
     this.getPost();
-  },
-  methods: {
-    getPost() {
-      this.$axios.get(this.$config.$hostname + "post/"+ this.$route.params.id)
-        .then(response => {
-          if (response.data.success === true) {
-            this.post = response.data.post[0];
-          } else {
-            console.log(response.data.error);
-          }
-        });
-    }
   }
+
+  getPost() {
+    this.$axios.get("/post/"+ this.$route.params.id)
+      .then((response: IResponsePosts) => {
+        if (response.data.success) {
+          this.post = response.data.post[0];
+          console.log(this.post);
+        } else {
+          console.log(response.data.error);
+        }
+      });
+  }
+
 }
 </script>
 

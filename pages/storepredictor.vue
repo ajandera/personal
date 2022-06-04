@@ -9,31 +9,32 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'StorePredictorPage',
-  props: ['language'],
-  data() {
-    return {
-      storepredictor: ""
-    }
-  },
-  components: {},
+<script lang="ts">
+
+import {Component, Prop, Vue} from 'nuxt-property-decorator';
+import IResponseTexts from '~/model/IResponseTexts';
+
+@Component
+export default class StorePredictorPage extends Vue {
+  @Prop() readonly language!: string;
+
+  storepredictor: object = {};
+  $axios: any;
+
   mounted() {
     this.texts();
-  },
-  methods: {
+  }
+
     texts() {
-      this.$axios.get(this.$config.$hostname + "text")
-        .then(response => {
-          if (response.data.success === true) {
+      this.$axios.get("/text")
+        .then((response: IResponseTexts) => {
+          if (response.data.success) {
             this.storepredictor = response.data.texts.filter(x => x.key === "storepredictor")[0].value;
           } else {
             console.log(response.data.error);
           }
         });
-    },
-  }
+    }
 }
 </script>
 

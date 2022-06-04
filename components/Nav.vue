@@ -70,25 +70,26 @@
   </nav>
 </template>
 
-<script>
+<script lang="ts">
 
-export default {
-  name: 'Nav',
-  props: ['languages', 'language'],
-  data() {
-    return {
-      menu: false,
-      mobileMenu: !this.isMobile()
-    }
-  },
-  components: {},
-  methods: {
+import {Component, Prop, Vue, Watch} from 'nuxt-property-decorator';
+
+@Component
+export default class Nav extends Vue {
+    @Prop() readonly language!: string;
+    @Prop() readonly languages!: string[];
+
+    menu: boolean = false;
+    mobileMenu: boolean = !this.isMobile();
+
     dropdown() {
       this.menu = !this.menu;
-    },
+    }
+
     mobile() {
       this.mobileMenu = !this.mobileMenu;
-    },
+    }
+
     isMobile() {
       if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
         return true
@@ -96,12 +97,11 @@ export default {
         return false
       }
     }
-  },
-  watch: {
-    $route(to, from) {
+
+    @Watch('route')
+    onPropertyChanged(value: string, oldValue: string) {
       this.menu = false;
     }
-  }
 }
 </script>
 

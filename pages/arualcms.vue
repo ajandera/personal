@@ -9,31 +9,30 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import {Component, Prop, Vue} from 'nuxt-property-decorator';
+import IResponseTexts from '~/model/IResponseTexts';
 
-export default {
-  name: 'ArualCMSPage',
-  props: ['language'],
-  data() {
-    return {
-      arualcms: ""
-    }
-  },
-  components: {},
+@Component
+export default class ArualCMSPage extends Vue {
+  @Prop() readonly language!: string;
+
+  arualcms: object = {};
+  $axios: any;
+
   mounted() {
     this.texts();
-  },
-  methods: {
-    texts() {
-      this.$axios.get(this.$config.$hostname + "text")
-        .then(response => {
-          if (response.data.success === true) {
-            this.arualcms = response.data.texts.filter(x => x.key === "arualcms")[0].value;
-          } else {
-            console.log(response.data.error);
-          }
-        });
-    },
+  }
+
+  texts() {
+    this.$axios.get("/text")
+      .then((response: IResponseTexts) => {
+        if (response.data.success) {
+          this.arualcms = response.data.texts.filter(x => x.key === "arualcms")[0].value;
+        } else {
+          console.log(response.data.error);
+        }
+      });
   }
 }
 </script>

@@ -11,20 +11,14 @@
     <!-- Footer Section End -->
 </template>
 
-<script>
+<script lang="ts">
 
-export default {
-  name: 'Footer',
-  data() {
-    return {
-      year: new Date().getFullYear(),
-    }
-  },
-  components: {},
-  mounted() {},
-  methods: {
+import {Component, Prop, Vue} from 'nuxt-property-decorator';
 
-  }
+@Component
+export default class Footer extends Vue {
+    @Prop() readonly language!: string;
+    year: number = new Date().getFullYear()
 }
 </script>
 

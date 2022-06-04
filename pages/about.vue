@@ -9,34 +9,30 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import {Component, Prop, Vue} from 'nuxt-property-decorator';
+import IResponseTexts from '~/model/IResponseTexts';
 
-import axios from "axios";
+@Component
+export default class AboutPage extends Vue {
+  @Prop() readonly language!: string;
 
-export default {
-  name: 'Home',
-  props: ['language', 'languages'],
-  data() {
-    return {
-      about: ""
-    }
-  },
-  components: {},
+  about: object = {};
+  $axios: any;
   mounted() {
     this.texts();
-  },
-  methods: {
-    texts() {
-      this.$axios.get(this.$config.$hostname + "text")
-          .then(response => {
-            if (response.data.success === true) {
-              this.about = response.data.texts.filter(x => x.key === "about")[0].value;
-            } else {
-              console.log(response.data.error);
-            }
-          });
-    },
   }
+
+  texts() {
+    this.$axios.get("/text")
+        .then((response: IResponseTexts) => {
+          if (response.data.success) {
+            this.about = response.data.texts.filter(x => x.key === "about")[0].value;
+          } else {
+            console.log(response.data.error);
+          }
+        });
+    }
 }
 </script>
 

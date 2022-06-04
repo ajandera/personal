@@ -23,35 +23,33 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import {Component, Prop, Vue} from 'nuxt-property-decorator';
+import IResponseFiles from "~/model/IResponseFiles";
+import File from "~/model/File";
 
-export default {
-  name: 'CustomersPage',
-  props: ['language'],
-  data() {
-    return {
-      references: [],
-      myProjects: [],
-      message: null
-    }
-  },
-  components: {},
+@Component
+export default class CustomersPage extends Vue {
+  @Prop() readonly language!: string;
+  references: File[] = [];
+  myProjects: File[] = [];
+  $axios: any;
+
   mounted() {
     this.files();
-  },
-  methods: {
-    files() {
-      this.$axios.get(this.$config.$hostname + "files")
-          .then(response => {
-            if (response.data.success === true) {
-              this.images = response.data.files;
-              this.references = this.images.filter(x => x.gallery === 'reference').reverse();
-              this.myProjects = this.images.filter(x => x.gallery === 'my');
-            } else {
-              console.log(response.data.error);
-            }
-          });
-    }
+  }
+
+  files() {
+    this.$axios.get("/files")
+        .then((response: IResponseFiles) => {
+          if (response.data.success) {
+            const images = response.data.files;
+            this.references = images.filter(x => x.gallery === 'reference').reverse();
+            this.myProjects = images.filter(x => x.gallery === 'my');
+          } else {
+            console.log(response.data.error);
+          }
+        });
   }
 }
 </script>

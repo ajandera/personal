@@ -3,7 +3,7 @@
     <section id="blog" class="container">
       <div class="row item">
         <div class="col-12" v-if="post">
-          <NuxtLink to="/"><font-awesome-icon :icon="['fas', 'arrow-left']" /> {{ $t('back')}}</NuxtLink>
+          <NuxtLink to="/"><font-awesome-icon :icon="['fas', 'arrow-left']"></font-awesome-icon> {{ $t('back')}}</NuxtLink>
           <hr>
           <h3>{{ post.title[language] }}</h3>
           <p>{{ post.excerpt[language] }}</p>
@@ -26,7 +26,13 @@ import Post from "~/model/Post";
 export default class DetailPage extends Vue {
   @Prop() readonly language!: string;
 
-  post!: Post;
+  post: Post = {
+    src: "",
+    body: {},
+    title: [],
+    excerpt: []
+  };
+
   $axios: any;
 
   mounted() {
@@ -38,7 +44,6 @@ export default class DetailPage extends Vue {
       .then((response: IResponsePosts) => {
         if (response.data.success) {
           this.post = response.data.post[0];
-          console.log(this.post);
         } else {
           console.log(response.data.error);
         }

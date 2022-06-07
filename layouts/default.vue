@@ -51,7 +51,7 @@ export default class DefaultLayout extends Vue {
     languages: string[] = [];
     message: Message = {text: "", class: ""}
     $axios: any;
-    i18n: any;
+    $i18n: any;
     images: File[] = [];
     main: string = '';
 
@@ -86,7 +86,7 @@ export default class DefaultLayout extends Vue {
     }
 
     setLanguage(lang: string) {
-      this.i18n.locale = this.language = lang;
+      this.$i18n.locale = this.language = lang;
     }
 }
 </script>

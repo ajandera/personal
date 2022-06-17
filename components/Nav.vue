@@ -24,8 +24,8 @@
                 My Projects
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown" v-if="menu">
-                <li><router-link to="/shopycrm" class="dropdown-item">shopyCRM</router-link></li>
                 <li><router-link to="/storepredictor" class="dropdown-item">storePredictor</router-link></li>
+                <li><router-link to="/shopycrm" class="dropdown-item">shopyCRM</router-link></li>
                 <li><router-link to="/arualcms" class="dropdown-item">arualCMS</router-link></li>
               </ul>
             </li>
@@ -98,8 +98,9 @@ export default class Nav extends Vue {
       }
     }
 
-    @Watch('route')
+    @Watch('$route')
     onPropertyChanged(value: string, oldValue: string) {
+      console.log('here');
       this.menu = false;
     }
 }

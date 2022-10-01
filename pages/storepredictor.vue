@@ -26,10 +26,10 @@ export default class StorePredictorPage extends Vue {
   }
 
     texts() {
-      this.$axios.get("/text")
+      this.$axios.get("/" + this.$config.site + "/text")
         .then((response: IResponseTexts) => {
           if (response.data.success) {
-            this.storepredictor = response.data.texts.filter(x => x.key === "storepredictor")[0].value;
+            this.storepredictor = JSON.parse(response.data.texts.filter(x => x.Key === "storepredictor")[0].Value);
           } else {
             console.log(response.data.error);
           }

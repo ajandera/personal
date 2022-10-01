@@ -7,7 +7,7 @@
     </div>
     <div class="row">
       <div class="col-xs-12 col-sm-6 text-center mt-4 mb-4" v-for="ref in references" v-bind:key="ref.name">
-          <img v-bind:src="ref.src" class="img-fluid" />
+          <img v-bind:src="$config.storage + ref.Src" class="img-fluid" />
       </div>
       <div class="clearfix"></div>
     </div>
@@ -16,7 +16,7 @@
         <h4>My Projects</h4>
       </div>
       <div class="col-xs-12 col-sm-6 text-center mt-4 mb-4" v-for="ref in myProjects" v-bind:key="ref.name">
-        <img v-bind:src="ref.src" class="img-fluid" />
+        <img v-bind:src="$config.storage + ref.Src" class="img-fluid" />
       </div>
       <div class="clearfix"></div>
     </div>
@@ -40,12 +40,12 @@ export default class CustomersPage extends Vue {
   }
 
   files() {
-    this.$axios.get("/files")
+    this.$axios.get("/"+this.$config.site + "/files")
         .then((response: IResponseFiles) => {
           if (response.data.success) {
             const images = response.data.files;
-            this.references = images.filter(x => x.gallery === 'reference').reverse();
-            this.myProjects = images.filter(x => x.gallery === 'my');
+            this.references = images.filter(x => x.Gallery === 'reference').reverse();
+            this.myProjects = images.filter(x => x.Gallery === 'my');
           } else {
             console.log(response.data.error);
           }

@@ -24,10 +24,10 @@ export default class AboutPage extends Vue {
   }
 
   texts() {
-    this.$axios.get("/text")
+    this.$axios.get("/"+this.$config.site + "/text")
         .then((response: IResponseTexts) => {
           if (response.data.success) {
-            this.about = response.data.texts.filter(x => x.key === "about")[0].value;
+            this.about = JSON.parse(response.data.texts.filter(x => x.Key === "about")[0].Value);
           } else {
             console.log(response.data.error);
           }

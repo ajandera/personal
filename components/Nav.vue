@@ -37,7 +37,7 @@
                 <a href="http://github.com/ajandera" target="_blank" title="Github" class="black nav-link" itemprop="contactPoint">
                   <font-awesome-icon :icon="['fab', 'github']" /></a>
               </li>
-              <li class="nav-item" v-for="(lang, index) in languages" v-bind:key="'l'+index">
+              <li class="nav-item" v-if="languages.length > 1" v-for="(lang, index) in languages" v-bind:key="'l'+index">
                 <div href="#"
                      v-if="isMobile()"
                      class="nav-link"
@@ -55,7 +55,7 @@
       </div>
       <div v-bind:class="{'d-flex': !isMobile,  'd-none': isMobile()}">
         <ul class="navbar-nav d-flex">
-            <li class="nav-item" v-for="(lang, index) in languages" v-bind:key="'l'+index">
+            <li class="nav-item" v-if="languages.length > 1" v-for="(lang, index) in languages" v-bind:key="'l'+index">
                 <div href="#"
                   class="nav-link"
                   @click="$emit('set-language', lang)"
@@ -100,7 +100,6 @@ export default class Nav extends Vue {
 
     @Watch('$route')
     onPropertyChanged(value: string, oldValue: string) {
-      console.log('here');
       this.menu = false;
     }
 }

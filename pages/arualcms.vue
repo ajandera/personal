@@ -25,10 +25,10 @@ export default class ArualCMSPage extends Vue {
   }
 
   texts() {
-    this.$axios.get("/text")
+    this.$axios.get("/"+this.$config.site + "/text")
       .then((response: IResponseTexts) => {
         if (response.data.success) {
-          this.arualcms = response.data.texts.filter(x => x.key === "arualcms")[0].value;
+          this.arualcms = JSON.parse(response.data.texts.filter(x => x.Key === "arualcms")[0].Value);
         } else {
           console.log(response.data.error);
         }

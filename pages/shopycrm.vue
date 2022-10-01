@@ -25,10 +25,10 @@ export default class ShopyCRMPage extends Vue {
     }
 
     texts() {
-      this.$axios.get("/text")
+      this.$axios.get("/"+this.$config.site + "/text")
         .then((response: IResponseTexts) => {
           if (response.data.success) {
-            this.shopycrm = response.data.texts.filter(x => x.key === "shopycrm")[0].value;
+            this.shopycrm = JSON.parse(response.data.texts.filter(x => x.Key === "shopycrm")[0].Value);
           } else {
             console.log(response.data.error);
           }

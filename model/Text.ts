@@ -1,4 +1,4 @@
 export default interface Text {
-    key: string;
-    value: object;
+    Key: string;
+    Value: string;
 }

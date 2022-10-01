@@ -1,5 +1,6 @@
 export default interface File {
-    name: string;
-    src: string;
-    gallery: string;
+    Name: string;
+    Src: string;
+    Gallery: string;
+    Id: string
 }

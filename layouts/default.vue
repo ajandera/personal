@@ -54,18 +54,29 @@ export default class DefaultLayout extends Vue {
     $i18n: any;
     images: File[] = [];
     main: string = '';
+    $auth: any;
 
-    mounted() {
-      this.getFiles();
-      this.getDefaultLanguage();
+    async mounted() {
+      if (!this.$auth.loggedIn) {
+        let login = {
+          "username": this.$config.username,
+          "password": this.$config.password
+        }
+        await this.$auth.loginWith('local', {data: login})
+        this.getFiles();
+        this.getDefaultLanguage();
+      } else {
+        this.getFiles();
+        this.getDefaultLanguage();
+      }
     }
 
     getDefaultLanguage() {
-      this.$axios.get("/languages")
+      this.$axios.get("/"+this.$config.site + "/languages")
         .then((response: IResponseLanguages) => {
           if (response.data.success) {
-            this.language = response.data.languages.filter(item => item.default)[0].key;
-            this.languages = response.data.languages.map(item => item.key);
+            this.language = response.data.languages.filter(item => item.Default)[0].Key;
+            this.languages = response.data.languages.map(item => item.Key);
           } else {
             this.message.text = response.data.error;
             this.message.class = 'danger';
@@ -74,11 +85,11 @@ export default class DefaultLayout extends Vue {
     }
 
     getFiles() {
-      this.$axios.get("/files")
+      this.$axios.get("/"+this.$config.site + "/files")
         .then((response: IResponseFiles) => {
           if (response.data.success) {
             this.images = response.data.files;
-            this.main = this.images.filter(item => item.name === 'main.jpg')[0].src;
+            this.main = this.$config.storage + this.images.filter(item => item.Name === 'main.jpg')[0].Src;
           } else {
             console.log(response.data.error);
           }

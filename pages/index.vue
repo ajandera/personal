@@ -1,8 +1,8 @@
 <template>
   <section id="blog" class="container">
-    <div v-for="post in posts" v-bind:key="post.id" class="row item" v-on:click="goToDetail(post._id.$oid)">
+    <div v-for="post in posts" v-bind:key="post.Id" class="row item" v-on:click="goToDetail(post.Id)">
       <div class="col-4">
-        <img v-bind:src="$config.hostname + '/storage/' + post.src" class="img-fluid" />
+        <img v-bind:src="$config.storage + post.Src" class="img-fluid" />
       </div>
       <div class="col-8">
         <h3>{{ post.title[language] }}</h3>
@@ -29,10 +29,15 @@ export default class IndexPage extends Vue {
   }
 
   getPosts() {
-    this.$axios.get("/post")
+    this.$axios.get("/"+this.$config.site + "/posts")
       .then((response: IResponsePosts) => {
         if (response.data.success) {
           this.posts = response.data.posts;
+          this.posts.map(item => {
+            item.excerpt = JSON.parse(item.Excerpt),
+            item.title = JSON.parse(item.Title),
+            item.Src = response.data.files.filter((f) => f.Id === item.File)[0].Src
+          });
         } else {
           console.log(response.data.error);
         }

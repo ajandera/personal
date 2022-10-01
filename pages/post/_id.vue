@@ -8,7 +8,7 @@
           <h3>{{ post.title[language] }}</h3>
           <p>{{ post.excerpt[language] }}</p>
           <hr>
-          <img v-bind:src="$config.hostname + '/storage/' + post.src" class="image" />
+          <img v-bind:src="post.Src" class="image" />
           <div v-html="post.body[language]"></div>
         </div>
       </div>
@@ -20,6 +20,7 @@
 import {Component, Prop, Vue} from 'nuxt-property-decorator';
 import IResponsePosts from '~/model/IResponsePosts';
 import Post from "~/model/Post";
+import IResponseFiles from "~/model/IResponseFiles";
 
 @Component
 
@@ -27,12 +28,16 @@ export default class DetailPage extends Vue {
   @Prop() readonly language!: string;
 
   post: Post = {
-    src: "",
+    Src: "",
     body: {},
     title: [],
-    excerpt: []
+    excerpt: [],
+    Title: '',
+    Excerpt: '',
+    Id: '',
+    File: '',
+    Body: ''
   };
-
   $axios: any;
 
   mounted() {
@@ -40,10 +45,22 @@ export default class DetailPage extends Vue {
   }
 
   getPost() {
-    this.$axios.get("/post/"+ this.$route.params.id)
+    this.$axios.get("/"+this.$config.site + "/posts/"+ this.$route.params.id)
       .then((response: IResponsePosts) => {
         if (response.data.success) {
-          this.post = response.data.post[0];
+          this.$axios.get("/"+this.$config.site + "/files/"+response.data.post.File)
+            .then((file: IResponseFiles) => {
+              if (file.data.success) {
+                this.post = response.data.post;
+                this.post.excerpt = JSON.parse(this.post.Excerpt);
+                this.post.title = JSON.parse(this.post.Title);
+                this.post.body = JSON.parse(this.post.Body);
+                console.log(this.$config.storage + file.data.file.Src);
+                this.post.Src = this.$config.storage + file.data.file.Src;
+              } else {
+                console.log(response.data.error);
+              }
+            });
         } else {
           console.log(response.data.error);
         }

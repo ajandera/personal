@@ -26,7 +26,7 @@ export default class StorePredictorPage extends Vue {
   }
 
     texts() {
-      this.$axios.get("/" + this.$config.site + "/text")
+      this.$axios.get("/" + this.$config.token + "/text")
         .then((response: IResponseTexts) => {
           if (response.data.success) {
             this.storepredictor = JSON.parse(response.data.texts.filter(x => x.Key === "storepredictor")[0].Value);

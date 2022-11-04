@@ -84,43 +84,12 @@ export default {
       }
     }
   },
-
-  auth: {
-    strategies: {
-      local: {
-        scheme: 'refresh',
-        token: {
-          property: 'jwt.access_token',
-          maxAge: 60,
-          global: true,
-          type: 'Bearer'
-        },
-        refreshToken: {
-          property: 'jwt.refresh_token',
-          data: 'refresh_token',
-          maxAge: 60 * 60 * 24
-        },
-        user: {
-          property: 'user'
-        },
-        endpoints: {
-          login: { url: '/auth', method: 'post' },
-          refresh: { url: '/refresh', method: 'post' },
-          user: { url: '/me', method: 'get' },
-          logout: { url: '/logout', method: 'post' }
-        }
-      }
-    }
-  },
-
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
 
   publicRuntimeConfig: {
     hostname: process.env.VUE_APP_API || 'http://localhost:8000/',
-    username: process.env.VUE_APP_USERNAME,
-    password: process.env.VUE_APP_PW,
-    site: process.env.VUE_APP_SITE_ID,
+    token: process.env.VUE_APP_TOKEN || 'lkdfjDF45df',
     storage: process.env.VUE_APP_STORAGE,
     axios: {
       baseURL: process.env.VUE_APP_API || 'http://localhost:8000/'

@@ -54,25 +54,14 @@ export default class DefaultLayout extends Vue {
     $i18n: any;
     images: File[] = [];
     main: string = '';
-    $auth: any;
 
-    async mounted() {
-      if (!this.$auth.loggedIn) {
-        let login = {
-          "username": this.$config.username,
-          "password": this.$config.password
-        }
-        await this.$auth.loginWith('local', {data: login})
-        this.getFiles();
-        this.getDefaultLanguage();
-      } else {
-        this.getFiles();
-        this.getDefaultLanguage();
-      }
+    mounted() {
+      this.getFiles();
+      this.getDefaultLanguage();
     }
 
     getDefaultLanguage() {
-      this.$axios.get("/"+this.$config.site + "/languages")
+      this.$axios.get("/"+this.$config.token + "/languages")
         .then((response: IResponseLanguages) => {
           if (response.data.success) {
             this.language = response.data.languages.filter(item => item.Default)[0].Key;
@@ -85,7 +74,7 @@ export default class DefaultLayout extends Vue {
     }
 
     getFiles() {
-      this.$axios.get("/"+this.$config.site + "/files")
+      this.$axios.get("/"+this.$config.token + "/files")
         .then((response: IResponseFiles) => {
           if (response.data.success) {
             this.images = response.data.files;

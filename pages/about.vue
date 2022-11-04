@@ -24,7 +24,7 @@ export default class AboutPage extends Vue {
   }
 
   texts() {
-    this.$axios.get("/"+this.$config.site + "/text")
+    this.$axios.get("/"+this.$config.token + "/text")
         .then((response: IResponseTexts) => {
           if (response.data.success) {
             this.about = JSON.parse(response.data.texts.filter(x => x.Key === "about")[0].Value);

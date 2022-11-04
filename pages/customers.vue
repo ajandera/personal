@@ -40,7 +40,7 @@ export default class CustomersPage extends Vue {
   }
 
   files() {
-    this.$axios.get("/"+this.$config.site + "/files")
+    this.$axios.get("/"+this.$config.token + "/files")
         .then((response: IResponseFiles) => {
           if (response.data.success) {
             const images = response.data.files;

@@ -25,7 +25,7 @@ export default class ArualCMSPage extends Vue {
   }
 
   texts() {
-    this.$axios.get("/"+this.$config.site + "/text")
+    this.$axios.get("/"+this.$config.token + "/text")
       .then((response: IResponseTexts) => {
         if (response.data.success) {
           this.arualcms = JSON.parse(response.data.texts.filter(x => x.Key === "arualcms")[0].Value);

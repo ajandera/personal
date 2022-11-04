@@ -62,7 +62,7 @@ export default class ContactPage extends Vue {
     $axios: any;
 
     order() {
-      this.$axios.post("/" + this.$config.site + "/mail",
+      this.$axios.post("/" + this.$config.token + "/mail",
           {
             email: "ales.jandera@gmail.com",
             subject: "[ajandera.com] Dotaz ",

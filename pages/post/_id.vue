@@ -45,7 +45,7 @@ export default class DetailPage extends Vue {
   }
 
   getPost() {
-    this.$axios.get("/"+this.$config.site + "/posts/"+ this.$route.params.id)
+    this.$axios.get("/"+this.$config.token + "/posts/"+ this.$route.params.id)
       .then((response: IResponsePosts) => {
         if (response.data.success) {
           this.$axios.get("/"+this.$config.site + "/files/"+response.data.post.File)

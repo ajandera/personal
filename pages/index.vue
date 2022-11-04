@@ -29,7 +29,7 @@ export default class IndexPage extends Vue {
   }
 
   getPosts() {
-    this.$axios.get("/"+this.$config.site + "/posts")
+    this.$axios.get("/"+this.$config.token + "/posts")
       .then((response: IResponsePosts) => {
         if (response.data.success) {
           this.posts = response.data.posts;

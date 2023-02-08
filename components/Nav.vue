@@ -100,7 +100,7 @@ export default class Nav extends Vue {
 
     @Watch('$route')
     onPropertyChanged(value: string, oldValue: string) {
-      this.menu = false;
+      this.mobileMenu = false;
     }
 }
 </script>

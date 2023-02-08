@@ -48,19 +48,20 @@ export default class DetailPage extends Vue {
     this.$axios.get("/"+this.$config.token + "/posts/"+ this.$route.params.id)
       .then((response: IResponsePosts) => {
         if (response.data.success) {
-          this.$axios.get("/"+this.$config.site + "/files/"+response.data.post.File)
-            .then((file: IResponseFiles) => {
-              if (file.data.success) {
-                this.post = response.data.post;
-                this.post.excerpt = JSON.parse(this.post.Excerpt);
-                this.post.title = JSON.parse(this.post.Title);
-                this.post.body = JSON.parse(this.post.Body);
-                console.log(this.$config.storage + file.data.file.Src);
-                this.post.Src = this.$config.storage + file.data.file.Src;
-              } else {
-                console.log(response.data.error);
-              }
-            });
+                this.$axios.get("/"+this.$config.token + "/files/"+response.data.post.File)
+                  .then((files: any) => {
+                    this.post = response.data.post;
+                    this.post.excerpt = JSON.parse(this.post.Excerpt);
+                    this.post.title = JSON.parse(this.post.Title);
+                    this.post.body = JSON.parse(this.post.Body);
+                    if (response.data.success) {
+                      this.post.Src = this.$config.storage + files.data.file.Src;
+                      console.log(this.post.Src);
+                    } else {
+                      console.log(response.data.error);
+                    }
+                  });
+                this.post.File;
         } else {
           console.log(response.data.error);
         }

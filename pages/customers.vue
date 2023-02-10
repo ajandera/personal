@@ -6,7 +6,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-xs-12 col-sm-6 text-center mt-4 mb-4" v-for="ref in references" v-bind:key="ref.name">
+      <div class="col-xs-12 col-sm-4 mt-4 mb-4" v-for="ref in references" v-bind:key="ref.name">
           <img v-bind:src="$config.storage + ref.Src" class="img-fluid" />
       </div>
       <div class="clearfix"></div>
@@ -15,7 +15,7 @@
       <div class="col-xs-12 col-sm-12 col-md-12">
         <h4>My Projects</h4>
       </div>
-      <div class="col-xs-12 col-sm-6 text-center mt-4 mb-4" v-for="ref in myProjects" v-bind:key="ref.name">
+      <div class="col-xs-12 col-sm-4 text-center mt-4 mb-4" v-for="ref in myProjects" v-bind:key="ref.name">
         <img v-bind:src="$config.storage + ref.Src" class="img-fluid" />
       </div>
       <div class="clearfix"></div>

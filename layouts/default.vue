@@ -92,7 +92,7 @@ export default class DefaultLayout extends Vue {
 </script>
 
 <style lang="css" scoped>
-@import "https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css";
+@import "https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css";
 @import url("https://fonts.googleapis.com/css2?family=Comforter&display=swap");
 .row {
   margin-right: 0px;

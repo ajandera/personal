@@ -19,6 +19,7 @@ export default class AboutPage extends Vue {
 
   about: object = {};
   $axios: any;
+
   mounted() {
     this.texts();
   }
@@ -32,7 +33,7 @@ export default class AboutPage extends Vue {
             console.log(response.data.error);
           }
         });
-    }
+  }
 }
 </script>
 

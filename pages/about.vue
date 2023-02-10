@@ -11,7 +11,7 @@
 
 <script lang="ts">
 import {Component, Prop, Vue} from 'nuxt-property-decorator';
-import IResponseTexts from '~/model/IResponseTexts';
+import IResponseText from '~/model/IResponseText';
 
 @Component
 export default class AboutPage extends Vue {
@@ -25,10 +25,10 @@ export default class AboutPage extends Vue {
   }
 
   texts() {
-    this.$axios.get("/"+this.$config.token + "/text")
-        .then((response: IResponseTexts) => {
+    this.$axios.get("/"+this.$config.token + "/text/about")
+        .then((response: IResponseText) => {
           if (response.data.success) {
-            this.about = JSON.parse(response.data.texts.filter(x => x.Key === "about")[0].Value);
+            this.about = JSON.parse(response.data.text.Value);
           } else {
             console.log(response.data.error);
           }

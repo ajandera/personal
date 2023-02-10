@@ -12,7 +12,7 @@
 <script lang="ts">
 
 import {Component, Prop, Vue} from 'nuxt-property-decorator';
-import IResponseTexts from '~/model/IResponseTexts';
+import IResponseText from '~/model/IResponseText';
 
 @Component
 export default class StorePredictorPage extends Vue {
@@ -26,10 +26,10 @@ export default class StorePredictorPage extends Vue {
   }
 
     texts() {
-      this.$axios.get("/" + this.$config.token + "/text")
-        .then((response: IResponseTexts) => {
+      this.$axios.get("/" + this.$config.token + "/text/storepredictor")
+        .then((response: IResponseText) => {
           if (response.data.success) {
-            this.storepredictor = JSON.parse(response.data.texts.filter(x => x.Key === "storepredictor")[0].Value);
+            this.storepredictor = JSON.parse(response.data.text.Value);
           } else {
             console.log(response.data.error);
           }

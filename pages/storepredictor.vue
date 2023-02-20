@@ -1,13 +1,11 @@
 <template>
-  <section id="sp">
-    <div class="container mt-5">
-      <div class="row">
-        <div class="col-9">
-          <div v-html="storepredictor[language]"></div>
-          <div class="clearfix"></div>
-        </div>
-        <Sidebar :language="language" />
+  <section id="sp" class="container">
+    <div class="row pt-5">
+      <div class="col-9">
+        <div v-html="storepredictor[language]"></div>
+        <div class="clearfix"></div>
       </div>
+      <Sidebar :language="language" />
     </div>
     <div class="clearfix"></div>
   </section>

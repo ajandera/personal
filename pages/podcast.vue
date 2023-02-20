@@ -1,13 +1,11 @@
 <template>
-  <section id="podcast">
-    <div class="container mt-5">
-      <div class="row">
-        <div class="col-9">
-          <div v-html="podcast[language]"></div>
-          <div class="clearfix"></div>
-        </div>
-        <Sidebar :language="language" />
+  <section id="podcast" class="container">
+    <div class="row pt-5">
+      <div class="col-9">
+        <div v-html="podcast[language]"></div>
+        <div class="clearfix"></div>
       </div>
+      <Sidebar :language="language" />
     </div>
     <div class="clearfix"></div>
   </section>

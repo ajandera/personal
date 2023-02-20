@@ -1,7 +1,6 @@
 <template>
-  <section id="content">
-    <div class="container">
-      <div class="row">
+  <section id="content" class="container">
+    <div class="row pt-5">
         <div class="col-9 mt-4">
           <h2>{{ $t('menu.contact')}}</h2>
           <div class="row mt-4">
@@ -37,7 +36,6 @@
         </div>
         <Sidebar :language="language" />
       </div>
-    </div>
     <div class="clearfix"></div>
   </section>
 </template>
@@ -60,7 +58,7 @@ export default class ContactPage extends Vue {
     };
     $axios: any;
     $t: any;
-    
+
     order() {
       this.$axios.post("/" + this.$config.token + "/mail",
           {

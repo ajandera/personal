@@ -1,5 +1,11 @@
 <template>
     <div class="col-3 sidebar">
+      <div class="row person">
+        <div class="col-12">
+          <img src="/me.jpeg" class="img" />
+          <p class="desc">{{ about[language] }}</p>
+        </div>
+      </div>
       <div v-for="post in posts" v-bind:key="post.Id" class="row article" v-on:click="goToDetail(post.Id)">
         <div class="col-12">
           <h3 class="title">{{ post.title[language] }}</h3>
@@ -8,13 +14,13 @@
         </div>
       </div>
       <div class="row">
-        <h3>{{ $t('menu.projects')}}</h3>
+        <h3>{{ $t('sidebar.projects')}}</h3>
         <div class="col-4 text-center mt-4 mb-4" v-for="ref in myProjects" v-bind:key="ref.Name">
           <img v-bind:src="$config.storage + ref.Src" class="img-fluid" />
         </div>
       </div>
       <div class="row">
-        <h3>{{ $t('menu.customers')}}</h3>
+        <h3>{{ $t('sidebar.customers')}}</h3>
         <div class="col-6 mt-4 mb-4" v-for="ref in references" v-bind:key="ref.Name">
             <img v-bind:src="$config.storage + ref.Src" class="img-fluid" />
         </div>
@@ -29,6 +35,8 @@ import File from "~/model/File";
 import Post from "~/model/Post";
 import IResponsePosts from "~/model/IResponsePosts";
 import IResponseFiles from '~/model/IResponseFiles';
+import IDictionary from "~/model/IDictionary";
+import IResponseText from "~/model/IResponseText";
 
 @Component
 export default class Sidebar extends Vue {
@@ -37,6 +45,7 @@ export default class Sidebar extends Vue {
   references: File[] = [];
   myProjects: File[] = [];
   posts: Post[] = [];
+  about: IDictionary = {};
   $axios: any;
   $t: any;
 
@@ -63,6 +72,15 @@ export default class Sidebar extends Vue {
             item.title = JSON.parse(item.Title),
             item.Src = response.data.files.filter((f) => f.Id === item.File)[0].Src
           });
+        } else {
+          console.log(response.data.error);
+        }
+      });
+
+    this.$axios.get("/"+this.$config.token + "/text/sidebar")
+      .then((response: IResponseText) => {
+        if (response.data.success) {
+          this.about = JSON.parse(response.data.text.Value);
         } else {
           console.log(response.data.error);
         }
@@ -100,5 +118,19 @@ h3.title {
 }
 .sidebar .article:hover {
   background: #f5f5f5;
+}
+.person .img {
+  width: 150px;
+  height: auto;
+  float: left;
+  margin-right: 10px;
+  margin-bottom: 5px;
+}
+.person .desc {
+  text-align: justify;
+  font-size: 12px;
+  font-weight: 400;
+  border-bottom: 2px solid #000000;
+  padding-bottom: 10px;
 }
 </style>

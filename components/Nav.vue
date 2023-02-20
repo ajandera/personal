@@ -4,7 +4,7 @@
       <router-link to="/" class="navbar-brand">
         <span itemprop="givenName">Aleš</span> <span itemprop="familyName">Jandera</span>
       </router-link>
-      <button @click="mobile()" 
+      <button @click="mobile()"
               class="navbar-toggler"
               type="button"
               data-bs-toggle="collapse"
@@ -125,5 +125,13 @@ export default class Nav extends Vue {
 .navbar-brand {
   font-family: 'Comforter', cursive;
   font-size: 2em;
+}
+/* home route and active route will show in bold as it matches / and /about */
+a.nuxt-link-active {
+  font-weight: bold;
+}
+/* exact link will show the primary color for only the exact matching link */
+a.nuxt-link-exact-active {
+  color: #000;
 }
 </style>

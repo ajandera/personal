@@ -30,5 +30,9 @@
     "subtitle": "Stránka nenalezena",
     "description": "Požadovaná stránka nebyla nalezena.",
     "home": "Zpět na úvpodní stránku"
+  },
+  "sidebar": {
+    "projects": "My projects",
+    "customers": "Customers"
   }
 }

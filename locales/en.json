@@ -30,6 +30,7 @@
         "home": "Take Me Home"
     },
     "sidebar": {
-        "projects": "My projects"
+        "projects": "My projects",
+        "customers": "Customers"
     }
 }

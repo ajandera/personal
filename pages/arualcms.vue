@@ -1,13 +1,11 @@
 <template>
-  <section id="content">
-    <div class="container mt-5">
-      <div class="row">
-        <div class="col-9">
-          <div v-html="arualcms[language]"></div>
-          <div class="clearfix"></div>
-        </div>
-        <Sidebar :language="language" />
+  <section id="content" class="container">
+    <div class="row pt-5">
+      <div class="col-9">
+        <div v-html="arualcms[language]"></div>
+        <div class="clearfix"></div>
       </div>
+      <Sidebar :language="language" />
     </div>
     <div class="clearfix"></div>
   </section>

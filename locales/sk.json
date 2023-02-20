@@ -29,5 +29,9 @@
     "subtitle": "Stránka nebola nájdená",
     "description": "Hľadaná stránka nebola nájdená.",
     "home": "Domovská stránka"
+  },
+  "sidebar": {
+    "projects": "My projects",
+    "customers": "Customers"
   }
 }

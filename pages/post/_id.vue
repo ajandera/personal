@@ -1,44 +1,42 @@
 <template>
-  <div>
-    <section id="blog" class="container">
-      <div class="row item">
-        <div class="col-12" v-if="post">
-          <NuxtLink to="/"><font-awesome-icon :icon="['fas', 'arrow-left']"></font-awesome-icon> {{ $t('back')}}</NuxtLink>
-          <hr>
-          <h3>{{ post.title[language] }}</h3>
-          <p>{{ post.excerpt[language] }}</p>
-          <hr>
-          <img v-bind:src="post.Src" class="image" />
-          <div v-html="post.body[language]"></div>
-        </div>
+  <section id="blog" class="container">
+    <div class="row item">
+      <div class="col-9" v-if="post !== undefined">
+        <NuxtLink to="/"><font-awesome-icon :icon="['fas', 'arrow-left']"></font-awesome-icon> {{ $t('back')}}</NuxtLink>
+        <hr>
+        <h3>{{ post.title[language] }}</h3>
+        <p>{{ post.excerpt[language] }}</p>
+        <hr>
+        <img v-bind:src="post.Src" class="image" />
+        <div v-html="post.body[language]"></div>
       </div>
-    </section>
-  </div>
+      <Sidebar :language="language" />
+    </div>
+  </section>
 </template>
 
 <script lang="ts">
 import {Component, Prop, Vue} from 'nuxt-property-decorator';
 import IResponsePosts from '~/model/IResponsePosts';
 import Post from "~/model/Post";
-import IResponseFiles from "~/model/IResponseFiles";
 
 @Component
-
 export default class DetailPage extends Vue {
   @Prop() readonly language!: string;
 
   post: Post = {
-    Src: "",
+    Src: '',
+    Body: '',
     body: {},
-    title: [],
-    excerpt: [],
     Title: '',
+    title: {},
     Excerpt: '',
+    excerpt: {},
     Id: '',
-    File: '',
-    Body: ''
-  };
+    File: ''
+  }
   $axios: any;
+  $t: any;
 
   mounted() {
     this.getPost();
@@ -51,17 +49,15 @@ export default class DetailPage extends Vue {
                 this.$axios.get("/"+this.$config.token + "/files/"+response.data.post.File)
                   .then((files: any) => {
                     this.post = response.data.post;
-                    this.post.excerpt = JSON.parse(this.post.Excerpt);
-                    this.post.title = JSON.parse(this.post.Title);
-                    this.post.body = JSON.parse(this.post.Body);
+                    this.post.excerpt = JSON.parse(response.data.post.Excerpt);
+                    this.post.title = JSON.parse(response.data.post.Title);
+                    this.post.body = JSON.parse(response.data.post.Body);
                     if (response.data.success) {
                       this.post.Src = this.$config.storage + files.data.file.Src;
-                      console.log(this.post.Src);
                     } else {
                       console.log(response.data.error);
                     }
                   });
-                this.post.File;
         } else {
           console.log(response.data.error);
         }

@@ -1,14 +1,21 @@
 <template>
   <section id="blog" class="container">
-    <div v-for="post in posts" v-bind:key="post.Id" class="row item" v-on:click="goToDetail(post.Id)">
-      <div class="col-4">
-        <img v-bind:src="$config.storage + post.Src" class="img-fluid" />
+    <div class="row pt-5">
+      <div class="col-9">
+        <div v-for="post in posts" v-bind:key="post.Id" class="row item" v-on:click="goToDetail(post.Id)">
+          <div class="col-4">
+            <img v-bind:src="$config.storage + post.Src" class="img-fluid" />
+          </div>
+          <div class="col-8">
+            <h3>{{ post.title[language] }}</h3>
+            <p>{{ post.excerpt[language] }}</p>
+          </div>
+        </div>
+        <div class="clearfix"></div>
       </div>
-      <div class="col-8">
-        <h3>{{ post.title[language] }}</h3>
-        <p>{{ post.excerpt[language] }}</p>
-      </div>
+      <Sidebar :language="language" />
     </div>
+    <div class="clearfix"></div>
   </section>
 </template>
 
@@ -16,10 +23,12 @@
 import { Component, Prop, Vue } from 'nuxt-property-decorator';
 import Post from "~/model/Post";
 import IResponsePosts from "~/model/IResponsePosts";
+import File from "~/model/File";
 
 @Component
 export default class IndexPage extends Vue {
   @Prop() readonly language!: string;
+  @Prop() readonly images!: File[];
 
   posts: Post[] = [];
   $axios: any;

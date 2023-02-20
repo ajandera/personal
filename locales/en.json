@@ -3,7 +3,6 @@
     "menu": {
         "home": "Home",
         "about": "About me",
-        "customers": "Customers",
         "contact": "Contact",
         "podcast": "Podcast"
     },
@@ -29,5 +28,8 @@
         "subtitle": "404 Not Found",
         "description": "Sorry, an error has occured, Requested page not found!",
         "home": "Take Me Home"
+    },
+    "sidebar": {
+        "projects": "My projects"
     }
 }

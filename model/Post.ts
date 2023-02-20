@@ -1,11 +1,13 @@
+import IDictionary from "./IDictionary";
+
 export default interface Post {
     Src: string;
     Body: string;
-    body: object;
+    body: IDictionary;
     Title: string;
-    title: object;
+    title: IDictionary;
     Excerpt: string;
-    excerpt: object;
+    excerpt: IDictionary;
     Id: string;
     File: string
 }

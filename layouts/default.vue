@@ -7,25 +7,7 @@
         </div>
       </div>
     </section>
-    <section id="home" class="row p-0" itemscope itemtype="http://schema.org/Person">
-      <div class="container-fluid p-0">
-        <div class="col-12 p-0">
-          <div id="avatar" :style="{'background-image':'url('+ main +')'}">
-            <h1 title="ajandera.com"><span itemprop="givenName">Aleš</span> <span itemprop="familyName">Jandera</span></h1>
-            <h2>{{ $t('content.moto') }}</h2>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section id="content" class="row">
-      <div class="container">
-        <div class="col-12">
-          <NuxtChild :language="language"></NuxtChild>
-          <div class="clearfix"></div>
-        </div>
-      </div>
-      <div class="clearfix"></div>
-    </section>
+    <NuxtChild :language="language" class="mt-5"></NuxtChild>
     <Footer />
   </div>
 </template>
@@ -34,8 +16,6 @@
 
 import { Component, Vue } from 'nuxt-property-decorator';
 import Message from '~/model/Message';
-import File from "~/model/File";
-import IResponseFiles from "~/model/IResponseFiles";
 import IResponseLanguages from "~/model/IResponseLanguages";
 import Nav from '~/components/Nav.vue';
 import Footer from '~/components/Footer.vue';
@@ -52,15 +32,8 @@ export default class DefaultLayout extends Vue {
     message: Message = {text: "", class: ""}
     $axios: any;
     $i18n: any;
-    images: File[] = [];
-    main: string = '';
 
-    mounted() {
-      this.getFiles();
-      this.getDefaultLanguage();
-    }
-
-    getDefaultLanguage() {
+    created() {
       this.$axios.get("/"+this.$config.token + "/languages")
         .then((response: IResponseLanguages) => {
           if (response.data.success) {
@@ -69,18 +42,6 @@ export default class DefaultLayout extends Vue {
           } else {
             this.message.text = response.data.error;
             this.message.class = 'danger';
-          }
-        });
-    }
-
-    getFiles() {
-      this.$axios.get("/"+this.$config.token + "/files")
-        .then((response: IResponseFiles) => {
-          if (response.data.success) {
-            this.images = response.data.files;
-            this.main = this.$config.storage + this.images.filter(item => item.Name === 'main.jpg')[0].Src;
-          } else {
-            console.log(response.data.error);
           }
         });
     }
@@ -97,20 +58,6 @@ export default class DefaultLayout extends Vue {
 .row {
   margin-right: 0px;
   margin-left: 0px;
-}
-h1 {
-  font-size: 5em;
-  color: #fff;
-  font-family: 'Comforter', cursive;
-  position: absolute;
-  right: 20px;
-  bottom: 50px;
-}
-h2 {
-  position: absolute;
-  right: 20px;
-  bottom: 10px;
-  font-weight: 200;
 }
 h3 {
   margin-bottom: 20px;
@@ -133,16 +80,6 @@ a:hover {
   bottom: 30px;
   right: 20px;
 }
-#avatar {
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: top;
-  height:500px;
-  position: relative;
-}
 /*
   ##Device = Tablets, Ipads (portrait)
   ##Screen = B/w 768px to 1024px
@@ -161,13 +98,6 @@ a:hover {
 }
 @media (min-width: 1025px) and (max-width: 1200px) {
 
-}
-
-@media (min-width: 768px) and (max-width: 1025px) {
-  section#customers ul li {
-    font-size: 1.5em;
-    line-height: 2;
-  }
 }
 
 /*

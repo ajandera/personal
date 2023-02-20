@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
     <div class="container-fluid">
       <router-link to="/" class="navbar-brand">
         <span itemprop="givenName">Aleš</span> <span itemprop="familyName">Jandera</span>
@@ -30,9 +30,6 @@
             </li>
             <li class="nav-item">
               <router-link to="/podcast" class="nav-link">{{ $t('menu.podcast')}}</router-link>
-            </li>
-            <li class="nav-item">
-              <router-link to="/customers" class="nav-link">{{ $t('menu.customers')}}</router-link>
             </li>
             <li class="nav-item">
               <router-link to="/contact" class="nav-link">

@@ -2,7 +2,7 @@
     <div class="col-3 sidebar">
       <div class="row person">
         <div class="col-12">
-          <img src="/me.jpeg" class="img" />
+          <img src="/me.jpg" class="img" />
           <p class="desc">{{ about[language] }}</p>
         </div>
       </div>

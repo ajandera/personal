@@ -33,7 +33,7 @@ export default class DefaultLayout extends Vue {
     $axios: any;
     $i18n: any;
 
-    created() {
+    mounted() {
       this.$axios.get("/"+this.$config.token + "/languages")
         .then((response: IResponseLanguages) => {
           if (response.data.success) {

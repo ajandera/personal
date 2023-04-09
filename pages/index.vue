@@ -2,7 +2,7 @@
   <section id="blog" class="container">
     <div class="row pt-5">
       <div class="col-9">
-        <div v-for="post in posts" v-bind:key="post.Id" class="row item" v-on:click="goToDetail(post.Id)">
+        <div v-for="post in posts.reverse()" v-bind:key="post.Id" class="row item" v-on:click="goToDetail(post.Id)">
           <div class="col-4">
             <img v-bind:src="$config.storage + post.Src" class="img-fluid" />
           </div>

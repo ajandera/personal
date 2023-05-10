@@ -33,7 +33,8 @@ export default class DetailPage extends Vue {
     Excerpt: '',
     excerpt: {},
     Id: '',
-    File: ''
+    File: '',
+    Published: ''
   }
   $axios: any;
   $t: any;

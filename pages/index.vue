@@ -23,7 +23,6 @@
 import { Component, Prop, Vue } from 'nuxt-property-decorator';
 import Post from "~/model/Post";
 import IResponsePosts from "~/model/IResponsePosts";
-import File from "~/model/File";
 
 @Component
 export default class IndexPage extends Vue {
@@ -40,11 +39,15 @@ export default class IndexPage extends Vue {
     this.$axios.get("/"+this.$config.token + "/posts")
       .then((response: IResponsePosts) => {
         if (response.data.success) {
-          this.posts = response.data.posts;
+          this.posts = response.data.posts.sort((a,b) => {
+            // Turn your strings into dates, and then subtract them
+            // to get a value that is either negative, positive, or zero.
+            return (new Date(b.Published)).getTime() - (new Date(a.Published)).getTime();
+          });
           this.posts.map(item => {
             item.excerpt = JSON.parse(item.Excerpt),
             item.title = JSON.parse(item.Title),
-            item.Src = response.data.files.filter((f) => f.Id === item.File)[0].Src
+            item.Src = response.data.files.filter((f) => f.Id === item.File)[0]?.Src
           });
         } else {
           console.log(response.data.error);

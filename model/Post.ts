@@ -9,5 +9,6 @@ export default interface Post {
     Excerpt: string;
     excerpt: IDictionary;
     Id: string;
-    File: string
+    File: string;
+    Published: string;
 }

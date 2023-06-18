@@ -32,5 +32,6 @@
     "sidebar": {
         "projects": "My projects",
         "customers": "Customers"
-    }
+    },
+    "published": "Published"
 }

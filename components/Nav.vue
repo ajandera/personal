@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-    <div class="container-fluid">
+    <div class="container">
       <router-link to="/" class="navbar-brand">
         <span itemprop="givenName">Aleš</span> <span itemprop="familyName">Jandera</span>
       </router-link>
@@ -84,6 +84,7 @@ export default class Nav extends Vue {
 
     menu: boolean = false;
     mobileMenu: boolean = !this.isMobile();
+    $t: any;
 
     dropdown() {
       this.menu = !this.menu;

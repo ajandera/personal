@@ -8,6 +8,7 @@
           </div>
           <div class="col-8">
             <h3>{{ post.title[language] }}</h3>
+            <p class="small">{{ $t('published')}}: {{ post.Published }}</p>
             <p>{{ post.excerpt[language] }}</p>
           </div>
         </div>
@@ -30,6 +31,7 @@ export default class IndexPage extends Vue {
 
   posts: Post[] = [];
   $axios: any;
+  $t: any;
 
   mounted() {
     this.getPosts();
@@ -47,8 +49,10 @@ export default class IndexPage extends Vue {
           this.posts.map(item => {
             item.excerpt = JSON.parse(item.Excerpt),
             item.title = JSON.parse(item.Title),
-            item.Src = response.data.files.filter((f) => f.Id === item.File)[0]?.Src
+            item.Src = response.data.files.filter((f) => f.Id === item.File)[0]?.Src,
+            item.Published = (new Date(item.Published)).toLocaleDateString()
           });
+          console.log(this.posts);
         } else {
           console.log(response.data.error);
         }

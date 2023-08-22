@@ -1,6 +1,4 @@
 import en from './locales/en.json'
-import cz from './locales/cz.json'
-import sk from './locales/sk.json'
 
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
@@ -12,7 +10,7 @@ export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     titleTemplate: '%s | Ales Jandera',
-    title: 'ajandera',
+    title: 'Home',
     htmlAttrs: {
       lang: 'en'
     },
@@ -54,11 +52,11 @@ export default {
   ],
 
   i18n: {
-    locales: ['en', 'cz', 'sk'],
+    locales: ['en'],
     defaultLocale: 'en',
     vueI18n: {
       fallbackLocale: 'en',
-      messages: {en, cz, sk}
+      messages: {en}
     }
   },
 

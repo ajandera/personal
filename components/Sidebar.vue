@@ -1,5 +1,5 @@
 <template>
-    <div class="col-3 sidebar">
+    <div class="col-3 sidebar d-none d-sm-block">
       <div class="row person">
         <div class="col-12">
           <img src="/me.jpg" class="img" />

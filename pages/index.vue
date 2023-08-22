@@ -1,12 +1,12 @@
 <template>
   <section id="blog" class="container">
     <div class="row pt-5">
-      <div class="col-9">
+      <div class="col-12 col-sm-9">
         <div v-for="post in posts" v-bind:key="post.Id" class="row item" v-on:click="goToDetail(post.Id)">
-          <div class="col-4">
+          <div class="col-12 col-sm-4">
             <img v-bind:src="$config.storage + post.Src" class="img-fluid" />
           </div>
-          <div class="col-8">
+          <div class="col-12 col-sm-8">
             <h3>{{ post.title[language] }}</h3>
             <p class="small">{{ $t('published')}}: {{ post.Published }}</p>
             <p>{{ post.excerpt[language] }}</p>

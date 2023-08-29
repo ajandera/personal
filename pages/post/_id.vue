@@ -7,7 +7,7 @@
         <h3>{{ post.title[language] }}</h3>
         <p>{{ post.excerpt[language] }}</p>
         <hr>
-        <img v-bind:src="post.Src" class="image" />
+        <img :src="post.Src" class="image" />
         <div v-html="post.body[language]"></div>
       </div>
       <Sidebar :language="language" />

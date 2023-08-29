@@ -7,6 +7,16 @@
         </div>
       </div>
     </section>
+    <section id="home" class="row p-0" itemscope itemtype="http://schema.org/Person">
+      <div class="container-fluid p-0">
+        <div class="col-12 p-0">
+          <div id="avatar" :style="{'background-image':'url('+ main +')'}">
+            <h1 title="ajandera.com"><span itemprop="givenName">Aleš</span> <span itemprop="familyName">Jandera</span></h1>
+            <h2>{{ $t('content.moto') }}</h2>
+          </div>
+        </div>
+      </div>
+    </section>
     <NuxtChild :language="language" class="mt-5"></NuxtChild>
     <Footer />
   </div>
@@ -19,6 +29,7 @@ import Message from '~/model/Message';
 import IResponseLanguages from "~/model/IResponseLanguages";
 import Nav from '~/components/Nav.vue';
 import Footer from '~/components/Footer.vue';
+import IResponseFiles from '~/model/IResponseFiles';
 
 @Component({
   components: {
@@ -32,6 +43,8 @@ export default class DefaultLayout extends Vue {
     message: Message = {text: "", class: ""}
     $axios: any;
     $i18n: any;
+    $t: any;
+    main: string = '';
 
     mounted() {
       this.$axios.get("/"+this.$config.token + "/languages")
@@ -42,6 +55,15 @@ export default class DefaultLayout extends Vue {
           } else {
             this.message.text = response.data.error;
             this.message.class = 'danger';
+          }
+        });
+
+      this.$axios.get("/"+this.$config.token + "/files")
+        .then((response: IResponseFiles) => {
+          if (response.data.success) {
+            this.main = this.$config.storage + response.data.files.filter(item => item.Name === 'main.jpg')[0].Src;
+          } else {
+            console.log(response.data.error);
           }
         });
     }
@@ -79,6 +101,30 @@ a:hover {
   position: absolute;
   bottom: 30px;
   right: 20px;
+}
+#avatar {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top;
+  height:500px;
+  position: relative;
+}
+h1 {
+  font-size: 5em;
+  color: #fff;
+  font-family: 'Comforter', cursive;
+  position: absolute;
+  right: 20px;
+  bottom: 50px;
+}
+h2 {
+  position: absolute;
+  right: 20px;
+  bottom: 10px;
+  font-weight: 200;
 }
 /*
   ##Device = Tablets, Ipads (portrait)

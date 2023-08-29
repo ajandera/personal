@@ -1,28 +1,38 @@
 <template>
-  <div>
-    <section id="home" class="row p-0" itemscope itemtype="http://schema.org/Person">
-      <div class="container-fluid p-0">
-        <div class="col-12 p-0">
-          <div id="avatar" :style="{'background-image':'url('+ main +')'}">
-            <h1 title="ajandera.com"><span itemprop="givenName">Aleš</span> <span itemprop="familyName">Jandera</span></h1>
-            <h2>{{ $t('content.moto') }}</h2>
-          </div>
+  <section class="mt-5">
+    <div class="container">
+      <div class="row align-items-center">
+        <h3>{{ $t('sidebar.projects')}}</h3>
+        <div class="col-4 text-center mt-4 mb-4" v-for="(ref, index) in myProjects" :key="ref.Name">
+          <a :href="links[index]">
+            <img :src="$config.storage + ref.Src" class="img-fluid" />
+          </a>
         </div>
       </div>
-    </section>
-    <section class="mt-5">
-      <div class="container">
-        <div class="row">
-          <div class="col-9">
-            <div v-html="about[language]"></div>
-            <div class="clearfix"></div>
+      <div class="row">
+        <div class="col-9">
+          <div v-html="about[language]"></div>
+          <h3 class="mt-5">{{ $t('sidebar.customers')}}</h3>
+          <div class="row align-items-center">
+            <div class="col-3 mt-4 mb-4" v-for="ref in references" :key="ref.Name">
+                <img :src="$config.storage + ref.Src" class="img-fluid" />
+            </div>
           </div>
-          <Sidebar :language="language" />
+          <div class="clearfix"></div>
+        </div>
+        <Sidebar :language="language" />
+      </div>
+      <div class="row">
+        <div class="col-9">
+          <!-- Calendly inline widget begin -->
+          <div class="calendly-inline-widget" data-url="https://calendly.com/ales-6?hide_gdpr_banner=1" style="min-width:320px;height:700px;"></div>
+          <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+          <!-- Calendly inline widget end -->
         </div>
       </div>
-      <div class="clearfix"></div>
-    </section>
-  </div>
+    </div>
+    <div class="clearfix"></div>
+  </section>
 </template>
 
 <script lang="ts">
@@ -30,6 +40,7 @@ import {Component, Prop, Vue} from 'nuxt-property-decorator';
 import IResponseText from '~/model/IResponseText';
 import IDictionary from '~/model/IDictionary';
 import IResponseFiles from '~/model/IResponseFiles';
+import File from "~/model/File";
 
 @Component
 export default class AboutPage extends Vue {
@@ -40,10 +51,25 @@ export default class AboutPage extends Vue {
   main: string = '';
   $t: any;
   $config: any;
+  references: File[] = [];
+  myProjects: File[] = [];
+  links: string[] = [
+    "https://storepredictor.com",
+    "https://shopycrm.com",
+    "https://github.com/ajandera/arualcms"
+  ];
 
   mounted() {
     this.texts();
-    this.getFiles();
+    this.$axios.get("/"+this.$config.token + "/files")
+      .then((response: IResponseFiles) => {
+        if (response.data.success) {
+          this.references = response.data.files.filter(x => x.Gallery === 'reference').reverse();
+          this.myProjects = response.data.files.filter(x => x.Gallery === 'my').reverse();
+        } else {
+          console.log(response.data.error);
+        }
+      });
   }
 
   texts() {
@@ -56,43 +82,9 @@ export default class AboutPage extends Vue {
           }
         });
   }
-
-  getFiles() {
-    this.$axios.get("/"+this.$config.token + "/files")
-      .then((response: IResponseFiles) => {
-        if (response.data.success) {
-          this.main = this.$config.storage + response.data.files.filter(item => item.Name === 'main.jpg')[0].Src;
-        } else {
-          console.log(response.data.error);
-        }
-      });
-  }
 }
 </script>
 
 <style lang="css" scoped>
-h1 {
-  font-size: 5em;
-  color: #fff;
-  font-family: 'Comforter', cursive;
-  position: absolute;
-  right: 20px;
-  bottom: 50px;
-}
-h2 {
-  position: absolute;
-  right: 20px;
-  bottom: 10px;
-  font-weight: 200;
-}
-#avatar {
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: top;
-  height:500px;
-  position: relative;
-}
+
 </style>

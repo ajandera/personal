@@ -29,9 +29,6 @@
               <router-link to="/arualcms" class="nav-link">arualCMS</router-link>
             </li>
             <li class="nav-item">
-              <router-link to="/podcast" class="nav-link">{{ $t('menu.podcast')}}</router-link>
-            </li>
-            <li class="nav-item">
               <router-link to="/contact" class="nav-link">
                 <font-awesome-icon :icon="['fas', 'envelope-open']" :alt="$t('menu.contact')" />
               </router-link>

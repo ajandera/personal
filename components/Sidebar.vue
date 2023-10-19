@@ -2,10 +2,17 @@
     <div class="col-3 sidebar d-none d-sm-block">
       <div class="row person">
         <div class="col-12">
-          <img src="/me.jpg" class="img" />
-          <div class="desc" v-html="about[language]"></div>
+          <!--
+              PeoplePerHour Profile Widget
+              The div#pph-hire me is the element
+              where the iframe will be inserted.
+              You may move this element wherever
+              you need to display the widget
+          -->
+          <div id="pph-hireme"></div>
         </div>
       </div>
+      
       <div v-for="post in posts" v-bind:key="post.Id" class="row article" v-on:click="goToDetail(post.Id)">
         <div class="col-12">
           <h3 class="title">{{ post.title[language] }}</h3>
@@ -22,7 +29,6 @@ import {Component, Prop, Vue, Watch} from 'nuxt-property-decorator';
 import Post from "~/model/Post";
 import IResponsePosts from "~/model/IResponsePosts";
 import IDictionary from "~/model/IDictionary";
-import IResponseText from "~/model/IResponseText";
 
 @Component
 export default class Sidebar extends Vue {
@@ -48,15 +54,6 @@ export default class Sidebar extends Vue {
           console.log(response.data.error);
         }
       });
-
-    this.$axios.get("/"+this.$config.token + "/text/sidebar")
-      .then((response: IResponseText) => {
-        if (response.data.success) {
-          this.about = JSON.parse(response.data.text.Value);
-        } else {
-          console.log(response.data.error);
-        }
-      });
   }
 
   goToDetail(id: string) {
@@ -64,6 +61,15 @@ export default class Sidebar extends Vue {
   }
 }
 </script>
+<sctipt lang="js">
+  (function(d, s) {
+    var useSSL = 'https:' == document.location.protocol;
+    var js, where = d.getElementsByTagName(s)[0],
+    js = d.createElement(s);
+    js.src = (useSSL ? 'https:' : 'http:') +  '//www.peopleperhour.com/hire/43573616/10356450.js?width=245&height=170&orientation=vertical&theme=light&rnd='+parseInt(Math.random()*10000, 10);
+    try { where.parentNode.insertBefore(js, where); } catch (e) { if (typeof console !== 'undefined' && console.log && e.stack) { console.log(e.stack); } }
+}(document, 'script'));
+</sctipt>
 
 <style lang="css" scoped>
 .sidebar {

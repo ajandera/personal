@@ -12,7 +12,14 @@
           <div id="pph-hireme"></div>
         </div>
       </div>
-      
+      <div class="row person">
+        <div class="col-12">
+          <!-- Calendly inline widget begin -->
+          <div class="calendly-inline-widget" data-url="https://calendly.com/ales-6?hide_gdpr_banner=1" style="min-width:320px;height:700px;"></div>
+          <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+          <!-- Calendly inline widget end -->
+        </div>
+      </div>
       <div v-for="post in posts" v-bind:key="post.Id" class="row article" v-on:click="goToDetail(post.Id)">
         <div class="col-12">
           <h3 class="title">{{ post.title[language] }}</h3>

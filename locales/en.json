@@ -2,7 +2,6 @@
     "back": "Back",
     "menu": {
         "home": "Home",
-        "about": "About me",
         "contact": "Contact",
         "podcast": "Podcast"
     },
@@ -31,7 +30,7 @@
     },
     "sidebar": {
         "projects": "My projects",
-        "customers": "Customers"
+        "customers": "Main Customers"
     },
     "published": "Published"
 }

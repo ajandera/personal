@@ -1,24 +1,26 @@
 <template>
-  <section id="blog" class="container">
-    <div class="row pt-5">
-      <div class="col-12 col-sm-9">
-        <div v-for="post in posts" v-bind:key="post.Id" class="row item" v-on:click="goToDetail(post.Id)">
-          <div class="col-12 col-sm-4">
-            <img v-bind:src="$config.storage + post.Src" class="img-fluid" />
-          </div>
-          <div class="col-12 col-sm-8">
-            <h3>{{ post.title[language] }}</h3>
-            <p class="small">{{ $t('published')}}: {{ post.Published }}</p>
-            <p>{{ post.excerpt[language] }}</p>
-          </div>
+  <section class="mt-5">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-4 text-center mt-4 mb-4" v-for="(ref, index) in myProjects" :key="ref.Name">
+          <a :href="links[index]">
+            <img :src="$config.storage + ref.Src" class="img-fluid" />
+          </a>
         </div>
-        <!-- Calendly inline widget begin -->
-        <div class="calendly-inline-widget" data-url="https://calendly.com/ales-6?hide_gdpr_banner=1" style="min-width:320px;height:700px;"></div>
-        <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-        <!-- Calendly inline widget end -->
-        <div class="clearfix"></div>
       </div>
-      <Sidebar :language="language" />
+      <div class="row">
+        <div class="col-9">
+          <div v-html="about[language]"></div>
+          <h3 class="mt-5">{{ $t('sidebar.customers')}}</h3>
+          <div class="row align-items-center">
+            <div class="col-3 mt-4 mb-4" v-for="ref in references" :key="ref.Name">
+                <img :src="$config.storage + ref.Src" class="img-fluid" />
+            </div>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+        <Sidebar :language="language" />
+      </div>
     </div>
     <div class="clearfix"></div>
   </section>
@@ -27,7 +29,11 @@
 <script lang="ts">
 import { Component, Prop, Vue } from 'nuxt-property-decorator';
 import Post from "~/model/Post";
-import IResponsePosts from "~/model/IResponsePosts";
+import IResponseText from '~/model/IResponseText';
+import IDictionary from '~/model/IDictionary';
+import IResponseFiles from '~/model/IResponseFiles';
+import File from "~/model/File";
+import IResponsePosts from '~/model/IResponsePosts';
 
 @Component
 export default class IndexPage extends Vue {
@@ -36,9 +42,40 @@ export default class IndexPage extends Vue {
   posts: Post[] = [];
   $axios: any;
   $t: any;
+  about: IDictionary = {};
+  main: string = '';
+  $config: any;
+  references: File[] = [];
+  myProjects: File[] = [];
+  links: string[] = [
+    "https://storepredictor.com",
+    "https://shopycrm.com",
+    "https://github.com/ajandera/arualcms"
+  ];
 
   mounted() {
-    this.getPosts();
+    //this.getPosts();
+    this.texts();
+    this.$axios.get("/"+this.$config.token + "/files")
+      .then((response: IResponseFiles) => {
+        if (response.data.success) {
+          this.references = response.data.files.filter(x => x.Gallery === 'reference').reverse();
+          this.myProjects = response.data.files.filter(x => x.Gallery === 'my').reverse();
+        } else {
+          console.log(response.data.error);
+        }
+      });
+  }
+
+  texts() {
+    this.$axios.get("/"+this.$config.token + "/text/about")
+        .then((response: IResponseText) => {
+          if (response.data.success) {
+            this.about = JSON.parse(response.data.text.Value);
+          } else {
+            console.log(response.data.error);
+          }
+        });
   }
 
   getPosts() {

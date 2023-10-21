@@ -17,7 +17,7 @@
       <div class="navbar-collapse" id="navbarSupportedContent" v-if="mobileMenu">
           <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <router-link to="/about" class="nav-link">{{ $t('menu.about')}}</router-link>
+              <router-link to="/podcast" class="nav-link">{{ $t('menu.podcast')}}</router-link>
             </li>
             <li class="nav-item">
               <router-link to="/storepredictor" class="nav-link">storePredictor</router-link>

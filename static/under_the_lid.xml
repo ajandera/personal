@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>UnderTheLid</title>
+    <link>https://ajandera.com</link>
+    <language>en-us</language>
+    <copyright>&#169; 2023 Ales Jandera</copyright>
+    <itunes:author>Ales Jandera</itunes:author>
+    <itunes:summary>
+      Tips and experiences from avarted side or entrepreneurship. I am senior software developer with more than 10 years of experience. Working with many international teams, from 2014 create own crm software and actually develop startup based on mathematical modelling in e-commerce. I want to show you regular days which stand behind it.
+    </itunes:summary>
+    <description>
+      Tips and experiences from avarted side or entrepreneurship. I am senior software developer with more than 10 years of experience. Working with many international teams, from 2014 create own crm software and actually develop startup based on mathematical modelling in e-commerce. I want to show you regular days which stand behind it.
+    </description>
+    <itunes:type>serial</itunes:type>
+    <itunes:owner>
+      <itunes:name>Ales Jandera</itunes:name>
+      <itunes:email>ales.jandera@gmail.com</itunes:email>
+    </itunes:owner>
+    <itunes:image
+      href="https://ajandera.com/podcast/underTheLid.jpg"
+    />
+    <itunes:category text="Business">
+      <itunes:category text="Marketing"/>
+    </itunes:category>
+    <itunes:category text="Education">
+      <itunes:category text="How To"/>
+    </itunes:category>
+    <itunes:category text="Technology" />
+    <itunes:explicit>false</itunes:explicit>
+    <item>
+      <itunes:episode>1</itunes:episode>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:title>UnderTheLid #1</itunes:title>
+      <itunes:summary>Summary</itunes:summary>
+      <description>
+          <![CDATA[Description.]]>
+      </description>
+      <enclosure
+        url="https://ajandera.com/podcast/udnerTheLid1.m4a"
+        type="audio/mpeg"
+        length="17640465"
+        />
+      <guid>utl12023</guid>
+      <pubDate>Wed, 12 Apr 2023 22:41:07 +0000</pubDate>
+      <itunes:author>Ales Jandera</itunes:author>
+      <itunes:duration>536</itunes:duration>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+  </channel>
+</rss>

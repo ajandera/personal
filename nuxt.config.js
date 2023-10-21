@@ -70,5 +70,10 @@ export default {
     axios: {
       baseURL: process.env.VUE_APP_API || 'http://localhost:8000/'
     }
+  },
+
+  router: {
+    linkActiveClass: 'custom-active-link',
+    linkExactActiveClass: 'custom-exact-active-link',
   }
 }

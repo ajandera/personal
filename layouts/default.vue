@@ -126,6 +126,7 @@ h2 {
   bottom: 10px;
   font-weight: 200;
 }
+
 /*
   ##Device = Tablets, Ipads (portrait)
   ##Screen = B/w 768px to 1024px

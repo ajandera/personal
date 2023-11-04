@@ -2,7 +2,8 @@
   <section id="content" class="container">
     <div class="row pt-5">
       <div class="col-9">
-        <div v-html="arualcms[language]"></div>
+        <p>{{ $t('content.arualcms') }}</p>
+        <p>{{ $t('content.arualcms2') }}</p>
         <div class="clearfix"></div>
       </div>
       <Sidebar :language="language" />
@@ -13,33 +14,10 @@
 
 <script lang="ts">
 import {Component, Prop, Vue} from 'nuxt-property-decorator';
-import IDictionary from '~/model/IDictionary';
-import IResponseText from '~/model/IResponseText';
 
 @Component
 export default class ArualCMSPage extends Vue {
   @Prop() readonly language!: string;
-
-  arualcms: IDictionary = {};
-  $axios: any;
-
-  mounted() {
-    this.texts();
-  }
-
-  texts() {
-    this.$axios.get("/"+this.$config.token + "/text/arualcms")
-      .then((response: IResponseText) => {
-        if (response.data.success) {
-          this.arualcms = JSON.parse(response.data.text.Value);
-        } else {
-          console.log(response.data.error);
-        }
-      });
-  }
+  $t: any;
 }
 </script>
-
-<style lang="css" scoped>
-
-</style>

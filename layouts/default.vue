@@ -10,7 +10,7 @@
     <section id="home" class="row p-0" itemscope itemtype="http://schema.org/Person">
       <div class="container-fluid p-0">
         <div class="col-12 p-0">
-          <div id="avatar" :style="{'background-image':'url('+ main +')'}">
+          <div id="avatar">
             <h1 title="ajandera.com"><span itemprop="givenName">Aleš</span> <span itemprop="familyName">Jandera</span></h1>
             <h2>{{ $t('content.moto') }}</h2>
           </div>
@@ -26,10 +26,8 @@
 // 
 import { Component, Vue } from 'nuxt-property-decorator';
 import Message from '~/model/Message';
-import IResponseLanguages from "~/model/IResponseLanguages";
 import Nav from '~/components/Nav.vue';
 import Footer from '~/components/Footer.vue';
-import IResponseFiles from '~/model/IResponseFiles';
 
 @Component({
   components: {
@@ -38,35 +36,12 @@ import IResponseFiles from '~/model/IResponseFiles';
   }
 })
 export default class DefaultLayout extends Vue {
-    language: string = '';
-    languages: string[] = [];
+    language: string = 'en';
+    languages: string[] = ['en'];
     message: Message = {text: "", class: ""}
     $axios: any;
     $i18n: any;
     $t: any;
-    main: string = '';
-
-    mounted() {
-      this.$axios.get("/"+this.$config.token + "/languages")
-        .then((response: IResponseLanguages) => {
-          if (response.data.success) {
-            this.language = response.data.languages.filter(item => item.Default)[0].Key;
-            this.languages = response.data.languages.map(item => item.Key);
-          } else {
-            this.message.text = response.data.error;
-            this.message.class = 'danger';
-          }
-        });
-
-      this.$axios.get("/"+this.$config.token + "/files")
-        .then((response: IResponseFiles) => {
-          if (response.data.success) {
-            this.main = this.$config.storage + response.data.files.filter(item => item.Name === 'main.jpg')[0].Src;
-          } else {
-            console.log(response.data.error);
-          }
-        });
-    }
 
     setLanguage(lang: string) {
       this.$i18n.locale = this.language = lang;
@@ -111,6 +86,7 @@ a:hover {
   background-position: top;
   height:500px;
   position: relative;
+  background-image: url(/main.jpg);
 }
 h1 {
   font-size: 5em;

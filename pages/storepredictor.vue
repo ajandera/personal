@@ -2,7 +2,16 @@
   <section id="sp" class="container">
     <div class="row pt-5">
       <div class="col-9">
-        <div v-html="storepredictor[language]"></div>
+        <p>{{ $t('content.sp') }}</p>
+        <p>{{ $t('content.sp2') }}</p>
+        <p>{{ $t('content.sp3') }}</p>
+        <p>{{ $t('content.sp4') }}</p>
+        <p>{{ $t('content.sp5') }}</p>
+        <p>{{ $t('content.sp6') }}</p>
+        <p>{{ $t('content.sp7') }}</p>
+        <p>{{ $t('content.sp8') }}</p>
+        <p>{{ $t('content.sp9') }}</p>
+        <p>Visit <a href="https://storepredictor.com">storepredictor.com</a> or contact me on <a href="mailto:ales@storepredictor.com">ales@storepredictor.com</a> to know more about Pilot program.</p>
         <div class="clearfix"></div>
       </div>
       <Sidebar :language="language" />
@@ -20,27 +29,6 @@ import IResponseText from '~/model/IResponseText';
 @Component
 export default class StorePredictorPage extends Vue {
   @Prop() readonly language!: string;
-
-  storepredictor: IDictionary = {};
-  $axios: any;
-
-  mounted() {
-    this.texts();
-  }
-
-    texts() {
-      this.$axios.get("/" + this.$config.token + "/text/storepredictor")
-        .then((response: IResponseText) => {
-          if (response.data.success) {
-            this.storepredictor = JSON.parse(response.data.text.Value);
-          } else {
-            console.log(response.data.error);
-          }
-        });
-    }
+  $t: any;
 }
 </script>
-
-<style lang="css" scoped>
-
-</style>

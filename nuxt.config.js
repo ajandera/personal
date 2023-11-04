@@ -63,15 +63,6 @@ export default {
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
 
-  publicRuntimeConfig: {
-    hostname: process.env.VUE_APP_API || 'http://localhost:8000/',
-    token: process.env.VUE_APP_TOKEN || 'lkdfjDF45df',
-    storage: process.env.VUE_APP_STORAGE,
-    axios: {
-      baseURL: process.env.VUE_APP_API || 'http://localhost:8000/'
-    }
-  },
-
   router: {
     linkActiveClass: 'custom-active-link',
     linkExactActiveClass: 'custom-exact-active-link',

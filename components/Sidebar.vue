@@ -14,6 +14,11 @@
       </div>
       <div class="row person">
         <div class="col-12">
+          <iframe id="embedPlayer" src="https://embed.podcasts.apple.com/us/podcast/storepredictor/id1684803774?itsct=podcast_box_player&amp;itscg=30200&amp;ls=1&amp;theme=light" height="450px" frameborder="0" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation" allow="autoplay *; encrypted-media *; clipboard-write" style="width: 100%; max-width: 660px; overflow: hidden; border-radius: 10px; transform: translateZ(0px); animation: 2s 6 loading-indicator; background-color: rgb(228, 228, 228);"></iframe>
+        </div>
+      </div>
+      <div class="row person">
+        <div class="col-12">
           <!-- Calendly inline widget begin -->
           <div class="calendly-inline-widget" data-url="https://calendly.com/ales-6?hide_gdpr_banner=1" style="min-width:320px;height:700px;"></div>
           <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>

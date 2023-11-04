@@ -18,7 +18,8 @@ import {Component, Prop, Vue} from 'nuxt-property-decorator';
 @Component
 export default class Footer extends Vue {
     @Prop() readonly language!: string;
-    year: number = new Date().getFullYear()
+    year: number = new Date().getFullYear();
+    $t: any;
 }
 </script>
 

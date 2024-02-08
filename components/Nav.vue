@@ -17,16 +17,16 @@
       <div class="navbar-collapse" id="navbarSupportedContent" v-if="mobileMenu">
           <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <router-link to="/" class="nav-link">{{ $t('menu.home')}}</router-link>
+              <a href="#storepredictor" class="nav-link">storePredictor</a>
             </li>
             <li class="nav-item">
-              <router-link to="/storepredictor" class="nav-link">storePredictor</router-link>
+              <a href="#shopycrm" class="nav-link">shopyCRM</a>
             </li>
             <li class="nav-item">
-              <router-link to="/shopycrm" class="nav-link">shopyCRM</router-link>
+              <a href="#underthelid" class="nav-link">UnderTheLid</a>
             </li>
             <li class="nav-item">
-              <router-link to="/arualcms" class="nav-link">arualCMS</router-link>
+              <a href="#beintouch" class="nav-link">Consultation</a>
             </li>
             <li class="nav-item">
               <router-link to="/contact" class="nav-link">

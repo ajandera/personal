@@ -32,16 +32,15 @@
         <div class="col-md-4 col-sm-12 col-xs-12">
           <img :src="images[0]" class="img-fluid" />
           <iframe id="embedPlayer" src="https://embed.podcasts.apple.com/us/podcast/storepredictor/id1684803774?itsct=podcast_box_player&amp;itscg=30200&amp;ls=1&amp;theme=light" height="450px" frameborder="0" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation" allow="autoplay *; encrypted-media *; clipboard-write" style="width: 100%; max-width: 660px; overflow: hidden; border-radius: 10px; transform: translateZ(0px); animation: 2s 6 loading-indicator; background-color: rgb(228, 228, 228);"></iframe>
+          <a href="https://storepredictor.com" target="_blank" class="btn btn-success btn-lg actionBtn">Register for FREE</a>
         </div>
         <div class="col-md-8 col-sm-12 col-xs-12 text-justify">
           <p><strong>storePredictor</strong> is a cutting-edge innovation that lies at the crossroads of data science, <strong>artificial intelligence</strong>, and retail strategy. Imagine having the power to peer into the future of retail, foreseeing trends and consumer behavior patterns before they even unfold. This is the essence of StorePredictor.</p>
           <p>At its core, StorePredictor is a sophisticated predictive analytics platform designed to empower retailers and e-commerce businesses with the ability to make informed decisions that resonate with the ever-changing desires of their customers. Leveraging historical data, real-time inputs, and advanced machine learning algorithms, StorePredictor has the capability to anticipate buying trends, optimize inventory management, and fine-tune pricing strategies with remarkable accuracy.</p>
-          <p>Picture this: a retailer who uses StorePredictor gains unparalleled insights into which products are likely to soar in demand during specific seasons, holidays, or even unexpected events. This foresight enables them to proactively adjust their inventory levels, ensuring that they never miss an opportunity to meet customer demands while minimizing excess stock that could tie up resources.</p>
           <p>Furthermore, storePredictor has the prowess to decipher intricate <strong>consumer behavior patterns</strong>. It examines variables such as past purchases, browsing habits, demographics, and external factors like economic indicators and social trends. Armed with this multifaceted understanding, businesses can tailor their marketing efforts, personalize user experiences, and craft promotions that resonate authentically with their target audience.</p>
           <p>But the brilliance of storePredictor doesn't end there. One of its standout features is its ability to optimize pricing strategies. By analyzing historical pricing data, competitor pricing, and market trends, the platform can recommend optimal price points that strike a harmonious balance between profitability and customer appeal. This dynamic pricing approach keeps businesses agile and competitive in a landscape where pricing nuances can make all the difference.</p>
           <p>Imagine a retailer receiving real-time alerts from storePredictor when a sudden surge in demand is detected, allowing them to swiftly replenish stock or adjust marketing efforts to capitalize on the opportunity. This agility is a game-changer, granting businesses the ability to stay ahead of the curve and ride the waves of consumer sentiment.</p>
           <p>In essence, StorePredictor is not just a tool; it's a strategic companion that guides retailers through the intricate dance of modern commerce. By fusing the power of data-driven insights with the art of prediction, StorePredictor equips businesses with the tools to thrive, adapt, and succeed in an ever-evolving retail landscape.</p>
-          <p>So, whether you're a brick-and-mortar establishment or an online marketplace, storePredictor stands ready to be your compass in the realm of retail, steering you toward success with every calculated step.</p>
           <p>Develope since 7/2021 after success in a <strong>Startup Incubator in Technicom</strong>, part of TUKE university in Košice.</p>
         </div>
       </div>
@@ -68,6 +67,7 @@
         <div class="col-md-4 col-sm-12 col-xs-12">
           <img :src="images[1]" class="img-fluid" />
           <img :src="images[2]" class="img-fluid mt-5"/>
+          <a href="https://shopycrm.com" target="_blank" class="btn btn-success btn-lg actionBtn">Register for FREE</a>
         </div>
       </div>
       <div class="row" id="underthelid">
@@ -105,23 +105,15 @@
         <p>Are you looking to harness the <strong>power of Artificial Intelligence (AI)</strong> and Machine Learning (ML) to drive innovation and growth in your company?</p>
         <p>As a senior software developer with a master's degree in Cybernetics and currently pursuing a PhD with a focus on AI, I understand the complexities and opportunities that AI presents. With over two years of experience running my own AI startup, I've gained valuable insights into how AI can transform businesses across industries.</p>
         <p>I'm offering complimentary 30-minute consultation sessions to discuss how AI and ML can be tailored to meet the specific needs and goals of your organization. Whether you're exploring AI for the first time or seeking to optimize your existing AI initiatives, I'm here to help.</p>
-        <p>During our session, we can cover:</p>
-        <ul>
-          <li>AI strategy development tailored to your business objectives</li>
-          <li>Implementation guidance for integrating AI solutions seamlessly into your workflow</li>
-          <li>Practical advice on leveraging AI to enhance productivity, efficiency, and innovation</li>
-        </ul>
-        <p>Schedule your free consultation now through Calendly to secure your spot! Let's unlock the potential of AI together and propel your business into the future.</p>
         </div>
         <div class="col-md-4 col-sm-12 col-xs-12">
           <!-- Calendly inline widget begin -->
-          <div class="calendly-inline-widget" data-url="https://calendly.com/ales-6?hide_gdpr_banner=1" style="min-width:320px;height:700px;"></div>
+          <div class="calendly-inline-widget" data-url="https://calendly.com/ales-6?hide_gdpr_banner=1" style="min-width:320px;height:300px;"></div>
           <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
           <!-- Calendly inline widget end -->
         </div>
       </div>
     </div>
-    <div class="clearfix"></div>
   </section>
 </template>
 
@@ -187,6 +179,10 @@ export default class IndexPage extends Vue {
 }
 .text-justify {
   text-align: justify;
+}
+.actionBtn {
+  width: 100%;
+  margin-top: 30px;
 }
 @media print {
   * {

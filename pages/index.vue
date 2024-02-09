@@ -1,4 +1,3 @@
-<!-- https://codepen.io/chilliconcode/pen/YyRKYZ -->
 <template>
   <section>
     <div class="container">

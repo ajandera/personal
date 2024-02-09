@@ -154,7 +154,7 @@ h2 {
     font-size: 2.2em;
   }
   h2 {
-    font-size: 0.8em;
+    font-size: 1em;
   }
   .personal {
     max-width: 95%

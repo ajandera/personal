@@ -5,7 +5,7 @@
         <span itemprop="givenName">Aleš</span> <span itemprop="familyName">Jandera</span>
       </router-link>
       <button @click="mobile()"
-              class="navbar-toggler"
+              class="navbar-toggler justify-content-end"
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#navbarSupportedContent"
@@ -26,7 +26,7 @@
               <a href="#underthelid" class="nav-link">UnderTheLid</a>
             </li>
             <li class="nav-item">
-              <a href="#beintouch" class="nav-link">Consultation</a>
+              <a href="#consultaitons" class="nav-link">Consultation</a>
             </li>
             <li class="nav-item">
               <router-link to="/contact" class="nav-link">

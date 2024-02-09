@@ -1,23 +1,15 @@
+<!-- https://codepen.io/chilliconcode/pen/YyRKYZ -->
 <template>
-  <section class="mt-5">
+  <section>
     <div class="container">
-      <div class="row">
-        <div class="col-8">
-          <p>Greetings! Allow me to introduce myself – I am Aleš Jandera, senior software developer and passionate entrepreneur. With a wealth of experience under my belt, I proudly hold a master's degree in cybernetics and automation, which has provided me with a robust foundation to delve into the exciting realms of technology and innovation. Over the course of the past decade, my journey in the software development landscape has been nothing short of exhilarating.</p>
+      <div class="row mt-5">
+        <div class="col-8 text-justify">
+          <p>Greetings! Allow me to introduce myself, I am Aleš Jandera, passionate entrepreneur with backgorund as senior software developer. With a wealth of experience under my belt, I proudly hold a master's degree in cybernetics and automation, which has provided me with a robust foundation to delve into the exciting realms of technology and innovation. Over the course of the past decade, my journey in the software development landscape has been nothing short of exhilarating.</p>
           <p>I've traversed through a myriad of projects, donning the roles of a trusted partner for my clients and a vital member of expansive teams as a dedicated contractor. This dynamic journey has equipped me with a diverse skill set and a profound understanding of how to bring visions to life through the power of code.</p>
           <p>My true passion lies in the vibrant world of ecommerce, where I've carved out a niche specializing in creating captivating online stores that seamlessly blend form and function. Crafting these digital marketplaces is akin to painting on a canvas of code, where user experience takes center stage.</p>
           <p>The synergy between data and efficiency fascinates me, and I'm driven by the challenge of orchestrating complex logistical processes with the elegance of a symphony conductor.Predictive analytics, a true gem of the digital age, also finds its place in my repertoire. So there you have it – an intricate tapestry woven with my experiences, passions, and aspirations. I'm not just a software developer; I'm a trailblazer, a conductor of code, and a maestro of digital innovation. Join me on this captivating journey as we continue to explore the ever-evolving landscape of technology together.</p>
         </div>
         <div class="col-4">
-          <!--
-              PeoplePerHour Profile Widget
-              The div#pph-hire me is the element
-              where the iframe will be inserted.
-              You may move this element wherever
-              you need to display the widget
-          -->
-          <div id="pph-hireme"></div>
-          <hr>
           <div class="row align-items-center">
             <div class="col-6 mt-4 mb-4" v-for="(ref, index) in references" :key="index">
                 <img :src="ref" class="img-fluid" />
@@ -26,11 +18,16 @@
         </div>
       </div>
       <div class="row">
+        <div class="col-12">
+          <div class="divider"></div>
+        </div>
+      </div>
+      <div class="row mt-5">
         <div class="col-4">
           <img :src="images[0]" class="img-fluid" />
           <iframe id="embedPlayer" src="https://embed.podcasts.apple.com/us/podcast/storepredictor/id1684803774?itsct=podcast_box_player&amp;itscg=30200&amp;ls=1&amp;theme=light" height="450px" frameborder="0" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation" allow="autoplay *; encrypted-media *; clipboard-write" style="width: 100%; max-width: 660px; overflow: hidden; border-radius: 10px; transform: translateZ(0px); animation: 2s 6 loading-indicator; background-color: rgb(228, 228, 228);"></iframe>
         </div>
-        <div class="col-8">
+        <div class="col-8 text-justif">
           <p>storePredictor is a cutting-edge innovation that lies at the crossroads of data science, artificial intelligence, and retail strategy. Imagine having the power to peer into the future of retail, foreseeing trends and consumer behavior patterns before they even unfold. This is the essence of StorePredictor.</p>
           <p>At its core, StorePredictor is a sophisticated predictive analytics platform designed to empower retailers and e-commerce businesses with the ability to make informed decisions that resonate with the ever-changing desires of their customers. Leveraging historical data, real-time inputs, and advanced machine learning algorithms, StorePredictor has the capability to anticipate buying trends, optimize inventory management, and fine-tune pricing strategies with remarkable accuracy.</p>
           <p>Picture this: a retailer who uses StorePredictor gains unparalleled insights into which products are likely to soar in demand during specific seasons, holidays, or even unexpected events. This foresight enables them to proactively adjust their inventory levels, ensuring that they never miss an opportunity to meet customer demands while minimizing excess stock that could tie up resources.</p>
@@ -43,26 +40,72 @@
         </div>
       </div>
       <div class="row">
+        <div class="col-12">
+          <div class="divider"></div>
+        </div>
+      </div>
+      <div class="row mt-5">
         <div class="col-8">
-          <p>My own SaaS CRM application developed since 2014 which is focused on sales companies. Instead of basic CRM function based on CRM framwork is the best point in the automation and communication with third party application.</p>
-          <p>You can easy connect your online store, marketplaces, account software, logistic software, warehouse storage. Easy to connect everything with xml or csv specification. Other connection I am able to made as a custom changes in the shopyCRM software.</p>
-          <p>Visit shopycrm.com and register for free to see what my cloud based CRM app is able to made for you.</p>
+          <h2>Elevate Your Sales Game with ShopyCRM!</h2>
+          <p>Ready to supercharge your sales process and take your business to new heights? Look no further than ShopyCRM – your all-in-one solution for seamless sales management and automation!</p>
+          <p>Since 2014, we've been leading the charge in revolutionizing CRM technology. Our SaaS CRM application isn't just another run-of-the-mill platform – it's a powerhouse of innovation tailored specifically for sales companies like yours.</p>
+          <p>What sets ShopyCRM apart? Our focus on automation and seamless integration with third-party applications is unmatched. Say goodbye to manual data entry and hello to effortless connectivity!</p>
+          <p>With ShopyCRM, you can:</p>
+          <ul>
+            <li>Easily integrate your online store, marketplaces, accounting software, logistics platforms, and warehouse storage systems</li>
+            <li>Streamline communication and data exchange with XML or CSV specifications – no hassle, no fuss!</li>
+            <li>Enjoy custom connections and bespoke solutions tailored to your unique business needs</li>
+          </ul>
+          <p>Ready to experience the ShopyCRM difference for yourself? Visit shopycrm.com and sign up for FREE today to unlock the full potential of our cloud-based CRM app.</p>
+          <p>Don't miss out on this game-changing opportunity to revolutionize your sales process and drive unprecedented growth! Join the ShopyCRM family today and unleash the power of seamless sales management.</p>
         </div>
         <div class="col-4">
           <img :src="images[1]" class="img-fluid" />
+          <img :src="images[2]" class="img-fluid mt-5"/>
         </div>
       </div>
       <div class="row">
+        <div class="col-12">
+          <div class="divider"></div>
+        </div>
+      </div>
+      <div class="row mt-5">
         <div class="col-4">
           
         </div> 
         <div class="col-8">
-          In hac habitasse platea dictumst. Cras id orci sem. Duis maximus lorem in dolor rutrum malesuada. Integer pretium sapien ligula, a mollis magna pellentesque at. Mauris ut volutpat tellus. Curabitur fermentum nunc nec nisi tincidunt mattis. Pellentesque eget ultrices justo. Nam quis nibh vel magna iaculis lacinia. Vestibulum vitae purus at ante dapibus tincidunt vitae vitae libero. Suspendisse nec metus dapibus, congue nulla at, tincidunt leo. Maecenas quis luctus lacus. Morbi ornare tellus quis massa bibendum malesuada. Curabitur iaculis vulputate ipsum non rhoncus. Suspendisse posuere tempus urna, vitae cursus nisl lacinia eget. Mauris sollicitudin diam enim, sit amet lobortis tortor egestas et.
+          <h2>Discover the Secrets of Success in Entrepreneurship and AI-Powered E-Commerce!</h2>
+          <p>Embark on a journey behind the scenes of entrepreneurship and AI innovation with me, a seasoned senior software developer with over a decade of experience. From navigating international teams to crafting my own CRM software since 2014, my entrepreneurial ventures have led me to develop a groundbreaking startup centered around mathematical modeling in e-commerce.</p>
+          <p>Join me as I unveil the tips, tricks, and real-life experiences that have shaped my entrepreneurial path. Gain invaluable insights into:</p>
+          <ul>
+            <li>Navigating the intricacies of international collaboration and team dynamics</li>
+            <li>Unveiling the secrets behind the creation and evolution of my own CRM software</li>
+            <li>Exploring the transformative potential of AI in e-commerce through mathematical modeling</li>
+            <li>Harnessing AI for human behavior prediction and revolutionizing customer engagement</li>
+          </ul>
+          <p>Through candid discussions and firsthand accounts, you'll uncover the regular days and extraordinary moments that define the journey of entrepreneurship and AI innovation.</p>
+          <p>Ready to unlock the keys to success and propel your own ventures forward? Join me for an enlightening exploration of the intersection between technology, entrepreneurship, and human behavior prediction.</p>
+          <p>Sign up now for an exclusive insider look at the world of entrepreneurship and AI-powered e-commerce!</p>
         </div>
       </div>
       <div class="row">
+        <div class="col-12">
+          <div class="divider"></div>
+        </div>
+      </div>
+      <div class="row mt-5">
         <div class="col-8">
-          In hac habitasse platea dictumst. Cras id orci sem. Duis maximus lorem in dolor rutrum malesuada. Integer pretium sapien ligula, a mollis magna pellentesque at. Mauris ut volutpat tellus. Curabitur fermentum nunc nec nisi tincidunt mattis. Pellentesque eget ultrices justo. Nam quis nibh vel magna iaculis lacinia. Vestibulum vitae purus at ante dapibus tincidunt vitae vitae libero. Suspendisse nec metus dapibus, congue nulla at, tincidunt leo. Maecenas quis luctus lacus. Morbi ornare tellus quis massa bibendum malesuada. Curabitur iaculis vulputate ipsum non rhoncus. Suspendisse posuere tempus urna, vitae cursus nisl lacinia eget. Mauris sollicitudin diam enim, sit amet lobortis tortor egestas et.
+        <h2>Free AI Consultation for Your Business!</h2>
+        <p>Are you looking to harness the power of Artificial Intelligence (AI) and Machine Learning (ML) to drive innovation and growth in your company?</p>
+        <p>As a senior software developer with a master's degree in Cybernetics and currently pursuing a PhD with a focus on AI, I understand the complexities and opportunities that AI presents. With over two years of experience running my own AI startup, I've gained valuable insights into how AI can transform businesses across industries.</p>
+        <p>I'm offering complimentary 30-minute consultation sessions to discuss how AI and ML can be tailored to meet the specific needs and goals of your organization. Whether you're exploring AI for the first time or seeking to optimize your existing AI initiatives, I'm here to help.</p>
+        <p>During our session, we can cover:</p>
+        <ul>
+          <li>AI strategy development tailored to your business objectives</li>
+          <li>Implementation guidance for integrating AI solutions seamlessly into your workflow</li>
+          <li>Practical advice on leveraging AI to enhance productivity, efficiency, and innovation</li>
+        </ul>
+        <p>Schedule your free consultation now through Calendly to secure your spot! Let's unlock the potential of AI together and propel your business into the future.</p>
         </div>
         <div class="col-4">
           <!-- Calendly inline widget begin -->
@@ -101,7 +144,8 @@ export default class IndexPage extends Vue {
   ];
   images: string[] = [
     "storePredictor_logo.jpg",
-    "shopycrm-logo.png"
+    "shopycrm-logo.png",
+    "shopycrm.png"
   ];
 }
 </script>
@@ -124,6 +168,16 @@ export default class IndexPage extends Vue {
 .item:hover {
   border-bottom: 1px solid black;
   background: #f5f5f5;
+}
+.divider {
+  margin-top: 25px;
+  margin-bottom: 25px;
+  border: 2px solid rgb(26, 184, 68);
+  height: 1px;
+  width: 100%;
+  display: block;
+  box-shadow: 3px 3px;
+  opacity: 0.7; 
 }
 @media print {
   * {

@@ -18,7 +18,7 @@
       <itunes:email>ales.jandera@gmail.com</itunes:email>
     </itunes:owner>
     <itunes:image
-      href="https://ajandera.com/podcast/underTheLid.jpg"
+      href="https://ajandera.com/podcast/cover.png"
     />
     <itunes:category text="Business">
       <itunes:category text="Marketing"/>
@@ -37,14 +37,33 @@
           <![CDATA[Description.]]>
       </description>
       <enclosure
-        url="https://ajandera.com/podcast/udnerTheLid1.m4a"
+        url="https://ajandera.com/podcast/udnerthelid1.m4a"
         type="audio/mpeg"
         length="17640465"
         />
-      <guid>utl12023</guid>
-      <pubDate>Wed, 12 Apr 2023 22:41:07 +0000</pubDate>
+      <guid>utl12024</guid>
+      <pubDate>Wed, f Feb 2024 22:41:07 +0000</pubDate>
       <itunes:author>Ales Jandera</itunes:author>
       <itunes:duration>536</itunes:duration>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <itunes:episode>2</itunes:episode>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:title>UnderTheLid #2</itunes:title>
+      <itunes:summary>Summary</itunes:summary>
+      <description>
+          <![CDATA[Description.]]>
+      </description>
+      <enclosure
+        url="https://ajandera.com/podcast/udnerthelid2.m4a"
+        type="audio/mpeg"
+        length="11043264"
+        />
+      <guid>utl22024</guid>
+      <pubDate>Sun, 11 Feb 2023 22:41:07 +0000</pubDate>
+      <itunes:author>Ales Jandera</itunes:author>
+      <itunes:duration>332</itunes:duration>
       <itunes:explicit>false</itunes:explicit>
     </item>
   </channel>

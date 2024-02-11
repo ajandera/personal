@@ -51,7 +51,7 @@
       <div class="row mt-5">
         <div class="col-md-8 col-sm-12 col-xs-12 text-justify">
           <h2>Elevate Your Sales Game with ShopyCRM!</h2>
-          <p>Ready to supercharge your <strong>strong>sales process</strong> and take your business to new heights? Look no further than ShopyCRM – your all-in-one solution for seamless sales management and automation!</p>
+          <p>Ready to supercharge your <strong>sales process</strong> and take your business to new heights? Look no further than ShopyCRM – your all-in-one solution for seamless sales management and automation!</p>
           <p>Since 2014, we've been leading the charge in revolutionizing CRM technology. Our SaaS CRM application isn't just another run-of-the-mill platform – it's a powerhouse of innovation tailored specifically for sales companies like yours.</p>
           <p>What sets ShopyCRM apart? Our focus on automation and seamless integration with third-party applications is unmatched. Say goodbye to manual data entry and hello to effortless connectivity!</p>
           <p><strong>With ShopyCRM, you can:</strong></p>

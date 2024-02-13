@@ -29,9 +29,10 @@
     <itunes:category text="Technology" />
     <itunes:explicit>false</itunes:explicit>
     <item>
+      <title>#1</title>
       <itunes:episode>1</itunes:episode>
       <itunes:episodeType>full</itunes:episodeType>
-      <itunes:title>UnderTheLid #1</itunes:title>
+      <itunes:title>#1</itunes:title>
       <itunes:summary>Summary</itunes:summary>
       <description>
           <![CDATA[Description.]]>
@@ -48,9 +49,10 @@
       <itunes:explicit>false</itunes:explicit>
     </item>
     <item>
+      <title>#1</title>
       <itunes:episode>2</itunes:episode>
       <itunes:episodeType>full</itunes:episodeType>
-      <itunes:title>UnderTheLid #2</itunes:title>
+      <itunes:title>#2</itunes:title>
       <itunes:summary>Summary</itunes:summary>
       <description>
           <![CDATA[Description.]]>

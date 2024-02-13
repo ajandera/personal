@@ -34,8 +34,12 @@
               </router-link>
             </li>
             <li class="nav-item">
-                <a href="http://github.com/ajandera" target="_blank" title="Github" class="black nav-link" itemprop="contactPoint">
+                <a href="https://github.com/ajandera" target="_blank" title="Github" class="black nav-link" itemprop="contactPoint">
                   <font-awesome-icon :icon="['fab', 'github']" /></a>
+            </li>
+            <li class="nav-item">
+                <a href="https://www.linkedin.com/in/ales-jandera-ceo-sp/" target="_blank" title="Linkedin" class="black nav-link" itemprop="contactPoint">
+                  <font-awesome-icon :icon="['fab', 'linkedin']" /></a>
             </li>
             <li class="nav-item" v-if="languages.length > 1" v-for="(lang, index) in languages" v-bind:key="'l'+index">
               <div href="#"

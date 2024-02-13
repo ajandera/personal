@@ -1,8 +1,8 @@
 <template>
-  <section>
+  <section data-mdb-animation-start="onScroll">
     <div class="container">
       <div class="row mt-5">
-        <div class="col-md-8 col-sm-12 col-xs-12 text-justify">
+        <div class="col-md-8 col-sm-12 col-xs-12 text-justify" data-aos="fade-right" data-aos-delay="150">
           <p>Greetings! Allow me to introduce myself, I am <strong>Aleš Jandera</strong>, passionate entrepreneur with backgorund as senior software developer. With a wealth of experience under my belt, I proudly hold a master's degree in
             cybernetics and automation, which has provided me with a robust foundation to delve into the exciting realms of technology and innovation. Over the course of the past decade, my journey in the software development landscape has
             been nothing short of exhilarating.</p>
@@ -14,7 +14,7 @@
             Predictive analytics, a true gem of the digital age, also finds its place in my repertoire. So there you have it – an intricate tapestry woven with my experiences, passions, and aspirations.
             I'm not just a software developer; I'm a trailblazer, a conductor of code, and a maestro of digital innovation. Join me on this captivating journey as we continue to explore the ever-evolving landscape of technology together.</p>
         </div>
-        <div class="col-md-4 col-sm-12 col-xs-12">
+        <div class="col-md-4 col-sm-12 col-xs-12" data-aos="fade-left" data-aos-delay="150">
           <div class="row align-items-center">
             <div class="col-6 mt-4 mb-4" v-for="(ref, index) in references" :key="index">
                 <img :src="ref" class="img-fluid" />
@@ -28,12 +28,12 @@
         </div>
       </div>
       <div class="row mt-5">
-        <div class="col-md-4 col-sm-12 col-xs-12">
+        <div class="col-md-4 col-sm-12 col-xs-12 slide-right" data-aos="fade-right" data-aos-delay="150">
           <img :src="images[0]" class="img-fluid" />
           <iframe id="embedPlayer" src="https://embed.podcasts.apple.com/us/podcast/storepredictor/id1684803774?itsct=podcast_box_player&amp;itscg=30200&amp;ls=1&amp;theme=light" height="450px" frameborder="0" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation" allow="autoplay *; encrypted-media *; clipboard-write" style="width: 100%; max-width: 660px; overflow: hidden; border-radius: 10px; transform: translateZ(0px); animation: 2s 6 loading-indicator; background-color: rgb(228, 228, 228);"></iframe>
           <a href="https://storepredictor.com" target="_blank" class="btn btn-success btn-lg actionBtn">Register for FREE</a>
         </div>
-        <div class="col-md-8 col-sm-12 col-xs-12 text-justify">
+        <div class="col-md-8 col-sm-12 col-xs-12 text-justify" data-aos="fade-left" data-aos-delay="150">
           <p><strong>storePredictor</strong> is a cutting-edge innovation that lies at the crossroads of data science, <strong>artificial intelligence</strong>, and retail strategy. Imagine having the power to peer into the future of retail, foreseeing trends and consumer behavior patterns before they even unfold. This is the essence of StorePredictor.</p>
           <p>At its core, StorePredictor is a sophisticated predictive analytics platform designed to empower retailers and e-commerce businesses with the ability to make informed decisions that resonate with the ever-changing desires of their customers. Leveraging historical data, real-time inputs, and advanced machine learning algorithms, StorePredictor has the capability to anticipate buying trends, optimize inventory management, and fine-tune pricing strategies with remarkable accuracy.</p>
           <p>Furthermore, storePredictor has the prowess to decipher intricate <strong>consumer behavior patterns</strong>. It examines variables such as past purchases, browsing habits, demographics, and external factors like economic indicators and social trends. Armed with this multifaceted understanding, businesses can tailor their marketing efforts, personalize user experiences, and craft promotions that resonate authentically with their target audience.</p>
@@ -49,13 +49,13 @@
         </div>
       </div>
       <div class="row mt-5">
-        <div class="col-md-8 col-sm-12 col-xs-12 text-justify">
+        <div class="col-md-8 col-sm-12 col-xs-12 text-justify" data-aos="fade-right" data-aos-delay="150">
         <h2>Free AI Consultation for Your Business!</h2>
         <p>Are you looking to harness the <strong>power of Artificial Intelligence (AI)</strong> and Machine Learning (ML) to drive innovation and growth in your company?</p>
         <p>As a senior software developer with a master's degree in Cybernetics and currently pursuing a PhD with a focus on AI, I understand the complexities and opportunities that AI presents. With over two years of experience running my own AI startup, I've gained valuable insights into how AI can transform businesses across industries.</p>
         <p>I'm offering complimentary 30-minute consultation sessions to discuss how AI and ML can be tailored to meet the specific needs and goals of your organization. Whether you're exploring AI for the first time or seeking to optimize your existing AI initiatives, I'm here to help.</p>
         </div>
-        <div class="col-md-4 col-sm-12 col-xs-12">
+        <div class="col-md-4 col-sm-12 col-xs-12" data-aos="fade-left" data-aos-delay="150">
           <!-- Calendly inline widget begin -->
           <div class="calendly-inline-widget" data-url="https://calendly.com/ales-6?hide_gdpr_banner=1" style="min-width:320px;height:300px;"></div>
           <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
@@ -68,12 +68,12 @@
         </div>
       </div>
       <div class="row mt-5">
-        <div class="col-md-4 col-sm-12 col-xs-12">
+        <div class="col-md-4 col-sm-12 col-xs-12" data-aos="fade-right" data-aos-delay="150">
           <img :src="images[1]" class="img-fluid" />
           <img :src="images[2]" class="img-fluid mt-5"/>
           <a href="https://shopycrm.com" target="_blank" class="btn btn-success btn-lg actionBtn">Register for FREE</a>
         </div>
-        <div class="col-md-8 col-sm-12 col-xs-12 text-justify">
+        <div class="col-md-8 col-sm-12 col-xs-12 text-justify" data-aos="fade-left" data-aos-delay="150">
           <h2>Elevate Your Sales Game with ShopyCRM!</h2>
           <p>Ready to supercharge your <strong>sales process</strong> and take your business to new heights? Look no further than ShopyCRM – your all-in-one solution for seamless sales management and automation!</p>
           <p>Since 2014, we've been leading the charge in revolutionizing CRM technology. Our SaaS CRM application isn't just another run-of-the-mill platform – it's a powerhouse of innovation tailored specifically for sales companies like yours.</p>
@@ -94,7 +94,7 @@
         </div>
       </div>
       <div class="row mt-5">
-        <div class="col-md-8 col-sm-12 col-xs-12 text-justify">
+        <div class="col-md-8 col-sm-12 col-xs-12 text-justify" data-aos="fade-right" data-aos-delay="150">
           <h2>Discover the Secrets of Success in Entrepreneurship and AI-Powered E-Commerce!</h2>
           <p>Embark on a journey behind the scenes of <strong>entrepreneurship and AI innovation</strong> with me, a seasoned senior software developer with over a decade of experience. From navigating international teams to crafting my own CRM software since 2014, my entrepreneurial ventures have led me to develop a groundbreaking startup centered around mathematical modeling in e-commerce.</p>
           <p>Join me as I unveil the tips, tricks, and real-life experiences that have shaped my entrepreneurial path. Gain invaluable insights into:</p>
@@ -108,8 +108,8 @@
           <p>Ready to unlock the keys to success and propel your own ventures forward? Join me for an enlightening exploration of the intersection between technology, entrepreneurship, and human behavior prediction.</p>
           <p>Sign up now for an exclusive insider look at the world of entrepreneurship and AI-powered e-commerce!</p>
         </div>
-        <div class="col-md-4 col-sm-12 col-xs-12">
-          
+        <div class="col-md-4 col-sm-12 col-xs-12" data-aos="fade-left" data-aos-delay="150">
+          <iframe id="embedPlayer" src="https://embed.podcasts.apple.com/us/podcast/underthelid/id1583627718?itsct=podcast_box_player&amp;itscg=30200&amp;ls=1&amp;theme=light" height="450px" frameborder="0" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation" allow="autoplay *; encrypted-media *; clipboard-write" style="width: 100%; max-width: 660px; overflow: hidden; border-radius: 10px; transform: translateZ(0px); animation: 2s 6 loading-indicator; background-color: rgb(228, 228, 228);"></iframe>
         </div> 
       </div>
     </div>
@@ -147,13 +147,7 @@ export default class IndexPage extends Vue {
 }
 </script>
 <sctipt lang="js">
-  (function(d, s) {
-    var useSSL = 'https:' == document.location.protocol;
-    var js, where = d.getElementsByTagName(s)[0],
-    js = d.createElement(s);
-    js.src = (useSSL ? 'https:' : 'http:') +  '//www.peopleperhour.com/hire/43573616/10356450.js?width=245&height=170&orientation=vertical&theme=light&rnd='+parseInt(Math.random()*10000, 10);
-    try { where.parentNode.insertBefore(js, where); } catch (e) { if (typeof console !== 'undefined' && console.log && e.stack) { console.log(e.stack); } }
-}(document, 'script'));
+  
 </sctipt>
 
 <style lang="css" scoped>

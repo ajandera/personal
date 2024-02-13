@@ -22,6 +22,12 @@ export default {
     ],
     link: [
       {rel: 'icon', type: 'image/x-icon', href: '/favicon/favicon.ico'}
+    ],
+    script: [
+      {
+        src: 'https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js',
+        type: "text/javascript"
+      }
     ]
   },
 
@@ -33,8 +39,13 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     '~/plugins/fontawesome.js',
-    '~/plugins/axios.js'
+    '~/plugins/axios.js',
+    '~/plugins/aos'
   ],
+
+  purgeCSS: {
+    whitelist: ["aos-init", "aos-animate", "data-aos-delay", "data-aos-duration", "fade-up", "zoom-in"],
+  },
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,

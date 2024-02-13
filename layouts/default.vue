@@ -17,8 +17,9 @@
         </div>
       </div>
     </section>
+    <Info :languages="languages" :language="language" />
     <NuxtChild :language="language" class="mt-5"></NuxtChild>
-    <Footer />
+    <Footer :language="language" />
   </div>
 </template>
 
@@ -28,11 +29,13 @@ import { Component, Vue } from 'nuxt-property-decorator';
 import Message from '~/model/Message';
 import Nav from '~/components/Nav.vue';
 import Footer from '~/components/Footer.vue';
+import Info from '~/components/Info.vue';
 
 @Component({
   components: {
     Nav,
-    Footer
+    Footer,
+    Info
   }
 })
 export default class DefaultLayout extends Vue {
@@ -81,9 +84,11 @@ a:hover {
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
+  /* Create the parallax scrolling effect */
   background-size: cover;
   background-repeat: no-repeat;
   background-position: top;
+  background-attachment: fixed;
   height:500px;
   position: relative;
   background-image: url(/main.jpg);
